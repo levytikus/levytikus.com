@@ -145,6 +145,25 @@ section{padding:110px 0 0}
 .pick[aria-pressed=true] .pn{color:var(--ink)}
 .pt{font:500 17px/1.25 var(--serif)}
 .pd{font-size:13px;color:var(--graphite)}
+.hdr{display:flex;align-items:center;gap:12px}
+.hbtn{font:600 14px var(--sans);text-decoration:none;color:var(--sheet);background:var(--ink);border-radius:10px;padding:10px 14px;white-space:nowrap}
+.who-sec .whog{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;margin-top:36px;align-items:start}
+.whoc{background:var(--ink);color:var(--sheet);border-radius:22px;padding:34px 34px 30px}
+.whon{font:500 34px/1.1 var(--serif)}
+.whor{margin-top:10px;font:600 15px/1.45 var(--sans);color:var(--hl)}
+.whoc p:last-child{margin-top:18px;color:#c9d1de}
+.whol{display:flex;flex-direction:column;gap:22px}
+.whol div{border-top:1px solid var(--rule);padding-top:18px}
+.whol b{display:block;font:500 22px/1.25 var(--serif)}
+.whol span{display:block;margin-top:6px;color:var(--ink2)}
+.sbtn{display:inline-block;margin-top:18px;font:600 15px var(--sans);color:var(--ink);text-decoration:none;border:1.5px solid var(--ink);border-radius:10px;padding:11px 16px}
+.sbtn:hover{background:var(--ink);color:var(--sheet)}
+.crow{display:flex;flex-wrap:wrap;align-items:center;gap:22px 30px;margin-top:34px}
+.contact .mail{margin-top:0;background:none;border:0;border-bottom:2px solid var(--ink);cursor:pointer;color:var(--ink);padding:0 0 4px}
+.contact .mail small{font:600 13px var(--sans);margin-left:8px;vertical-align:middle;opacity:.7}
+.ntabs button,.seg button{min-height:46px}
+@media(max-width:980px){.who-sec .whog{grid-template-columns:1fr;gap:28px}}
+@media(max-width:600px){.sheet,svg.wires,.note{display:none!important}.phone{margin-top:30px!important}.hbtn{padding:9px 11px;font-size:13px}.who .nm span{display:none}.whoc{padding:26px 22px}}
 @media(max-width:1100px){.vs-show{grid-template-columns:1fr}.vs-list{border-left:0;border-top:1px solid var(--rule);padding:22px 0 0}.vs-stage{grid-template-columns:1fr}.vs-screen{height:auto;width:min(100%,360px);margin:0 auto}.vs-info{text-align:center}.vs-info h3{margin-left:auto;margin-right:auto}}
 @media(max-width:600px){.vs-show{padding:14px;border-radius:20px}.vs-info h3{font-size:22px}}
 .seg{display:inline-flex;margin-top:16px;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
@@ -225,6 +244,7 @@ footer p+p{margin-top:6px}
 <div class="wrap">
   <header>
     <div class="who"><svg class="mk" viewBox="0 0 40 40" aria-hidden="true"><path class="mk-c" d="M5 13V7a2 2 0 0 1 2-2h6M27 5h6a2 2 0 0 1 2 2v6M35 27v6a2 2 0 0 1-2 2h-6M13 35H7a2 2 0 0 1-2-2v-6" fill="none" stroke="#172338" stroke-width="3.4" stroke-linecap="round"/><g class="mk-l"><circle cx="20" cy="20" r="7.4" fill="#172338"/><circle cx="20" cy="20" r="4.4" fill="#D4F55A"/><circle cx="18.3" cy="18.3" r="1.3" fill="#FBFBF7"/></g></svg><div class="nm"><b>levy<em>tikus</em></b><span data-t="role">Video abstracts</span></div></div>
+    <div class="hdr"><a class="hbtn" href="#contato" data-t="hcta">Send your DOI</a>
     <div class="lang" id="lang">
       <button type="button" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Language"><span id="langFlag"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><g fill="#B22234"><rect y="0" width="30" height="1.54"/><rect y="3.08" width="30" height="1.54"/><rect y="6.15" width="30" height="1.54"/><rect y="9.23" width="30" height="1.54"/><rect y="12.3" width="30" height="1.54"/><rect y="15.4" width="30" height="1.54"/><rect y="18.46" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/></svg></span><span id="langCode">EN</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></button>
       <ul role="menu">
@@ -232,7 +252,7 @@ footer p+p{margin-top:6px}
         <li><button role="menuitemradio" data-set="pt" aria-checked="false"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.6 27 10 15 17.4 3 10z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.3" fill="#002776"/><path d="M10.9 9.2c2.8-.6 5.9-.2 8.2 1.3" stroke="#fff" stroke-width=".8" fill="none"/></svg>Português</button></li>
         <li><button role="menuitemradio" data-set="es" aria-checked="false"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>Español</button></li>
       </ul>
-    </div>
+    </div></div>
   </header>
 
   <div class="hero">
@@ -240,7 +260,7 @@ footer p+p{margin-top:6px}
     <div class="hero-row">
       <p class="lead" data-t="lead">I read the study, pull out the findings that matter and turn them into a short animated video for social media, talks and your journal page. You approve every word of the script before anything moves.</p>
       <div class="actions">
-        <a class="btn" href="mailto:levytikus@gmail.com?subject=Video%20abstract" data-t="cta">Request a video</a>
+        <a class="btn" href="#contato" data-t="cta">Request a video</a>
       </div>
     </div>
 
@@ -267,17 +287,6 @@ footer p+p{margin-top:6px}
   </div>
 </div>
 
-<div class="reel">
-  <div class="wrap">
-    <h2 data-t="reelH">From the page to the frame, one finding at a time.</h2>
-    <p class="sub" data-t="reelP">Frames from two of the samples. Scroll sideways to follow each story from the opening hook to the closing reference.</p>
-    <div class="tabs" role="group" aria-label="Sample">
-      <button data-reel="en" aria-pressed="true">Front. Psychiatry</button><button data-reel="pt" aria-pressed="false">Rev Rene</button>
-    </div>
-  </div>
-  <div class="strip" id="strip" tabindex="0" aria-label="Video frames"></div>
-</div>
-
 <div class="wrap">
   <section id="samples">
     <h2 class="h2" data-t="sampH">Watch the samples with sound.</h2>
@@ -302,7 +311,8 @@ footer p+p{margin-top:6px}
   </section>
 
   <section>
-    <h2 class="h2" data-t="anatH">What goes into a single frame.</h2>
+    <h2 class="h2" data-t="anatH">What you get.</h2>
+    <p class="sub" data-t="anatP">Every video comes as a vertical and a horizontal MP4, with captions and an .srt file. This is what goes into each frame.</p>
     <div class="anat">
       <div class="col l">
         <div class="mn"><b data-t="a1h">Numbers traced to the paper</b><span data-t="a1">Odds ratios, percentages and sample sizes are checked by hand against the article.</span></div>
@@ -312,6 +322,22 @@ footer p+p{margin-top:6px}
       <div class="col r">
         <div class="mn"><b data-t="a3h">Captions synced word by word</b><span data-t="a3">Most people watch on mute, so the text follows the narration exactly.</span></div>
         <div class="mn"><b data-t="a4h">Your reference on screen</b><span data-t="a4">Journal, authors and DOI close every video, ready to be shared.</span></div>
+      </div>
+    </div>
+  </section>
+
+    <section class="who-sec">
+    <h2 class="h2" data-t="whoH">Who makes your video.</h2>
+    <div class="whog">
+      <div class="whoc">
+        <p class="whon">Levy Silva</p>
+        <p class="whor" data-t="whoR">Public manager, with postgraduate specializations in IT Management and Web Design.</p>
+        <p data-t="whoP">I read your article myself, write the script, check every number against the text and answer every email. You always talk to the person who makes the video.</p>
+      </div>
+      <div class="whol">
+        <div><b data-t="whoH1">Done by a person</b><span data-t="whoT1">Reading the article, choosing the findings, writing the script and checking every number, limit and reference.</span></div>
+        <div><b data-t="whoH2">Done with AI, under review</b><span data-t="whoT2">Illustrations, narration voice and animation, directed and reviewed frame by frame before delivery.</span></div>
+        <div><b data-t="whoH3">Approved by you</b><span data-t="whoT3">Nothing is animated before you approve the script, and you can change any word.</span></div>
       </div>
     </div>
   </section>
@@ -340,6 +366,7 @@ footer p+p{margin-top:6px}
       <div class="series">
         <h3 data-t="seH">Journals and research groups</h3>
         <p data-t="se">A monthly series of four videos in your journal or lab identity, with a fixed price agreed in advance. Write to me for a quote.</p>
+        <a class="sbtn" data-mail="series" href="mailto:levytikus@gmail.com" data-t="seB">Ask for a series quote</a>
       </div>
     </div>
   </section>
@@ -355,10 +382,11 @@ footer p+p{margin-top:6px}
   </section>
 </div>
 
-<div class="contact">
+<div class="contact" id="contato">
   <div class="wrap">
     <h2 data-t="ctH">Have a paper coming out? Send me the DOI.</h2>
-    <a class="mail" href="mailto:levytikus@gmail.com?subject=Video%20abstract">levytikus@gmail.com</a>
+    <div class="crow"><a class="btn cbtn" data-mail="doi" href="mailto:levytikus@gmail.com" data-t="ctB">Write the email with my DOI</a>
+    <button type="button" class="mail" id="copyMail">levytikus@gmail.com <small data-t="copy">copy</small></button></div>
     <p data-t="ctP">I reply within a day with a first outline of the script.</p>
   </div>
 </div>
@@ -374,6 +402,22 @@ footer p+p{margin-top:6px}
 const T = {
 en:{},
 pt:{
+ hcta:"Enviar DOI",
+ anatH:"O que você recebe.",
+ anatP:"Todo vídeo vem em MP4 vertical e horizontal, com legendas e arquivo .srt. Isto é o que entra em cada quadro.",
+ whoH:"Quem faz o seu vídeo.",
+ whoR:"Gestor Público, especialista em Gestão da Tecnologia da Informação e em Web Design.",
+ whoP:"Eu mesmo leio o seu artigo, escrevo o roteiro, confiro cada número no texto e respondo cada e-mail. Você sempre fala com quem faz o vídeo.",
+ whoH1:"Feito por uma pessoa",
+ whoT1:"A leitura do artigo, a escolha dos resultados, o roteiro e a conferência de cada número, limite e referência.",
+ whoH2:"Feito com IA, sob revisão",
+ whoT2:"As ilustrações, a voz da narração e a animação, dirigidas e revisadas quadro a quadro antes da entrega.",
+ whoH3:"Aprovado por você",
+ whoT3:"Nada é animado antes de você aprovar o roteiro, e você pode mudar qualquer palavra.",
+ seB:"Pedir orçamento de série",
+ ctB:"Escrever o e-mail com meu DOI",
+ copy:"copiar",
+ copied:"copiado",
  nlEn:"Narração em inglês",
  nlPt:"Narração em português",
  nlEs:"Narração em espanhol",
@@ -397,7 +441,6 @@ pt:{
  sampP:"Três em cada idioma, cada uma num estilo visual diferente. Todas foram feitas a partir de artigos de acesso aberto publicados em 2026, como demonstrações não oficiais, em versão vertical e horizontal.",
  refEn:"Narração em inglês. Liebig L et al. Front Psychiatry. 2026;17:1735186",
  refPt:"Narração em português. Martins BG et al. Rev Rene. 2026;27:e96476",
- anatH:"O que vai dentro de um único quadro.",
  a1h:"Números conferidos no artigo", a1:"Razões de chance, porcentagens e tamanhos de amostra são conferidos à mão no texto.",
  a2h:"Ilustrações feitas para o estudo", a2:"Imagens próprias num estilo coerente, nunca banco de imagens.",
  a3h:"Legendas sincronizadas palavra por palavra", a3:"A maioria assiste sem som, então o texto acompanha a narração exatamente.",
@@ -423,6 +466,22 @@ pt:{
  place:"Levy Silva, Rio de Janeiro, Brasil"
 },
 es:{
+ hcta:"Enviar DOI",
+ anatH:"Lo que recibes.",
+ anatP:"Cada video llega en MP4 vertical y horizontal, con subtítulos y archivo .srt. Esto es lo que entra en cada fotograma.",
+ whoH:"Quién hace tu video.",
+ whoR:"Gestor público, especialista en Gestión de Tecnologías de la Información y en Diseño Web.",
+ whoP:"Yo mismo leo tu artículo, escribo el guion, verifico cada número en el texto y respondo cada correo. Siempre hablas con quien hace el video.",
+ whoH1:"Hecho por una persona",
+ whoT1:"La lectura del artículo, la elección de los resultados, el guion y la verificación de cada número, límite y referencia.",
+ whoH2:"Hecho con IA, bajo revisión",
+ whoT2:"Las ilustraciones, la voz de la narración y la animación, dirigidas y revisadas fotograma a fotograma antes de la entrega.",
+ whoH3:"Aprobado por ti",
+ whoT3:"Nada se anima antes de que apruebes el guion, y puedes cambiar cualquier palabra.",
+ seB:"Pedir cotización de serie",
+ ctB:"Escribir el correo con mi DOI",
+ copy:"copiar",
+ copied:"copiado",
  nlEn:"Narración en inglés",
  nlPt:"Narración en portugués",
  nlEs:"Narración en español",
@@ -446,7 +505,6 @@ es:{
  sampP:"Tres por idioma, cada una con un estilo visual distinto. Todas se hicieron a partir de artículos de acceso abierto publicados en 2026, como demostraciones no oficiales, en versión vertical y horizontal.",
  refEn:"Narración en inglés. Liebig L et al. Front Psychiatry. 2026;17:1735186",
  refPt:"Narración en portugués. Martins BG et al. Rev Rene. 2026;27:e96476",
- anatH:"Lo que entra en un solo fotograma.",
  a1h:"Números verificados en el artículo", a1:"Odds ratios, porcentajes y tamaños de muestra se verifican a mano en el texto.",
  a2h:"Ilustraciones hechas para el estudio", a2:"Imágenes propias con un estilo coherente, nunca de banco.",
  a3h:"Subtítulos sincronizados palabra por palabra", a3:"La mayoría mira sin sonido, así que el texto sigue la narración exactamente.",
@@ -482,6 +540,7 @@ function setLang(l){
   document.getElementById('langFlag').innerHTML = cur.outerHTML; document.getElementById('langCode').textContent = l.toUpperCase();
   if (location.hash !== '#' + l) history.replaceState(null, '', '#' + l);
   if (typeof showNl === 'function' && !nlPicked) showNl(l);
+  if (typeof setMails === 'function') setMails(l);
 }
 const langEl = document.getElementById('lang'), langBtn = document.getElementById('langBtn');
 function menu(o){ langEl.classList.toggle('open', o); langBtn.setAttribute('aria-expanded', o); }
@@ -493,19 +552,26 @@ const h = location.hash.slice(1), nl = (navigator.language || '').toLowerCase();
 setLang(['en','pt','es'].includes(h) ? h : (nl.startsWith('pt') ? 'pt' : nl.startsWith('es') ? 'es' : 'en'));
 addEventListener('hashchange', () => { const x = location.hash.slice(1); if (['en','pt','es'].includes(x)) setLang(x); });
 
-/* film strip */
-const FR = {
- en:[["0:03","Hook"],["0:18","Sample"],["0:22","Exposure"],["0:39","Outcome by site"],["0:50","Key finding"],["0:57","Strongest effect"],["1:01","Effect sizes"],["1:19","Limits"]],
- pt:[["0:05","Abertura"],["0:10","Artigo"],["0:22","Amostra"],["0:40","Resultado"],["0:45","Proporções"],["0:58","Correlações"],["1:07","Limites"],["1:22","Referência"]]
+
+/* contato */
+var MAILS = {
+ en:{doi:["Video abstract request","Hello Levy,\n\nI would like a video abstract of my paper.\n\nDOI or link: \nWhat I want to highlight: \nNarration language: \n\nThank you."],
+     series:["Video abstract series quote","Hello Levy,\n\nI would like a quote for a series of video abstracts.\n\nJournal or research group: \nVideos per month: \nNarration language: \n\nThank you."]},
+ pt:{doi:["Pedido de resumo em vídeo","Olá, Levy.\n\nQuero um resumo em vídeo do meu artigo.\n\nDOI ou link: \nO que quero destacar: \nIdioma da narração: \n\nObrigado."],
+     series:["Orçamento de série de resumos em vídeo","Olá, Levy.\n\nQuero um orçamento para uma série de resumos em vídeo.\n\nRevista ou grupo de pesquisa: \nVídeos por mês: \nIdioma da narração: \n\nObrigado."]},
+ es:{doi:["Solicitud de resumen en video","Hola, Levy:\n\nQuiero un resumen en video de mi artículo.\n\nDOI o enlace: \nLo que quiero destacar: \nIdioma de la narración: \n\nGracias."],
+     series:["Cotización de serie de resúmenes en video","Hola, Levy:\n\nQuiero una cotización para una serie de resúmenes en video.\n\nRevista o grupo de investigación: \nVideos por mes: \nIdioma de la narración: \n\nGracias."]}
 };
-const strip = document.getElementById('strip');
-function reel(k){
-  strip.innerHTML = FR[k].map((f,i) => `<figure class="frame"><img src="f_${k}${i+1}.jpg" alt="" width="432" height="768"><small><b>${f[0]}</b>${f[1]}</small></figure>`).join('');
-  strip.scrollLeft = 0;
-  document.querySelectorAll('[data-reel]').forEach(b => b.setAttribute('aria-pressed', b.dataset.reel === k));
+function setMails(l){
+  if (!MAILS) return;
+  document.querySelectorAll('[data-mail]').forEach(a => { const m = (MAILS[l] || MAILS.en)[a.dataset.mail];
+    a.href = 'mailto:levytikus@gmail.com?subject=' + encodeURIComponent(m[0]) + '&body=' + encodeURIComponent(m[1]); });
 }
-document.querySelectorAll('[data-reel]').forEach(b => b.addEventListener('click', () => reel(b.dataset.reel)));
-reel('en');
+document.getElementById('copyMail').addEventListener('click', e => {
+  const b = e.currentTarget, sm = b.querySelector('small'), l = document.documentElement.lang.slice(0,2);
+  navigator.clipboard.writeText('levytikus@gmail.com').then(() => { sm.textContent = (T[l] && T[l].copied) || 'copied'; setTimeout(() => { sm.textContent = (T[l] && T[l].copy) || 'copy'; }, 1800); }).catch(() => { location.href = 'mailto:levytikus@gmail.com'; });
+});
+setMails(document.documentElement.lang.slice(0,2));
 
 /* players */
 var nlPicked = false;
@@ -526,7 +592,7 @@ function pick(btn, play){
   document.getElementById('stTitle').textContent = btn.querySelector('.pt').textContent;
   document.getElementById('stRef').textContent = btn.dataset.ref;
   load(curV, false);
-  if (play) stV.play().catch(()=>{});
+  if (play) { if (innerWidth < 1100) stV.closest('.vs-screen').scrollIntoView({behavior:'smooth', block:'center'}); stV.play().catch(()=>{}); }
 }
 function showNl(l){
   document.querySelectorAll('.picks').forEach(g => g.hidden = g.dataset.nl !== l);
