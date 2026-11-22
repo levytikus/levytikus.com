@@ -118,22 +118,35 @@ svg.wires circle{fill:var(--play)}
 section{padding:110px 0 0}
 .h2{font:500 clamp(32px,3.8vw,50px)/1.08 var(--serif);letter-spacing:-.015em;max-width:16em}
 .sub{color:var(--graphite);margin-top:14px;max-width:38em}
-.players{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:40px}
-.players[hidden]{display:none}
 .ntabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
 .ntabs button{display:flex;align-items:center;gap:10px;border:1px solid var(--rule);background:var(--sheet);border-radius:12px;padding:10px 16px;cursor:pointer;font:500 15px var(--sans);color:var(--ink2)}
 .ntabs button b{font:700 12px var(--sans);letter-spacing:.06em;background:var(--paper);border-radius:6px;padding:3px 7px}
 .ntabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
 .ntabs button[aria-selected=true] b{background:var(--hl);color:var(--ink)}
-.player .sty{display:inline-block;margin-top:20px;font:600 12px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--teal);border:1px solid currentColor;border-radius:99px;padding:4px 10px}
-.player.h{grid-column:1/-1}
-.player.h .scr{width:min(100%,900px)}
-@media(max-width:900px){.players{grid-template-columns:1fr;gap:56px}}
-.player .scr{background:var(--ink);border-radius:22px;padding:8px;width:min(100%,330px);aspect-ratio:9/16;transition:width .35s}
-.player.h .scr{width:100%;aspect-ratio:16/9}
-.player video{width:100%;height:100%;border-radius:15px;display:block;background:#0e1626;object-fit:contain}
-.player h3{font:500 22px/1.25 var(--serif);margin-top:12px;max-width:20em}
-.player .ref{font-size:14px;color:var(--graphite);margin-top:6px}
+.vs-show{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:40px;margin-top:28px;background:var(--sheet);border:1px solid var(--rule);border-radius:26px;padding:28px}
+.vs-stage{display:grid;grid-template-columns:auto minmax(0,1fr);gap:32px;align-items:center;min-width:0}
+.vs-screen{background:var(--ink);border-radius:22px;padding:8px;height:600px;aspect-ratio:9/16;transition:aspect-ratio .3s}
+.vs-screen video{width:100%;height:100%;border-radius:15px;display:block;background:#0e1626;object-fit:contain}
+.vs-stage.h{grid-template-columns:1fr;gap:22px}
+.vs-stage.h .vs-screen{height:auto;width:100%;aspect-ratio:16/9}
+.vs-info .sty,.pick .sty{display:inline-block;font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--teal);border:1px solid currentColor;border-radius:99px;padding:4px 10px}
+.vs-info h3{font:500 28px/1.2 var(--serif);margin-top:16px;max-width:16em}
+.vs-stage.h .vs-info h3{font-size:24px;max-width:none}
+.vs-info .ref{font-size:14px;color:var(--graphite);margin-top:10px}
+.vs-list{border-left:1px solid var(--rule);padding-left:28px;display:flex;flex-direction:column;justify-content:center}
+.picks{display:flex;flex-direction:column;gap:12px}
+.picks[hidden]{display:none}
+.pick{display:flex;gap:14px;align-items:center;text-align:left;width:100%;border:1px solid transparent;background:transparent;border-radius:16px;padding:10px;cursor:pointer;color:var(--ink);transition:background .2s,border-color .2s}
+.pick:hover{background:var(--paper)}
+.pick[aria-pressed=true]{background:var(--paper);border-color:var(--ink)}
+.pick img{width:54px;height:96px;object-fit:cover;border-radius:9px;flex:none;background:var(--ink)}
+.pk{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.pn{font:700 12px var(--sans);color:var(--graphite);letter-spacing:.06em}
+.pick[aria-pressed=true] .pn{color:var(--ink)}
+.pt{font:500 17px/1.25 var(--serif)}
+.pd{font-size:13px;color:var(--graphite)}
+@media(max-width:1100px){.vs-show{grid-template-columns:1fr}.vs-list{border-left:0;border-top:1px solid var(--rule);padding:22px 0 0}.vs-stage{grid-template-columns:1fr}.vs-screen{height:auto;width:min(100%,360px);margin:0 auto}.vs-info{text-align:center}.vs-info h3{margin-left:auto;margin-right:auto}}
+@media(max-width:600px){.vs-show{padding:14px;border-radius:20px}.vs-info h3{font-size:22px}}
 .seg{display:inline-flex;margin-top:16px;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
 .seg button{border:0;background:var(--sheet);font:600 13px var(--sans);color:var(--graphite);padding:8px 14px;cursor:pointer}
 .seg button[aria-pressed=true]{background:var(--ink);color:var(--sheet)}
@@ -270,73 +283,20 @@ footer p+p{margin-top:6px}
     <h2 class="h2" data-t="sampH">Watch the samples with sound.</h2>
     <p class="sub" data-t="sampP">Three per language, each in a different visual style. All were made from open-access articles published in 2026, as unofficial demonstrations, in vertical and horizontal versions.</p>
     <div class="ntabs" role="tablist"><button role="tab" data-nl="en" aria-selected="true"><b>EN</b><span data-t="nlEn">English narration</span></button><button role="tab" data-nl="pt" aria-selected="false"><b>PT</b><span data-t="nlPt">Portuguese narration</span></button><button role="tab" data-nl="es" aria-selected="false"><b>ES</b><span data-t="nlEs">Spanish narration</span></button></div>
-    <div class="players" data-nl="en" role="tabpanel">
-      <div class="player" data-v="screens-sleep">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/screens-sleep-vertical.jpg" src="video-abstract-screens-sleep-vertical.mp4"></video></div>
-        <span class="sty" data-t="stMag">Science magazine</span>
-        <h3>Nighttime screen use and sleep in medical students</h3>
-        <p class="ref">Liebig L et al. Front Psychiatry. 2026;17:1735186</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
+    <div class="vs-show">
+      <div class="vs-stage">
+        <div class="vs-screen"><video id="stV" controls playsinline preload="metadata" poster="posters/screens-sleep-vertical.jpg" src="video-abstract-screens-sleep-vertical.mp4"></video></div>
+        <div class="vs-info">
+          <span class="sty" id="stSty" data-t="stMag">Science magazine</span>
+          <h3 id="stTitle">Nighttime screen use and sleep in medical students</h3>
+          <p class="ref" id="stRef">Liebig L et al. Front Psychiatry. 2026;17:1735186</p>
+          <div class="seg" role="group" id="stSeg"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
+        </div>
       </div>
-      <div class="player" data-v="social-escape">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/social-escape-vertical.jpg" src="video-abstract-social-escape-vertical.mp4"></video></div>
-        <span class="sty" data-t="stSwiss">Swiss style</span>
-        <h3>Problematic social media use in adolescents, symptom by symptom</h3>
-        <p class="ref">Golambiauskas V et al. BMC Public Health. 2026;26:2902</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
-      </div>
-      <div class="player" data-v="green-space">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/green-space-vertical.jpg" src="video-abstract-green-space-vertical.mp4"></video></div>
-        <span class="sty" data-t="stPaper">Paper cut-out</span>
-        <h3>What makes a park visit good for mental health</h3>
-        <p class="ref">Douglas J et al. Ecosystems and People. 2026;22(1):2624444</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
-      </div>
-    </div>
-    <div class="players" data-nl="pt" role="tabpanel" hidden>
-      <div class="player" data-v="ansiedade">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/ansiedade-vertical.jpg" src="video-abstract-ansiedade-vertical.mp4"></video></div>
-        <span class="sty" data-t="stMag">Science magazine</span>
-        <h3>Ansiedade e qualidade de vida em estudantes da área da saúde</h3>
-        <p class="ref">Martins BG et al. Rev Rene. 2026;27:e96476</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
-      </div>
-      <div class="player" data-v="ambulantes-escolas">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/ambulantes-escolas-vertical.jpg" src="video-abstract-ambulantes-escolas-vertical.mp4"></video></div>
-        <span class="sty" data-t="stBoard">Whiteboard</span>
-        <h3>O que vendem os ambulantes na porta das escolas</h3>
-        <p class="ref">Clark SGF et al. Rev Saude Publica. 2026;60:e14</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
-      </div>
-      <div class="player" data-v="cesta-saudavel">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/cesta-saudavel-vertical.jpg" src="video-abstract-cesta-saudavel-vertical.mp4"></video></div>
-        <span class="sty" data-t="stDark">Dark editorial</span>
-        <h3>O custo da cesta básica saudável e sustentável</h3>
-        <p class="ref">Verly Junior E et al. Rev Saude Publica. 2026;60:e15</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
-      </div>
-    </div>
-    <div class="players" data-nl="es" role="tabpanel" hidden>
-      <div class="player" data-v="bienestar-digital">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/bienestar-digital-vertical.jpg" src="video-abstract-bienestar-digital-vertical.mp4"></video></div>
-        <span class="sty" data-t="stRiso">Risograph</span>
-        <h3>Estrategia comunitaria de bienestar digital para la infancia</h3>
-        <p class="ref">Ruiz-Mariscal E et al. Gac Sanit. 2026;40:102636</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
-      </div>
-      <div class="player" data-v="salud-chile">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/salud-chile-vertical.jpg" src="video-abstract-salud-chile-vertical.mp4"></video></div>
-        <span class="sty" data-t="stIso">Pastel isometric</span>
-        <h3>Malestar psicológico en estudiantes de salud en Chile</h3>
-        <p class="ref">Caro P et al. Rev Esp Edu Med. 2026;2:703841</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
-      </div>
-      <div class="player" data-v="cerveza-mexico">
-        <div class="scr"><video controls playsinline preload="none" poster="posters/cerveza-mexico-vertical.jpg" src="video-abstract-cerveza-mexico-vertical.mp4"></video></div>
-        <span class="sty" data-t="stToon">1950s cartoon</span>
-        <h3>Cerveza e impuesto a las bebidas azucaradas en México</h3>
-        <p class="ref">Quiroz-Reyes JA et al. Salud Publica Mex. 2026;68:125-131</p>
-        <div class="seg" role="group"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
+      <div class="vs-list">
+      <div class="picks" data-nl="en"><button class="pick" data-v="screens-sleep" data-st="stMag" data-ref="Liebig L et al. Front Psychiatry. 2026;17:1735186" aria-pressed="false"><img src="posters/screens-sleep-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">01</span><span class="sty" data-t="stMag">Science magazine</span><span class="pt">Nighttime screen use and sleep in medical students</span><span class="pd">1:32</span></span></button><button class="pick" data-v="social-escape" data-st="stSwiss" data-ref="Golambiauskas V et al. BMC Public Health. 2026;26:2902" aria-pressed="false"><img src="posters/social-escape-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">02</span><span class="sty" data-t="stSwiss">Swiss style</span><span class="pt">Problematic social media use in adolescents, symptom by symptom</span><span class="pd">1:07</span></span></button><button class="pick" data-v="green-space" data-st="stPaper" data-ref="Douglas J et al. Ecosystems and People. 2026;22(1):2624444" aria-pressed="false"><img src="posters/green-space-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">03</span><span class="sty" data-t="stPaper">Paper cut-out</span><span class="pt">What makes a park visit good for mental health</span><span class="pd">1:09</span></span></button></div>
+      <div class="picks" data-nl="pt" hidden><button class="pick" data-v="ansiedade" data-st="stMag" data-ref="Martins BG et al. Rev Rene. 2026;27:e96476" aria-pressed="false"><img src="posters/ansiedade-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">01</span><span class="sty" data-t="stMag">Science magazine</span><span class="pt">Ansiedade e qualidade de vida em estudantes da área da saúde</span><span class="pd">1:23</span></span></button><button class="pick" data-v="ambulantes-escolas" data-st="stBoard" data-ref="Clark SGF et al. Rev Saude Publica. 2026;60:e14" aria-pressed="false"><img src="posters/ambulantes-escolas-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">02</span><span class="sty" data-t="stBoard">Whiteboard</span><span class="pt">O que vendem os ambulantes na porta das escolas</span><span class="pd">1:14</span></span></button><button class="pick" data-v="cesta-saudavel" data-st="stDark" data-ref="Verly Junior E et al. Rev Saude Publica. 2026;60:e15" aria-pressed="false"><img src="posters/cesta-saudavel-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">03</span><span class="sty" data-t="stDark">Dark editorial</span><span class="pt">O custo da cesta básica saudável e sustentável</span><span class="pd">1:22</span></span></button></div>
+      <div class="picks" data-nl="es" hidden><button class="pick" data-v="bienestar-digital" data-st="stRiso" data-ref="Ruiz-Mariscal E et al. Gac Sanit. 2026;40:102636" aria-pressed="false"><img src="posters/bienestar-digital-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">01</span><span class="sty" data-t="stRiso">Risograph</span><span class="pt">Estrategia comunitaria de bienestar digital para la infancia</span><span class="pd">1:22</span></span></button><button class="pick" data-v="salud-chile" data-st="stIso" data-ref="Caro P et al. Rev Esp Edu Med. 2026;2:703841" aria-pressed="false"><img src="posters/salud-chile-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">02</span><span class="sty" data-t="stIso">Pastel isometric</span><span class="pt">Malestar psicológico en estudiantes de salud en Chile</span><span class="pd">1:15</span></span></button><button class="pick" data-v="cerveza-mexico" data-st="stToon" data-ref="Quiroz-Reyes JA et al. Salud Publica Mex. 2026;68:125-131" aria-pressed="false"><img src="posters/cerveza-mexico-vertical.jpg" alt="" loading="lazy" width="54" height="96"><span class="pk"><span class="pn">03</span><span class="sty" data-t="stToon">1950s cartoon</span><span class="pt">Cerveza e impuesto a las bebidas azucaradas en México</span><span class="pd">1:16</span></span></button></div>
       </div>
     </div>
   </section>
@@ -549,26 +509,37 @@ reel('en');
 
 /* players */
 var nlPicked = false;
+var stV = document.getElementById('stV'), stage = document.querySelector('.vs-stage');
+var curV = 'screens-sleep', curO = 'vertical';
+function load(slug, keepTime){
+  stV = document.getElementById('stV'); stage = document.querySelector('.vs-stage'); curO = curO || 'vertical';
+  const t = keepTime ? stV.currentTime : 0, playing = keepTime && !stV.paused;
+  stV.poster = 'posters/' + slug + '-' + curO + '.jpg';
+  stV.src = 'video-abstract-' + slug + '-' + curO + '.mp4';
+  stage.classList.toggle('h', curO === 'horizontal');
+  if (keepTime) stV.addEventListener('loadedmetadata', () => { stV.currentTime = t; if (playing) stV.play().catch(()=>{}); }, {once:true});
+}
+function pick(btn, play){
+  document.querySelectorAll('.pick').forEach(b => b.setAttribute('aria-pressed', b === btn));
+  curV = btn.dataset.v;
+  const st = document.getElementById('stSty'); st.dataset.t = btn.dataset.st; st.innerHTML = btn.querySelector('.sty').innerHTML;
+  document.getElementById('stTitle').textContent = btn.querySelector('.pt').textContent;
+  document.getElementById('stRef').textContent = btn.dataset.ref;
+  load(curV, false);
+  if (play) stV.play().catch(()=>{});
+}
 function showNl(l){
-  document.querySelectorAll('.players[data-nl]').forEach(g => {
-    const on = g.dataset.nl === l; g.hidden = !on;
-    if (!on) g.querySelectorAll('video').forEach(v => v.pause());
-  });
+  document.querySelectorAll('.picks').forEach(g => g.hidden = g.dataset.nl !== l);
   document.querySelectorAll('.ntabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.nl === l));
+  const g = document.querySelector('.picks[data-nl="' + l + '"]');
+  if (g && !g.contains(document.querySelector('.pick[aria-pressed=true]'))) pick(g.querySelector('.pick'), false);
 }
 document.querySelectorAll('.ntabs button').forEach(b => b.addEventListener('click', () => { nlPicked = true; showNl(b.dataset.nl); }));
-document.querySelectorAll('.player').forEach(p => {
-  const v = p.querySelector('video');
-  p.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
-    p.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    const t = v.currentTime, playing = !v.paused, base = 'video-abstract-' + p.dataset.v + '-' + b.dataset.o;
-    v.poster = 'posters/' + p.dataset.v + '-' + b.dataset.o + '.jpg';
-    v.src = base + '.mp4';
-    p.classList.toggle('h', b.dataset.o === 'horizontal');
-    v.addEventListener('loadedmetadata', () => { v.currentTime = t; if (playing) v.play().catch(()=>{}); }, {once:true});
-  }));
-  v.addEventListener('play', () => document.querySelectorAll('.player video').forEach(o => { if (o !== v) o.pause(); }));
-});
+document.querySelectorAll('.pick').forEach(b => b.addEventListener('click', () => pick(b, true)));
+document.querySelectorAll('#stSeg button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#stSeg button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  curO = b.dataset.o; load(curV, true);
+}));
 showNl(document.documentElement.lang.slice(0, 2));
 
 /* wires from highlights to the phone */
