@@ -27,12 +27,10 @@ mark{color:inherit;padding:0 .1em;margin:0 -.05em;border-radius:.15em;white-spac
 /* header */
 header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
 .who{display:flex;align-items:center;gap:12px;white-space:nowrap}
-.who i{flex:none;width:36px;height:36px;border-radius:10px;background:var(--ink);display:grid;place-items:center;position:relative;
-  font:500 italic 20px/1 var(--serif);color:var(--sheet);letter-spacing:-.02em}
-.who i::after{content:"";position:absolute;right:-3px;bottom:-3px;width:11px;height:11px;border-radius:50%;background:var(--hl);border:2px solid var(--paper)}
+.who svg.mk{flex:none;width:40px;height:40px;display:block}
 .who .nm{display:flex;flex-direction:column;line-height:1.1}
-.who b{font:600 16px var(--sans);letter-spacing:-.01em}
-.who span{font-size:13px;color:var(--graphite)}
+.who b{font:500 23px/1 var(--serif);letter-spacing:-.02em}
+.who span{font:500 12.5px var(--sans);color:var(--graphite);margin-top:3px}
 .lang{position:relative}
 .lang>button{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--sheet);border-radius:10px;padding:7px 10px 7px 8px;font:600 13px var(--sans);color:var(--ink);cursor:pointer}
 .lang svg.fl{width:20px;height:14px;border-radius:3px;box-shadow:0 0 0 1px rgba(23,35,56,.12);flex:none}
@@ -192,11 +190,13 @@ footer p+p{margin-top:6px}
   svg.wires path{stroke-dashoffset:0}
 }
 </style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="who"><i aria-hidden="true">L</i><div class="nm"><b>Levytikus</b><span data-t="role">Video abstracts</span></div></div>
+    <div class="who"><svg class="mk" viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="3" width="32" height="34" rx="5" fill="#172338"/><rect x="8" y="9" width="17" height="3" rx="1.5" fill="#FBFBF7" opacity=".9"/><rect x="8" y="16" width="17" height="4" rx="1.5" fill="#D4F55A"/><rect x="8" y="24" width="13" height="3" rx="1.5" fill="#FBFBF7" opacity=".9"/><rect x="8" y="30" width="15" height="3" rx="1.5" fill="#FBFBF7" opacity=".55"/><g fill="#F1F2EC"><rect x="29" y="7" width="3.5" height="3.5" rx="1"/><rect x="29" y="14" width="3.5" height="3.5" rx="1"/><rect x="29" y="21" width="3.5" height="3.5" rx="1"/><rect x="29" y="28" width="3.5" height="3.5" rx="1"/></g></svg><div class="nm"><b>Levytikus</b><span data-t="role">Video abstracts</span></div></div>
     <div class="lang" id="lang">
       <button type="button" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Language"><span id="langFlag"><svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><g fill="#B22234"><rect y="0" width="30" height="1.54"/><rect y="3.08" width="30" height="1.54"/><rect y="6.15" width="30" height="1.54"/><rect y="9.23" width="30" height="1.54"/><rect y="12.3" width="30" height="1.54"/><rect y="15.4" width="30" height="1.54"/><rect y="18.46" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/></svg></span><span id="langCode">EN</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></button>
       <ul role="menu">
