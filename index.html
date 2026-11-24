@@ -50,18 +50,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 .nav a{font:500 13px var(--sans);padding:8px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:#DCE0D6;transition:background .2s,border-color .2s}
 .nav a:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
 
-.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end;padding:70px 0 84px}
+.hero{padding:70px 0 90px;max-width:820px}
 h1{font:400 clamp(44px,7.4vw,96px)/.98 var(--serif);letter-spacing:-.025em;margin:0 0 24px}
 h1 em{font-style:italic;color:var(--hl)}
 .lede{font-size:clamp(17px,1.6vw,19px);color:#C6CDD9;max-width:560px}
 .lede strong{color:#fff;font-weight:600}
-.addr{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:22px 22px 14px;backdrop-filter:blur(6px)}
-.addr p{font:italic 400 21px/1.2 var(--serif);color:#EEF0E8;margin-bottom:12px}
-.addr a{display:flex;align-items:center;gap:0;font:400 15px var(--mono);padding:11px 0;border-top:1px dashed rgba(255,255,255,.13);color:#E6E9E1}
-.addr a span{opacity:.5}
-.addr a b{font-weight:500;color:var(--hl)}
-.addr a svg{margin-left:auto;width:15px;height:15px;flex:none;opacity:.45;transition:transform .25s,opacity .25s}
-.addr a:hover svg{transform:translateX(4px);opacity:1}
 
 /* ---------- projetos ---------- */
 main.wrap{padding-top:84px;padding-bottom:40px}
@@ -78,9 +71,9 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .wide .art{aspect-ratio:auto;flex:1.15;min-height:380px}
 .body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .wide .body{flex:1;padding:40px 42px;justify-content:center}
-.path{font:500 12.5px var(--mono);color:var(--graphite);display:flex;align-items:center;gap:8px}
-.path{flex-wrap:wrap}.path b{white-space:nowrap;color:var(--ink);font-weight:500;background:linear-gradient(var(--hl),var(--hl)) no-repeat 0 88%/100% .5em}
-.tag{font:600 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:6px;background:#E8EBDF;color:#45503E;margin-left:auto}
+.path{font:500 14px var(--sans);color:var(--graphite);display:flex;align-items:center;gap:0}.path .tag{margin-left:auto}
+.path{flex-wrap:wrap}.path b{white-space:nowrap;color:var(--ink);font-weight:700}
+.tag{font:600 12.5px var(--sans);padding:4px 10px;border-radius:999px;background:#E8EBDF;color:#45503E;margin-left:auto}
 .tag.live{background:#E3F6B2;color:#3C5410}
 .card h3{font:500 clamp(25px,2.6vw,32px)/1.1 var(--serif);letter-spacing:-.015em}
 .wide h3{font-size:clamp(30px,3.6vw,46px)}
@@ -108,51 +101,38 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .a-va .c3{bottom:22px;left:22px;border-right:0;border-top:0;border-radius:0 0 0 8px}
 .a-va .c4{bottom:22px;right:22px;border-left:0;border-top:0;border-radius:0 0 8px 0}
 
-/* arte: reels */
-.a-rl{background:conic-gradient(from 210deg at 70% 40%,#FFB347,#FF5E62,#C33DA8,#6A4CFF,#FFB347)}
-.a-rl::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 30% 80%,rgba(15,23,38,.55),transparent 70%)}
-.a-rl .phone{position:absolute;right:12%;top:12%;width:34%;aspect-ratio:9/17;border-radius:22px;background:#0F1726;box-shadow:0 30px 60px -20px rgba(0,0,0,.6),0 0 0 5px rgba(255,255,255,.9);z-index:2;overflow:hidden;transform:rotate(6deg);transition:transform .5s}
-.card:hover .a-rl .phone{transform:rotate(2deg) translateY(-6px)}
-.a-rl .phone .ba{position:absolute;inset:0;display:grid;grid-template-rows:1fr 1fr}
-.a-rl .phone .ba div{position:relative}
-.a-rl .phone .b1{background:linear-gradient(180deg,#8D8576,#6E6758);}
-.a-rl .phone .b1::before{content:"";position:absolute;inset:18% 14%;background:repeating-linear-gradient(100deg,rgba(0,0,0,.12) 0 6px,transparent 6px 15px),#A69C88;border-radius:4px}
-.a-rl .phone .b2{background:linear-gradient(180deg,#F4EBDD,#E3D3B8)}
-.a-rl .phone .b2::before{content:"";position:absolute;inset:18% 14%;background:linear-gradient(135deg,#2E6B5E,#3F8A79);border-radius:4px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.6)}
-.a-rl .phone .ba span{position:absolute;left:8%;top:8%;z-index:2;font:700 8px var(--sans);letter-spacing:.12em;color:#fff;background:rgba(0,0,0,.55);padding:3px 6px;border-radius:4px}
-.a-rl .phone .b2 span{background:#E2483D}
-.a-rl .phone .bars{position:absolute;top:5px;left:8px;right:8px;display:flex;gap:3px;z-index:3}
-.a-rl .phone .bars i{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.45)}
-.a-rl .phone .bars i:first-child{background:#fff}
-.a-rl .phone .ui{position:absolute;right:7%;bottom:10%;display:flex;flex-direction:column;gap:9px;z-index:3}
-.a-rl .phone .ui i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 2px 6px rgba(0,0,0,.3)}
-.a-rl .big{position:absolute;left:8%;bottom:12%;z-index:2;color:#fff;font:400 clamp(30px,4vw,44px)/.95 var(--serif);letter-spacing:-.02em}
-.a-rl .big em{display:block;font-style:italic}
 
-/* arte: pezim */
-.a-pz{background:#0B0B0B;display:grid;place-items:center}
-.a-pz::before{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg,rgba(255,255,255,.03) 0 2px,transparent 2px 9px)}
-.a-pz .logo{position:relative;font:700 clamp(54px,7vw,88px)/1 var(--sans);letter-spacing:-.06em;color:#F2EFE8}
-.a-pz .logo::after{content:"";position:absolute;left:-12%;right:-12%;top:52%;height:7px;background:#3BFF7A;transform:rotate(-14deg);box-shadow:0 0 22px rgba(59,255,122,.7);border-radius:4px}
-.a-pz .slot{position:absolute;bottom:18px;left:18px;right:18px;display:flex;gap:6px}
-.a-pz .slot span{flex:1;padding:8px 0;text-align:center;border-radius:999px;font:600 12px var(--sans);color:#F2EFE8;border:1px solid rgba(242,239,232,.2)}
-.a-pz .slot span.on{background:#3BFF7A;color:#0B0B0B;border-color:#3BFF7A}
 
-/* arte: cuti */
-.a-ct{background:radial-gradient(80% 90% at 20% 20%,#FFE3E8 0%,#F7C6D3 45%,#E79AB2 100%);display:grid;place-items:center}
-.a-ct .nails{position:absolute;bottom:-8%;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:flex-end}
-.a-ct .nails i{display:block;width:34px;border-radius:17px 17px 8px 8px;background:linear-gradient(180deg,#B3124C,#7E0C36);box-shadow:inset 0 6px 8px rgba(255,255,255,.35)}
-.a-ct .nails i:nth-child(1){height:70px}.a-ct .nails i:nth-child(2){height:96px}.a-ct .nails i:nth-child(3){height:104px}.a-ct .nails i:nth-child(4){height:90px}
-.a-ct .logo{font:italic 500 clamp(54px,7vw,84px)/1 var(--serif);color:#5A0A28;letter-spacing:-.02em;margin-top:-30px}
 
-/* arte: faro */
-.a-fr{background:#0A0A0A;display:grid;place-items:center}
-.a-fr .words{display:flex;flex-direction:column;gap:7px;width:70%}
-.a-fr .w{display:flex;justify-content:space-between;align-items:center;font:600 14px var(--sans);color:#fff;padding:9px 14px;border-radius:10px;position:relative;overflow:hidden;background:#1C1C1C}
-.a-fr .w::before{content:"";position:absolute;inset:0;width:var(--p);background:var(--c);opacity:.9;z-index:0}
-.a-fr .w *{position:relative;z-index:1}
-.a-fr .w small{font:500 12px var(--mono);opacity:.85}
-.a-fr .brand{position:absolute;top:16px;left:18px;font:700 10px var(--sans);letter-spacing:.3em;color:rgba(255,255,255,.6)}
+
+/* artes com telas reais */
+.shot{background:#0B0C0B}
+.shot>.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.card:hover .shot>.bg{transform:scale(1.04)}
+.shot::after{content:"";position:absolute;inset:0;z-index:1}
+.shot .logo{position:absolute;left:7%;bottom:9%;z-index:3;height:auto}
+.shot .cel{position:absolute;right:7%;top:9%;width:40%;aspect-ratio:600/1298;z-index:2;border-radius:30px;padding:7px;background:#0E0E0E;
+  box-shadow:0 40px 70px -25px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.12),inset 0 0 0 1px rgba(255,255,255,.06);transform:rotate(5deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.card:hover .shot .cel{transform:rotate(2deg) translateY(-8px)}
+.shot .cel img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:24px}
+.pz::after{background:linear-gradient(100deg,rgba(11,12,11,.92) 0%,rgba(11,12,11,.55) 45%,rgba(11,12,11,.15) 100%)}
+.pz .logo{width:42%}
+.ct::after{background:linear-gradient(100deg,rgba(250,240,242,.97) 0%,rgba(250,240,242,.8) 40%,rgba(250,240,242,0) 75%)}
+.ct>.bg{object-position:70% 40%}
+.ct .logo{width:27%}
+.fr{background:radial-gradient(60% 70% at 25% 55%,rgba(255,92,170,.35),transparent 70%),radial-gradient(50% 60% at 80% 20%,rgba(64,200,255,.25),transparent 70%),#0A0A0F}
+.fr .logo{mix-blend-mode:screen;width:44%;left:4%;bottom:auto;top:50%;transform:translateY(-50%);filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+.rl{background:#15130F}
+.rl::after{background:radial-gradient(70% 80% at 50% 110%,rgba(245,182,66,.28),transparent 70%)}
+.rl .fan{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center}
+.rl .fan img{width:30%;aspect-ratio:420/657;object-fit:cover;border-radius:16px;box-shadow:0 30px 50px -20px rgba(0,0,0,.8),0 0 0 4px rgba(255,255,255,.92);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.rl .fan img:nth-child(1){transform:rotate(-9deg) translate(18%,6%)}
+.rl .fan img:nth-child(2){z-index:2;width:33%}
+.rl .fan img:nth-child(3){transform:rotate(9deg) translate(-18%,6%)}
+.card:hover .rl .fan img:nth-child(1){transform:rotate(-12deg) translate(8%,4%)}
+.card:hover .rl .fan img:nth-child(3){transform:rotate(12deg) translate(-8%,4%)}
+.card .art.shot{aspect-ratio:5/4}
+@media (max-width:560px){.shot .cel{border-radius:20px;padding:4px}.shot .cel img{border-radius:16px}.rl .fan img{border-radius:10px;box-shadow:0 20px 30px -14px rgba(0,0,0,.8),0 0 0 3px #fff}}
 
 /* ---------- sobre ---------- */
 .about{margin:70px 0 0;display:grid;grid-template-columns:auto 1fr auto;gap:34px;align-items:center;padding:34px;border-radius:26px;background:var(--sheet);box-shadow:0 0 0 1px var(--rule)}
@@ -166,13 +146,13 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:#fff}
 .btn svg{width:16px;height:16px}
-footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:400 13px var(--mono);color:var(--graphite)}
+footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:500 13.5px var(--sans);color:var(--graphite)}
 
 /* reveal */
 @media (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}.rv.in{opacity:1;transform:none}}
 
 @media (max-width:960px){
-  .hero{grid-template-columns:1fr;gap:36px;padding:44px 0 60px}
+  .hero{padding:44px 0 64px}
   .card,.card.third{grid-column:span 6}
   .card.wide{flex-direction:column}
   .wide .art{min-height:0;aspect-ratio:16/11}
@@ -189,8 +169,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
   .a-va .ph{border-radius:12px;box-shadow:0 20px 30px -14px rgba(15,23,38,.45),0 0 0 4px #fff}
   .a-va .corner{width:24px;height:24px;border-width:2.5px}
   .a-va .c1,.a-va .c2{top:14px}.a-va .c3,.a-va .c4{bottom:14px}.a-va .c1,.a-va .c3{left:14px}.a-va .c2,.a-va .c4{right:14px}
-  .addr a{font-size:13.5px}
-}
+  }
 </style>
 </head>
 <body>
@@ -213,13 +192,6 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
       <div class="rv">
         <h1>Cada endereço,<br><em>um projeto.</em></h1>
         <p class="lede">Aqui moram as coisas que eu crio: <strong>vídeos animados, apps para pequenos negócios e jogos</strong>. Escolha uma porta e entre.</p>
-      </div>
-      <div class="addr rv" aria-label="Endereços">
-        <p>Onde fica cada um</p>
-        <a href="/video-abstracts/"><span>levytikus.com/</span><b>video-abstracts</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a href="/pezim/"><span>levytikus.com/</span><b>pezim</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a href="/cuti/"><span>levytikus.com/</span><b>cuti</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a href="/faro/"><span>levytikus.com/</span><b>faro</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
     </section>
   </div>
@@ -251,10 +223,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     </a>
 
     <a class="card rv" href="https://www.instagram.com/levytikus/" target="_blank" rel="noopener">
-      <div class="art a-rl" aria-hidden="true">
-        <div class="phone"><div class="bars"><i></i><i></i><i></i><i></i></div><div class="ba"><div class="b1"><span>ANTES</span></div><div class="b2"><span>DEPOIS</span></div></div><div class="ui"><i></i><i></i><i></i></div></div>
-        <div class="big">Reels<em>sob medida</em></div>
-      </div>
+      <div class="art shot rl" aria-hidden="true"><div class="fan"><img src="assets/reel1.webp" alt="" loading="lazy"><img src="assets/reel2.webp" alt="" loading="lazy"><img src="assets/reel3.webp" alt="" loading="lazy"></div></div>
       <div class="body">
         <div class="path">instagram.com/<b>levytikus</b><span class="tag live">Atendendo</span></div>
         <h3>Reels para negócios</h3>
@@ -264,10 +233,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     </a>
 
     <a class="card rv" href="/pezim/">
-      <div class="art a-pz" aria-hidden="true">
-        <span class="logo">pezim</span>
-        <div class="slot"><span>14:00</span><span class="on">14:30</span><span>15:00</span><span>15:30</span></div>
-      </div>
+      <div class="art shot pz" aria-hidden="true"><img class="bg" src="assets/pezim-foto.webp" alt="" loading="lazy"><img class="logo" src="assets/pezim-logo.png" alt="" loading="lazy"><div class="cel"><img src="assets/pezim-tela.webp" alt="" loading="lazy"></div></div>
       <div class="body">
         <div class="path">levytikus.com/<b>pezim</b><span class="tag live">Piloto grátis</span></div>
         <h3>Pezim</h3>
@@ -277,10 +243,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     </a>
 
     <a class="card rv" href="/cuti/">
-      <div class="art a-ct" aria-hidden="true">
-        <span class="logo">cuti</span>
-        <div class="nails"><i></i><i></i><i></i><i></i></div>
-      </div>
+      <div class="art shot ct" aria-hidden="true"><img class="bg" src="assets/cuti-foto.webp" alt="" loading="lazy"><img class="logo" src="assets/cuti-logo.png" alt="" loading="lazy"><div class="cel"><img src="assets/cuti-tela.webp" alt="" loading="lazy"></div></div>
       <div class="body">
         <div class="path">levytikus.com/<b>cuti</b><span class="tag">Em teste</span></div>
         <h3>Cuti</h3>
@@ -290,14 +253,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     </a>
 
     <a class="card rv" href="/faro/">
-      <div class="art a-fr" aria-hidden="true">
-        <span class="brand">LEVYTIKUS GAMING</span>
-        <div class="words">
-          <div class="w" style="--p:86%;--c:#2FBF71"><span>oceano</span><small>3</small></div>
-          <div class="w" style="--p:71%;--c:#E8B931"><span>praia</span><small>214</small></div>
-          <div class="w" style="--p:38%;--c:#E2483D"><span>montanha</span><small>1.870</small></div>
-        </div>
-      </div>
+      <div class="art shot fr" aria-hidden="true"><img class="logo" src="assets/faro-logo.webp" alt="" loading="lazy"><div class="cel"><img src="assets/faro-tela.webp" alt="" loading="lazy"></div></div>
       <div class="body">
         <div class="path">levytikus.com/<b>faro</b><span class="tag">Em teste</span></div>
         <h3>Faro</h3>
