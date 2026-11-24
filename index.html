@@ -10,7 +10,7 @@
 <title>levytikus · projetos de Levy Silva</title>
 <meta name="description" content="Projetos de Levy Silva: video abstracts de artigos científicos, Reels para negócios, Pezim, Cuti e Faro.">
 <meta property="og:title" content="levytikus">
-<meta property="og:description" content="Ideias que saíram do papel e estão no ar: vídeos, apps e jogos feitos no Rio de Janeiro.">
+<meta property="og:description" content="Vídeos, apps e jogos criados por Levy Silva, do roteiro ao código.">
 <meta property="og:image" content="https://levytikus.com/poster-pt.jpg">
 <meta name="theme-color" content="#0F1726">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -86,13 +86,17 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .facts span{font:500 13px var(--sans);padding:6px 11px;border-radius:999px;border:1px solid var(--rule);color:#33405A}
 
 /* arte: video abstracts */
-.a-va{background:radial-gradient(70% 90% at 30% 20%,#24345A 0%,transparent 70%),#111A2C}
-.a-va .tela{position:absolute;left:7%;top:12%;width:76%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.14);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.a-va .tela video{width:100%;height:100%;object-fit:cover}
-.a-va .cel{position:absolute;right:6%;bottom:-12%;width:26%;aspect-ratio:9/16;border-radius:24px;padding:6px;background:#0E0E0E;z-index:2;box-shadow:0 40px 70px -25px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.14);transform:rotate(6deg);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.a-va .cel img{width:100%;height:100%;object-fit:cover;border-radius:18px}
-.card:hover .a-va .tela{transform:translateY(-6px)}
-.card:hover .a-va .cel{transform:rotate(3deg) translateY(-10px)}
+.a-va{background:#E7E8DE;display:flex;align-items:center;gap:5%;padding:5% 6% 5% 6%}
+.a-va .cel{position:relative;flex:none;width:34%;aspect-ratio:9/16;border-radius:24px;padding:6px;background:#121212;z-index:2;box-shadow:0 40px 60px -28px rgba(15,23,38,.7);transform:rotate(-4deg);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.a-va .cel video{width:100%;height:100%;object-fit:cover;border-radius:18px;display:block}
+.card:hover .a-va .cel{transform:rotate(-1deg) translateY(-8px)}
+.a-va .board{position:relative;flex:1;min-width:0}
+.a-va .ref{font:400 17px/1.3 var(--serif);color:var(--ink);margin-bottom:12px}
+.a-va .ref i{font-style:italic}
+.a-va .frames{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.a-va .frames img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:6px;box-shadow:0 8px 18px -10px rgba(15,23,38,.45),0 0 0 1px rgba(23,35,56,.08);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover .a-va .frames img:nth-child(odd){transform:translateY(-4px)}
+.a-va .cap{font:500 12.5px/1.4 var(--sans);color:var(--graphite);margin-top:12px}
 
 
 
@@ -125,7 +129,7 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .card:hover .rl .fan img:nth-child(1){transform:rotate(-12deg) translate(8%,4%)}
 .card:hover .rl .fan img:nth-child(3){transform:rotate(12deg) translate(-8%,4%)}
 .card .art.shot{aspect-ratio:5/4}
-@media (max-width:560px){.a-va .cel{border-radius:16px;padding:4px}.a-va .cel img{border-radius:12px}.a-va .tela{border-radius:10px}.shot .cel{border-radius:20px;padding:4px}.shot .cel img{border-radius:16px}.rl .fan img{border-radius:10px;box-shadow:0 20px 30px -14px rgba(0,0,0,.8),0 0 0 3px #fff}}
+@media (max-width:560px){.a-va{padding:6%}.a-va .cel{width:32%}.a-va .cel{border-radius:16px;padding:4px}.a-va .cel video{border-radius:12px}.a-va .frames img:nth-child(n+5){display:none}.a-va .ref{font-size:13.5px;margin-bottom:8px}.a-va .cap{display:none}.a-va .frames{gap:5px}.shot .cel{border-radius:20px;padding:4px}.shot .cel img{border-radius:16px}.rl .fan img{border-radius:10px;box-shadow:0 20px 30px -14px rgba(0,0,0,.8),0 0 0 3px #fff}}
 
 /* ---------- sobre ---------- */
 .about{margin:70px 0 0;display:grid;grid-template-columns:auto 1fr auto;gap:34px;align-items:center;padding:34px;border-radius:26px;background:var(--sheet);box-shadow:0 0 0 1px var(--rule)}
@@ -180,8 +184,8 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
 
     <section class="hero">
       <div class="rv">
-        <h1>Ideias que saíram<br>do papel e <em>estão no ar.</em></h1>
-        <p class="lede">Vídeos que explicam ciência, agendas para barbeiros e manicures de bairro e um jogo de palavras para disputar com os amigos. <strong>Tudo criado por mim, do roteiro ao código.</strong></p>
+        <h1>Do roteiro ao código,<br><em>tudo em casa.</em></h1>
+        <p class="lede">Vídeos que explicam ciência, agendas on-line para barbearias e manicures e um jogo de palavras multiplayer. <strong>Cada projeto é criado, desenhado e mantido por mim, Levy Silva, no Rio de Janeiro.</strong></p>
       </div>
     </section>
   </div>
@@ -190,17 +194,21 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
 <main class="wrap" id="projetos">
   <div class="sec-h rv">
     <h2>Escolha uma <em>porta</em></h2>
-    <p>Cada projeto tem casa própria dentro do levytikus.com. Alguns já atendem clientes, outros estão em teste e ganham novidade toda semana.</p>
+    <p>Cada projeto tem endereço próprio dentro do levytikus.com e funciona hoje, no celular e no computador.</p>
   </div>
 
   <div class="grid">
     <a class="card wide rv" href="/video-abstracts/">
       <div class="art a-va" aria-hidden="true">
-        <div class="tela"><video src="video-abstract-screens-sleep-horizontal.mp4" poster="posters/screens-sleep-horizontal.jpg" muted loop playsinline preload="none"></video></div>
-        <div class="cel"><img src="posters/green-space-vertical.jpg" alt="" loading="lazy"></div>
+        <div class="cel"><video src="video-abstract-screens-sleep-vertical.mp4" poster="posters/screens-sleep-vertical.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="board">
+          <p class="ref"><i>Liebig et al.</i> Frontiers in Psychiatry, 2026</p>
+          <div class="frames"><img src="f_en1.jpg" alt="" loading="lazy"><img src="f_en2.jpg" alt="" loading="lazy"><img src="f_en3.jpg" alt="" loading="lazy"><img src="f_en4.jpg" alt="" loading="lazy"><img src="f_en5.jpg" alt="" loading="lazy"><img src="f_en6.jpg" alt="" loading="lazy"><img src="f_en7.jpg" alt="" loading="lazy"><img src="f_en8.jpg" alt="" loading="lazy"></div>
+          <p class="cap">Quadros reais do vídeo, cena por cena</p>
+        </div>
       </div>
       <div class="body">
-        <div class="path">levytikus.com/<b>video-abstracts</b><span class="tag live">Atendendo</span></div>
+        <div class="path">levytikus.com/<b>video-abstracts</b><span class="tag">Serviço</span></div>
         <h3>Video abstracts</h3>
         <p class="d">Resumos em vídeo animados de artigos científicos. O estudo publicado vira um filme curto e fiel, pronto para redes sociais, aulas e páginas de revista. Em português, inglês e espanhol.</p>
         <div class="facts"><span>Roteiro aprovado pelo autor</span><span>Entrega em até 5 dias</span><span>Números conferidos à mão</span></div>
@@ -211,7 +219,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     <a class="card rv" href="https://www.instagram.com/levytikus/" target="_blank" rel="noopener">
       <div class="art shot rl" aria-hidden="true"><div class="fan"><img src="assets/reel1.webp" alt="" loading="lazy"><img src="assets/reel2.webp" alt="" loading="lazy"><img src="assets/reel3.webp" alt="" loading="lazy"></div></div>
       <div class="body">
-        <div class="path">instagram.com/<b>levytikus</b><span class="tag live">Atendendo</span></div>
+        <div class="path">instagram.com/<b>levytikus</b><span class="tag">Serviço</span></div>
         <h3>Reels para negócios</h3>
         <p class="d">Vídeos para o Instagram montados com as fotos que a empresa já tem. Cada negócio recebe a própria página com a amostra, feita só para ele.</p>
         <span class="go"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i>Falar no Instagram</span>
@@ -221,9 +229,9 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     <a class="card rv" href="/pezim/">
       <div class="art shot pz" aria-hidden="true"><img class="bg" src="assets/pezim-foto.webp" alt="" loading="lazy"><img class="logo" src="assets/pezim-logo.png" alt="" loading="lazy"><div class="cel"><img src="assets/pezim-tela.webp" alt="" loading="lazy"></div></div>
       <div class="body">
-        <div class="path">levytikus.com/<b>pezim</b><span class="tag live">Piloto grátis</span></div>
+        <div class="path">levytikus.com/<b>pezim</b><span class="tag">App</span></div>
         <h3>Pezim</h3>
-        <p class="d">Agenda e link de marcação para barbearias de bairro. O cliente escolhe o horário pelo celular, o barbeiro para de responder mensagem o dia inteiro.</p>
+        <p class="d">Agenda e link de marcação para barbearias de bairro. O cliente escolhe o horário pelo celular, o barbeiro para de responder mensagem o dia inteiro. Grátis para começar.</p>
         <span class="go"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i>Conhecer o Pezim</span>
       </div>
     </a>
@@ -231,7 +239,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     <a class="card rv" href="/cuti/">
       <div class="art shot ct" aria-hidden="true"><img class="bg" src="assets/cuti-foto.webp" alt="" loading="lazy"><img class="logo" src="assets/cuti-logo.png" alt="" loading="lazy"><div class="cel"><img src="assets/cuti-tela.webp" alt="" loading="lazy"></div></div>
       <div class="body">
-        <div class="path">levytikus.com/<b>cuti</b><span class="tag">Em teste</span></div>
+        <div class="path">levytikus.com/<b>cuti</b><span class="tag">App</span></div>
         <h3>Cuti</h3>
         <p class="d">A agenda da manicure: link de marcação, lembrete de manutenção, sinal via Pix e atendimento a domicílio, com as cores de cada profissional.</p>
         <span class="go"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i>Conhecer o Cuti</span>
@@ -241,7 +249,7 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     <a class="card rv" href="/faro/">
       <div class="art shot fr" aria-hidden="true"><img class="logo" src="assets/faro-logo.webp" alt="" loading="lazy"><div class="cel"><img src="assets/faro-tela.webp" alt="" loading="lazy"></div></div>
       <div class="body">
-        <div class="path">levytikus.com/<b>faro</b><span class="tag">Em teste</span></div>
+        <div class="path">levytikus.com/<b>faro</b><span class="tag">Jogo</span></div>
         <h3>Faro</h3>
         <p class="d">Jogo de palavras por proximidade de sentido. Quanto mais perto da palavra secreta, menor o número. Tem duelo com amigos e treino contra bots com poderes.</p>
         <span class="go"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i>Jogar</span>
