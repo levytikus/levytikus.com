@@ -68,7 +68,7 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .card.wide{grid-column:span 6;flex-direction:row}
 .card.third{grid-column:span 2}
 .art{position:relative;aspect-ratio:16/10;overflow:hidden;isolation:isolate}
-.wide .art{aspect-ratio:auto;flex:1.15;min-height:380px}
+.wide .art{aspect-ratio:auto;flex:1.15;min-height:400px}
 .body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .wide .body{flex:1;padding:40px 42px;justify-content:center}
 .path{font:500 14px var(--sans);color:var(--graphite);display:flex;align-items:center;gap:0}.path .tag{margin-left:auto}
@@ -86,20 +86,13 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .facts span{font:500 13px var(--sans);padding:6px 11px;border-radius:999px;border:1px solid var(--rule);color:#33405A}
 
 /* arte: video abstracts */
-.a-va{background:#E6E8DE}
-.a-va .stack{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:4%;padding:6%}
-.a-va .ph{width:27%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;box-shadow:0 30px 50px -20px rgba(15,23,38,.45),0 0 0 6px #fff;background:#ccc;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.a-va .ph img,.a-va .ph video{width:100%;height:100%;object-fit:cover}
-.a-va .ph:nth-child(1){transform:rotate(-7deg) translateY(16px)}
-.a-va .ph:nth-child(2){width:31%;z-index:2}
-.a-va .ph:nth-child(3){transform:rotate(7deg) translateY(16px)}
-.card:hover .a-va .ph:nth-child(1){transform:rotate(-10deg) translate(-8px,10px)}
-.card:hover .a-va .ph:nth-child(3){transform:rotate(10deg) translate(8px,10px)}
-.a-va .corner{position:absolute;width:34px;height:34px;border:3px solid var(--ink);opacity:.8}
-.a-va .c1{top:22px;left:22px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
-.a-va .c2{top:22px;right:22px;border-left:0;border-bottom:0;border-radius:0 8px 0 0}
-.a-va .c3{bottom:22px;left:22px;border-right:0;border-top:0;border-radius:0 0 0 8px}
-.a-va .c4{bottom:22px;right:22px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.a-va{background:radial-gradient(70% 90% at 30% 20%,#24345A 0%,transparent 70%),#111A2C}
+.a-va .tela{position:absolute;left:7%;top:12%;width:76%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.14);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.a-va .tela video{width:100%;height:100%;object-fit:cover}
+.a-va .cel{position:absolute;right:6%;bottom:-12%;width:26%;aspect-ratio:9/16;border-radius:24px;padding:6px;background:#0E0E0E;z-index:2;box-shadow:0 40px 70px -25px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.14);transform:rotate(6deg);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.a-va .cel img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+.card:hover .a-va .tela{transform:translateY(-6px)}
+.card:hover .a-va .cel{transform:rotate(3deg) translateY(-10px)}
 
 
 
@@ -132,7 +125,7 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .card:hover .rl .fan img:nth-child(1){transform:rotate(-12deg) translate(8%,4%)}
 .card:hover .rl .fan img:nth-child(3){transform:rotate(12deg) translate(-8%,4%)}
 .card .art.shot{aspect-ratio:5/4}
-@media (max-width:560px){.shot .cel{border-radius:20px;padding:4px}.shot .cel img{border-radius:16px}.rl .fan img{border-radius:10px;box-shadow:0 20px 30px -14px rgba(0,0,0,.8),0 0 0 3px #fff}}
+@media (max-width:560px){.a-va .cel{border-radius:16px;padding:4px}.a-va .cel img{border-radius:12px}.a-va .tela{border-radius:10px}.shot .cel{border-radius:20px;padding:4px}.shot .cel img{border-radius:16px}.rl .fan img{border-radius:10px;box-shadow:0 20px 30px -14px rgba(0,0,0,.8),0 0 0 3px #fff}}
 
 /* ---------- sobre ---------- */
 .about{margin:70px 0 0;display:grid;grid-template-columns:auto 1fr auto;gap:34px;align-items:center;padding:34px;border-radius:26px;background:var(--sheet);box-shadow:0 0 0 1px var(--rule)}
@@ -166,9 +159,6 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
   .grid{gap:16px}
   .card{border-radius:22px}
   .body{padding:20px 20px 22px}
-  .a-va .ph{border-radius:12px;box-shadow:0 20px 30px -14px rgba(15,23,38,.45),0 0 0 4px #fff}
-  .a-va .corner{width:24px;height:24px;border-width:2.5px}
-  .a-va .c1,.a-va .c2{top:14px}.a-va .c3,.a-va .c4{bottom:14px}.a-va .c1,.a-va .c3{left:14px}.a-va .c2,.a-va .c4{right:14px}
   }
 </style>
 </head>
@@ -206,12 +196,8 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
   <div class="grid">
     <a class="card wide rv" href="/video-abstracts/">
       <div class="art a-va" aria-hidden="true">
-        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
-        <div class="stack">
-          <div class="ph"><img src="posters/ansiedade-vertical.jpg" alt="" loading="lazy"></div>
-          <div class="ph"><video src="video-abstract-ambulantes-escolas-vertical.mp4" poster="posters/ambulantes-escolas-vertical.jpg" muted loop playsinline preload="none"></video></div>
-          <div class="ph"><img src="posters/green-space-vertical.jpg" alt="" loading="lazy"></div>
-        </div>
+        <div class="tela"><video src="video-abstract-screens-sleep-horizontal.mp4" poster="posters/screens-sleep-horizontal.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="cel"><img src="posters/green-space-vertical.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="body">
         <div class="path">levytikus.com/<b>video-abstracts</b><span class="tag live">Atendendo</span></div>
