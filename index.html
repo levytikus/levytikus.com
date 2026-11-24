@@ -51,14 +51,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 .nav a:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
 
 .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end;padding:70px 0 84px}
-.kick{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#9FB0C9;display:flex;align-items:center;gap:10px}
-.kick i{width:8px;height:8px;border-radius:50%;background:var(--hl);box-shadow:0 0 0 4px rgba(212,245,90,.16),0 0 18px rgba(212,245,90,.6)}
-h1{font:400 clamp(44px,7.4vw,96px)/.98 var(--serif);letter-spacing:-.025em;margin:22px 0 24px}
+h1{font:400 clamp(44px,7.4vw,96px)/.98 var(--serif);letter-spacing:-.025em;margin:0 0 24px}
 h1 em{font-style:italic;color:var(--hl)}
 .lede{font-size:clamp(17px,1.6vw,19px);color:#C6CDD9;max-width:560px}
 .lede strong{color:#fff;font-weight:600}
 .addr{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:22px 22px 14px;backdrop-filter:blur(6px)}
-.addr p{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#8E9BB0;margin-bottom:12px}
+.addr p{font:italic 400 21px/1.2 var(--serif);color:#EEF0E8;margin-bottom:12px}
 .addr a{display:flex;align-items:center;gap:0;font:400 15px var(--mono);padding:11px 0;border-top:1px dashed rgba(255,255,255,.13);color:#E6E9E1}
 .addr a span{opacity:.5}
 .addr a b{font-weight:500;color:var(--hl)}
@@ -109,9 +107,6 @@ main.wrap{padding-top:84px;padding-bottom:40px}
 .a-va .c2{top:22px;right:22px;border-left:0;border-bottom:0;border-radius:0 8px 0 0}
 .a-va .c3{bottom:22px;left:22px;border-right:0;border-top:0;border-radius:0 0 0 8px}
 .a-va .c4{bottom:22px;right:22px;border-left:0;border-top:0;border-radius:0 0 8px 0}
-.a-va .rec{position:absolute;top:26px;left:50%;transform:translateX(-50%);font:500 11px var(--mono);letter-spacing:.12em;color:var(--ink);display:flex;align-items:center;gap:7px;background:rgba(251,251,247,.85);padding:6px 10px;border-radius:999px}
-.a-va .rec i{width:7px;height:7px;border-radius:50%;background:#E2483D;animation:blink 1.4s infinite}
-@keyframes blink{50%{opacity:.25}}
 
 /* arte: reels */
 .a-rl{background:conic-gradient(from 210deg at 70% 40%,#FFB347,#FF5E62,#C33DA8,#6A4CFF,#FFB347)}
@@ -194,7 +189,6 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
   .a-va .ph{border-radius:12px;box-shadow:0 20px 30px -14px rgba(15,23,38,.45),0 0 0 4px #fff}
   .a-va .corner{width:24px;height:24px;border-width:2.5px}
   .a-va .c1,.a-va .c2{top:14px}.a-va .c3,.a-va .c4{bottom:14px}.a-va .c1,.a-va .c3{left:14px}.a-va .c2,.a-va .c4{right:14px}
-  .a-va .rec{top:16px}
   .addr a{font-size:13.5px}
 }
 </style>
@@ -217,12 +211,11 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
 
     <section class="hero">
       <div class="rv">
-        <p class="kick"><i></i>Projetos de Levy Silva · Rio de Janeiro</p>
         <h1>Cada endereço,<br><em>um projeto.</em></h1>
         <p class="lede">Aqui moram as coisas que eu crio: <strong>vídeos animados, apps para pequenos negócios e jogos</strong>. Escolha uma porta e entre.</p>
       </div>
       <div class="addr rv" aria-label="Endereços">
-        <p>Endereços</p>
+        <p>Onde fica cada um</p>
         <a href="/video-abstracts/"><span>levytikus.com/</span><b>video-abstracts</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         <a href="/pezim/"><span>levytikus.com/</span><b>pezim</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         <a href="/cuti/"><span>levytikus.com/</span><b>cuti</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -242,7 +235,6 @@ footer{padding:44px 0 50px;display:flex;justify-content:space-between;gap:20px;f
     <a class="card wide rv" href="/video-abstracts/">
       <div class="art a-va" aria-hidden="true">
         <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
-        <span class="rec"><i></i>REC · 1:30</span>
         <div class="stack">
           <div class="ph"><img src="posters/ansiedade-vertical.jpg" alt="" loading="lazy"></div>
           <div class="ph"><video src="video-abstract-ambulantes-escolas-vertical.mp4" poster="posters/ambulantes-escolas-vertical.jpg" muted loop playsinline preload="none"></video></div>
