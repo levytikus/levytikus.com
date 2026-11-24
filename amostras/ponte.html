@@ -1,0 +1,6 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>.</title></head><body>
+<script>
+(async()=>{const fs=(new URLSearchParams(location.search).get('f')||'').split(',').filter(Boolean);
+for(const f of fs){try{const b=await (await fetch(f+'.mp4')).blob();window.opener&&window.opener.postMessage({name:f,vid:b},'*')}catch(e){window.opener&&window.opener.postMessage({name:f,err:String(e)},'*')}}
+window.opener&&window.opener.postMessage({done:true},'*');setTimeout(()=>window.close(),500)})();
+</script></body></html>
