@@ -217,14 +217,14 @@ function render(j){
  if(i.lat&&window.L){const m=L.map('map',{scrollWheelZoom:false}).setView([i.lat,i.lng],15);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19}).addTo(m);L.circle([i.lat,i.lng],{radius:350,color:'#36B8F0',weight:2,fillColor:'#36B8F0',fillOpacity:.18}).addTo(m)}
  const cat=x=>/apart|cobert|kitnet|conjug|flat/i.test(x)?'a':/casa/i.test(x)?'c':'o';
  const sim=LS.filter(x=>x.c!==i.c&&cat(x.tipo)===cat(i.tipo)).map(x=>({x,s:(x.bairro===i.bairro?0:1)+Math.abs(x.preco-i.preco)/Math.max(i.preco,1)})).sort((a,b)=>a.s-b.s).slice(0,3).map(o=>o.x);
- $('sim').innerHTML=sim.map(x=>`<a class="sc" href="imovel.html?c=${x.c}"><div class="ph">${fotos(x)[0]?`<img src="${th(fotos(x)[0])}" alt="" loading="lazy">`:''}</div><b>${brl(x.preco)}</b><span>${esc(x.tipo)} em ${esc(x.bairro)}${x.q?' · '+pl(x.q,'quarto','quartos'):''}${x.au?' · '+x.au+' m²':''}</span></a>`).join('');
+ $('sim').innerHTML=sim.map(x=>`<a class="sc" href="imovel.html?c=${x.c}"><div class="ph">${fotos(x)[0]?`<img src="${th(fotos(x)[0])}" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('_t.jpg','.jpg')">`:''}</div><b>${brl(x.preco)}</b><span>${esc(x.tipo)} em ${esc(x.bairro)}${x.q?' · '+pl(x.q,'quarto','quartos'):''}${x.au?' · '+x.au+' m²':''}</span></a>`).join('');
 }
 /* lightbox */
 let last;
 function show(){$('lbi').src=big(F[cur]);$('lbc').textContent=(cur+1)+' de '+F.length;[F[cur+1],F[cur-1]].forEach(f=>{if(f){const im=new Image();im.src=big(f)}})}
 function openLb(k){last=document.activeElement;cur=k;show();$('lb').classList.add('on');document.body.style.overflow='hidden';$('lbx').focus()}
 function closeLb(){$('lb').classList.remove('on');if(!$('lbgr').classList.contains('on'))document.body.style.overflow='';if(last)last.focus()}
-function openGrid(){last=document.activeElement;$('lbgt').textContent=F.length+' fotos';$('tiles').innerHTML=F.map((f,k)=>`<button data-k="${k}" aria-label="Ampliar foto ${k+1}"><img src="${th(f)}" alt="" loading="lazy"></button>`).join('');$('lbgr').classList.add('on');document.body.style.overflow='hidden';$('lbgx').focus()}
+function openGrid(){last=document.activeElement;$('lbgt').textContent=F.length+' fotos';$('tiles').innerHTML=F.map((f,k)=>`<button data-k="${k}" aria-label="Ampliar foto ${k+1}"><img src="${th(f)}" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('_t.jpg','.jpg')"></button>`).join('');$('lbgr').classList.add('on');document.body.style.overflow='hidden';$('lbgx').focus()}
 function closeGrid(){$('lbgr').classList.remove('on');document.body.style.overflow='';if(last)last.focus()}
 const step=d=>{cur=(cur+d+F.length)%F.length;show()};
 $('lbp').addEventListener('click',()=>step(-1));$('lbn').addEventListener('click',()=>step(1));$('lbx').addEventListener('click',closeLb);

@@ -413,7 +413,7 @@ function list(){
  return r}
 let map,layer;
 function card(i){const a=i.au||i.at;return `<a class="card" href="imovel.html?c=${i.c}" data-c="${i.c}" aria-label="${esc(titulo(i))}, ${brl(i.preco)}">
-  <div class="ph">${foto(i,1)?`<img src="${foto(i,1)}" alt="" loading="lazy">`:''}${i.tarja?`<span class="badge">${esc(i.tarja)}</span>`:''}<span class="nf">${nf(i)} fotos</span></div>
+  <div class="ph">${foto(i,1)?`<img src="${foto(i,1)}" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('_t.jpg','.jpg')">`:''}${i.tarja?`<span class="badge">${esc(i.tarja)}</span>`:''}<span class="nf">${nf(i)} fotos</span></div>
   <div class="cinfo"><div class="crow"><span class="price">${brl(i.preco)}</span>${a?`<span class="m2">${brl(Math.round(i.preco/a))}/m²</span>`:''}</div>
   <div class="ct">${esc(titulo(i))}</div><div class="cl">${esc(i.tipo)} em ${esc(i.bairro)}${i.rua?' · '+esc(i.rua):''}</div>
   <div class="specs">${a?sp('area',a,'m²'):''}${i.q?sp('bed',i.q,i.q>1?'quartos':'quarto'):''}${i.b?sp('bath',i.b,'banh.'):''}${i.v?sp('car',i.v,i.v>1?'vagas':'vaga'):''}</div>
@@ -425,7 +425,7 @@ function render(){
  $('lista').innerHTML=r.length?vis.map(card).join(''):`<div class="empty"><h3>Nenhum imóvel com esses filtros</h3><p class="lead" style="margin:10px auto 20px">Conte o que procura e a gente busca para você.</p><a class="btn btn-wa" target="_blank" rel="noopener" href="${wa('Olá! Procuro '+(st.tipo||'imóvel').toLowerCase()+(st.q?' em '+st.q:'')+(st.quartos?' com '+st.quartos+'+ quartos':'')+(st.preco?' até '+brl(st.preco):'')+'.')}"><svg class="ico"><use href="#wa"/></svg>Pedir ajuda na busca</a></div>`;
  $('more').style.display=r.length>vis.length?'':'none';$('more').textContent='Mostrar mais '+Math.min(12,r.length-vis.length)+' imóveis';
  document.querySelectorAll('#chips .chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.t===st.tipo)));
- if(map&&layer){layer.clearLayers();r.filter(i=>i.lat).forEach(i=>{const m=L2.marker([i.lat,i.lng],{icon:L2.divIcon({className:'',html:`<span class="pin" data-c="${i.c}">${k(i.preco)}</span>`,iconSize:null})});m.bindPopup(`<a class="pop" href="imovel.html?c=${i.c}">${foto(i,1)?`<img src="${foto(i,1)}" alt="">`:''}<b>${brl(i.preco)}</b><span>${esc(i.tipo)} em ${esc(i.bairro)}</span></a>`,{maxWidth:240,minWidth:200});layer.addLayer(m)});
+ if(map&&layer){layer.clearLayers();r.filter(i=>i.lat).forEach(i=>{const m=L2.marker([i.lat,i.lng],{icon:L2.divIcon({className:'',html:`<span class="pin" data-c="${i.c}">${k(i.preco)}</span>`,iconSize:null})});m.bindPopup(`<a class="pop" href="imovel.html?c=${i.c}">${foto(i,1)?`<img src="${foto(i,1)}" alt="" onerror="this.onerror=null;this.src=this.src.replace('_t.jpg','.jpg')">`:''}<b>${brl(i.preco)}</b><span>${esc(i.tipo)} em ${esc(i.bairro)}</span></a>`,{maxWidth:240,minWidth:200});layer.addLayer(m)});
   if(st.map)fit()}
 }
 function fit(){let pts=list().filter(i=>i.lat).map(i=>[i.lat,i.lng]);if(!pts.length)return;if(pts.length>8){const q=(arr,f)=>{const v=arr.slice().sort((x,y)=>x-y);return v[Math.floor(f*(v.length-1))]};const la=pts.map(p=>p[0]),ln=pts.map(p=>p[1]);map.fitBounds([[q(la,.04),q(ln,.04)],[q(la,.96),q(ln,.96)]],{padding:[30,30],maxZoom:15})}else map.fitBounds(pts,{padding:[30,30],maxZoom:15})}
