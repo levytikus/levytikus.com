@@ -161,6 +161,7 @@ a.card{display:block;text-decoration:none;color:inherit}
 .pop{display:block;text-decoration:none;color:var(--ink)}.pop img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;margin-bottom:8px}.pop b{display:block;font:800 18px "Plus Jakarta Sans"}.pop span{font-size:13px;color:var(--mute)}
 .leaflet-popup-content{margin:10px}
 .blist a small{font-size:12.5px;color:var(--mute);font-weight:600;margin-left:2px}.blist a:hover small{color:#cfd8df}
+.nophoto{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:10px;background:#0B1D2B;color:#9fb3c2;font-size:13px}.nophoto img{width:110px!important;height:auto!important;opacity:.9}
 /* visita / modal */
 .ov{position:fixed;inset:0;z-index:90;background:#0b1d2b99;backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px}
 .ov.on{display:flex}
@@ -413,9 +414,9 @@ function list(){
  return r}
 let map,layer;
 function card(i){const a=i.au||i.at;return `<a class="card" href="imovel.html?c=${i.c}" data-c="${i.c}" aria-label="${esc(titulo(i))}, ${brl(i.preco)}">
-  <div class="ph">${foto(i,1)?`<img src="${foto(i,1)}" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('_t.jpg','.jpg')">`:''}${i.tarja?`<span class="badge">${esc(i.tarja)}</span>`:''}<span class="nf">${nf(i)} fotos</span></div>
+  <div class="ph">${foto(i,1)?`<img src="${foto(i,1)}" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('_t.jpg','.jpg')">`:`<span class="nophoto"><img src="img/logo.png" alt=""><small>Fotos em breve</small></span>`}${i.tarja?`<span class="badge">${esc(i.tarja)}</span>`:''}${nf(i)?`<span class="nf">${nf(i)} fotos</span>`:''}</div>
   <div class="cinfo"><div class="crow"><span class="price">${brl(i.preco)}</span>${a?`<span class="m2">${brl(Math.round(i.preco/a))}/m²</span>`:''}</div>
-  <div class="ct">${esc(titulo(i))}</div><div class="cl">${esc(i.tipo)} em ${esc(i.bairro)}${i.rua?' · '+esc(i.rua):''}</div>
+  <div class="ct">${esc(titulo(i))}</div><div class="cl">${esc(i.tipo)} em ${esc(i.bairro)}${i.cidade?', '+esc(i.cidade):''}${i.rua?' · '+esc(i.rua):''}</div>
   <div class="specs">${a?sp('area',a,'m²'):''}${i.q?sp('bed',i.q,i.q>1?'quartos':'quarto'):''}${i.b?sp('bath',i.b,'banh.'):''}${i.v?sp('car',i.v,i.v>1?'vagas':'vaga'):''}</div>
   ${i.cond>1?`<div class="cond">Condomínio ${brl(i.cond)}</div>`:''}</div></a>`}
 function render(){
