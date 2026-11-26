@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JC Imóveis · Imobiliária em Campo Grande, Zona Oeste do Rio</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Casas e apartamentos em Campo Grande, Santa Cruz, Paciência e Guaratiba. Imobiliária de família há mais de 15 anos.">
+<meta property="og:title" content="JC Imóveis · Zona Oeste do Rio">
+<meta property="og:description" content="Casas e apartamentos em Campo Grande, Santa Cruz, Paciência e Guaratiba.">
+<meta property="og:image" content="https://levytikus.com/previa/jc-imoveis/img/vilanova.jpg">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: portal imobiliário atual, limpo e confiante, com calor de imobiliária de bairro
+   IDEA: o app de busca de imóveis: foto grande, cápsula de busca, lista e mapa lado a lado
+   PICTURE: foto real em tela cheia no topo; mapa ilustrado da Zona Oeste com preços nos pinos
+   COLOUR and TYPE: branco e tinta quase preta, azul céu da logo como único acento; Plus Jakarta Sans + Inter
+   LAYOUT: herói, atalhos, explorador lista/mapa, visita, avaliação, simulador, sobre, rodapé */
+:root{color-scheme:light;--ink:#0E1A24;--ink2:#3E4C58;--mute:#6B7884;--line:#E6EAEE;--soft:#F5F7F9;--sky:#36B8F0;--skyd:#1E9AD3;--navy:#0B1D2B;--wa:#1FAE5B;--r:18px}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:"Plus Jakarta Sans",Inter,sans-serif;margin:0;line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(30px,4vw,44px);font-weight:800}
+h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,16px)}
+.band{padding:clamp(56px,8vw,112px) 0}
+.lead{font-size:18px;color:var(--mute);max-width:58ch;margin:12px 0 0}
+button{font-family:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap}
+.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#22313e}
+.btn-sky{background:var(--sky);color:#06202f}.btn-sky:hover{background:#56c4f3}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#18984f}
+.btn-line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.ico{width:20px;height:20px;flex:none}
+/* abertura */
+#intro{position:fixed;inset:0;z-index:200;background:#0B1D2B;display:grid;place-items:center;animation:curtain .9s cubic-bezier(.76,0,.24,1) 1.55s forwards;pointer-events:none}
+#intro .in{display:grid;justify-items:center;gap:18px}
+#intro img{width:150px;height:auto;clip-path:inset(100% 0 0 0);animation:logoIn .9s cubic-bezier(.22,1,.36,1) .15s forwards}
+#intro i{display:block;width:150px;height:2px;border-radius:2px;background:#ffffff1f;overflow:hidden}
+#intro i:after{content:"";display:block;height:100%;background:var(--sky);transform:scaleX(0);transform-origin:left;animation:bar 1.1s cubic-bezier(.65,0,.35,1) .35s forwards}
+#intro .in{animation:introOut .45s ease 1.35s forwards}
+@keyframes logoIn{from{clip-path:inset(100% 0 0 0);transform:translateY(14px)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes bar{to{transform:scaleX(1)}}
+@keyframes introOut{to{opacity:0;transform:translateY(-12px)}}
+@keyframes curtain{to{transform:translateY(-100%);visibility:hidden}}
+@keyframes heroZoom{from{transform:scale(1.14)}to{transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero>img{animation:heroZoom 2.4s cubic-bezier(.22,1,.36,1) 1.6s both}
+.hero h1,.hero p,.hero .tabs,.hero .pill,.hero .hmeta,#hd .hd{animation:rise .9s cubic-bezier(.22,1,.36,1) both}
+.hero h1{animation-delay:1.85s}.hero p{animation-delay:1.97s}.hero .tabs{animation-delay:2.07s}.hero .pill{animation-delay:2.15s}.hero .hmeta{animation-delay:2.25s}#hd .hd{animation-delay:1.9s}
+@media(prefers-reduced-motion:reduce){#intro{display:none}.hero>img,.hero h1,.hero p,.hero .tabs,.hero .pill,.hero .hmeta,#hd .hd{animation:none}}
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:60;transition:background .3s,box-shadow .3s,color .3s;color:#fff}
+header.solid{background:#ffffffeb;backdrop-filter:saturate(1.4) blur(14px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.hd{display:flex;align-items:center;gap:18px;height:76px}
+.logo{display:block;background:var(--navy);border-radius:14px;padding:5px 8px}
+.logo img{width:74px;height:auto}
+nav.main{display:flex;gap:2px;margin-left:12px}
+nav.main a{padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;opacity:.88}
+nav.main a:hover{opacity:1;background:#ffffff1f}header.solid nav.main a:hover{background:var(--soft)}
+.hr{margin-left:auto;display:flex;gap:8px;align-items:center}
+.fav{position:relative;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#ffffff22;border:0;color:inherit;cursor:pointer}
+header.solid .fav{background:var(--soft)}
+.fav b{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;border-radius:10px;background:var(--sky);color:#06202f;font-size:12px;display:grid;place-items:center;padding:0 5px}
+.fav b:empty{display:none}
+.burger{display:none}
+@media(max-width:980px){nav.main{display:none}.hr .btn-wa{display:none}.burger{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:0;background:#ffffff22;color:inherit;cursor:pointer}header.solid .burger{background:var(--soft)}
+ nav.main.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;margin:0;background:#fff;color:var(--ink);padding:8px max(5vw,16px) 18px;box-shadow:0 20px 30px -20px #0004}
+ nav.main.open a{padding:14px 6px;font-size:17px;border-radius:0;border-bottom:1px solid var(--line)}}
+/* hero */
+.hero{position:relative;min-height:min(92vh,780px);display:flex;align-items:flex-end;color:#fff;padding:140px 0 56px;isolation:isolate}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.05)}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0b1d2bb3 0%,#0b1d2b66 30%,#0b1d2bd9 70%,#0b1d2bf7 100%)}
+.hero h1{font-size:clamp(40px,6.4vw,80px);font-weight:800;max-width:15ch;letter-spacing:-.035em}
+.hero p{font-size:clamp(17px,1.6vw,20px);color:#dfe9f0;max-width:50ch;margin:18px 0 30px}
+.tabs{display:inline-flex;background:#ffffff26;backdrop-filter:blur(10px);border-radius:999px;padding:4px;margin-bottom:12px}
+.tabs button{border:0;background:none;color:#fff;font-weight:600;font-size:15px;padding:10px 18px;border-radius:999px;cursor:pointer;min-height:42px}
+.tabs button[aria-selected=true]{background:#fff;color:var(--ink)}
+.pill{background:#fff;color:var(--ink);border-radius:26px;padding:8px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) auto;align-items:stretch;box-shadow:0 30px 70px -30px #000c;max-width:1060px}
+.pill .f{position:relative;padding:10px 18px;border-radius:18px;display:flex;flex-direction:column;justify-content:center}
+.pill .f+.f:before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:1px;background:var(--line)}
+.pill .f:hover{background:var(--soft)}
+.pill span{font-size:12.5px;font-weight:600;color:var(--mute)}
+.pill input,.pill select{border:0;background:transparent;font:600 16px Inter,sans-serif;color:var(--ink);padding:2px 0;width:100%;outline:0;cursor:pointer}
+.pill input::placeholder{color:#9aa6b0;font-weight:500}
+.pill .go{min-height:62px;border-radius:20px;padding:0 26px;font-size:16px}
+.sug{position:absolute;left:8px;right:8px;top:calc(100% + 6px);background:#fff;border-radius:16px;box-shadow:0 20px 40px -12px #0b1d2b55;padding:6px;display:none;z-index:5}
+.sug.on{display:block}
+.sug button{display:flex;width:100%;justify-content:space-between;gap:10px;border:0;background:none;text-align:left;padding:12px;border-radius:10px;font-size:15px;cursor:pointer;color:var(--ink)}
+.sug button:hover,.sug button:focus{background:var(--soft)}
+.sug small{color:var(--mute)}
+.hmeta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:14px;color:#cfdde7}
+.hmeta span{display:flex;align-items:center;gap:8px}
+.hmeta svg{width:18px;height:18px;color:var(--sky)}
+@media(max-width:900px){.pill{grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:22px}.pill .f:first-child{grid-column:1/-1}.pill .f+.f:before{display:none}.pill .go{grid-column:1/-1;min-height:54px}}
+@media(max-width:420px){.pill{grid-template-columns:minmax(0,1fr)}.tabs button{padding:10px 13px}}
+/* atalhos */
+.quick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:-1px;padding-top:28px}
+.qk{display:flex;align-items:center;gap:14px;padding:16px;border-radius:var(--r);background:var(--soft);border:0;cursor:pointer;text-align:left;color:var(--ink);transition:background .2s}
+.qk:hover{background:#e9f6fd}
+.qk img{width:58px;height:58px;border-radius:14px;object-fit:cover;flex:none}
+.qk b{display:block;font-family:"Plus Jakarta Sans";font-size:16px}
+.qk small{color:var(--mute);font-size:13.5px}
+@media(max-width:900px){.quick{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:460px){.qk img{width:46px;height:46px}.qk{padding:12px;gap:10px}}
+/* explorador */
+.bar{position:sticky;top:76px;z-index:30;background:#fffffff2;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 0;margin:28px 0 24px}
+.barin{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:14px;cursor:pointer;color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sel{min-height:42px;border-radius:999px;border:1.5px solid var(--line);padding:0 14px;font:600 14px Inter,sans-serif;color:var(--ink);background:#fff;cursor:pointer}
+.view{margin-left:auto;display:inline-flex;background:var(--soft);border-radius:999px;padding:4px}
+.view button{border:0;background:none;min-height:36px;padding:0 14px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;display:flex;gap:6px;align-items:center;color:var(--ink2)}
+.view button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px #0002}
+.count{font-size:14px;color:var(--mute);width:100%}
+.ex{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+.ex.map{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 22px;align-content:start}
+.ex.map .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media(max-width:1060px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ex.map{grid-template-columns:minmax(0,1fr)}.ex.map .mapbox{order:-1;position:relative;top:0}}
+@media(max-width:620px){.grid,.ex.map .grid{grid-template-columns:minmax(0,1fr)}.view{margin-left:0}}
+.card{cursor:pointer;border-radius:var(--r);transition:transform .25s}
+.card:hover{transform:translateY(-3px)}
+.card.hi .ph{box-shadow:0 0 0 3px var(--sky)}
+.ph{position:relative;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:var(--soft)}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.card:hover .ph img{transform:scale(1.05)}
+.badge{position:absolute;left:12px;top:12px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:700;padding:6px 10px;border-radius:999px}
+.heart{position:absolute;right:10px;top:10px;width:42px;height:42px;border-radius:50%;border:0;background:#ffffffe6;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.heart svg{width:20px;height:20px}
+.heart[aria-pressed=true]{color:#e5484d}.heart[aria-pressed=true] path{fill:currentColor}
+.cinfo{padding:14px 2px 0}
+.crow{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.price{font-family:"Plus Jakarta Sans";font-weight:800;font-size:23px;letter-spacing:-.02em;white-space:nowrap}
+.m2{font-size:13px;color:var(--mute);white-space:nowrap}
+.ct{font-weight:600;margin:2px 0;font-size:15.5px;color:var(--ink)}
+.cl{font-size:14px;color:var(--mute)}
+.specs{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:14px;color:var(--ink2)}
+.specs span{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.specs svg{width:17px;height:17px;color:var(--mute)}
+.cond{font-size:13px;color:var(--mute)}
+.empty{grid-column:1/-1;padding:44px 24px;text-align:center;background:var(--soft);border-radius:var(--r)}
+/* mapa */
+.mapbox{position:sticky;top:156px;align-self:start;border-radius:22px;overflow:hidden;background:#dff1fb;box-shadow:inset 0 0 0 1px #cfe6f3;display:none}
+.ex.map .mapbox{display:block}
+.mapbox .fig{position:relative;aspect-ratio:5/4}
+.mapbox svg{position:absolute;inset:0;width:100%;height:100%}
+.mtag{position:absolute;left:12px;bottom:12px;background:#fff;font-size:12.5px;color:var(--mute);padding:5px 10px;border-radius:999px}
+.pin{position:absolute;transform:translate(-50%,calc(-100% - 10px));background:#fff;color:var(--ink);border:0;font:700 13px "Plus Jakarta Sans",sans-serif;padding:7px 11px;border-radius:999px;box-shadow:0 6px 16px -4px #0b1d2b66;cursor:pointer;white-space:nowrap;transition:transform .2s,background .2s}
+.pin:after{content:"";position:absolute;left:50%;bottom:-5px;margin-left:-5px;border:5px solid transparent;border-bottom:0;border-top-color:#fff}
+.pin.hi,.pin:hover{background:var(--ink);color:#fff;transform:translate(-50%,calc(-100% - 10px)) scale(1.08);z-index:2}.pin.hi:after,.pin:hover:after{border-top-color:var(--ink)}
+/* visita / modal */
+.ov{position:fixed;inset:0;z-index:90;background:#0b1d2b99;backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.md{background:#fff;border-radius:26px;max-width:960px;width:100%;max-height:calc(100vh - 32px);overflow:auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.md .mimg{position:relative;min-height:320px}
+.md .mimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mb{padding:26px;display:flex;flex-direction:column;gap:12px}
+.x{position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;cursor:pointer;display:grid;place-items:center;z-index:2;box-shadow:0 4px 12px #0003}
+.md p{margin:0;color:var(--ink2);font-size:15px}
+.days{display:flex;flex-wrap:wrap;gap:6px}
+.day{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:8px 0;width:58px;text-align:center;cursor:pointer;font-size:12.5px;color:var(--mute);line-height:1.25}
+.day b{display:block;font-size:17px;color:var(--ink);font-family:"Plus Jakarta Sans"}
+.day[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#cfd8df}.day[aria-pressed=true] b{color:#fff}
+.lbl{font-weight:600;font-size:14px;margin-top:4px}
+.mact{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-top:4px}
+@media(max-width:760px){.md{grid-template-columns:minmax(0,1fr)}.md .mimg{min-height:220px}}
+/* avaliação */
+.val{background:var(--navy);color:#fff;border-radius:30px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;position:relative;overflow:hidden}
+.val:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#36b8f055,transparent 70%)}
+.val .lead{color:#b9cbd7}
+.steps{background:#fff;color:var(--ink);border-radius:22px;padding:22px;position:relative;z-index:1}
+.prog{display:flex;gap:6px;margin-bottom:16px}.prog i{flex:1;height:5px;border-radius:3px;background:var(--line)}.prog i.on{background:var(--sky)}
+.opts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:12px}
+.opt{min-height:52px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-weight:600;font-size:15px;cursor:pointer;color:var(--ink)}
+.opt:hover{border-color:var(--ink)}
+.steps input{width:100%;min-height:52px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;font:16px Inter,sans-serif;margin-top:8px}
+@media(max-width:860px){.val{grid-template-columns:minmax(0,1fr)}}
+/* simulador */
+.simg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.sbox{border-radius:26px;background:var(--soft);padding:clamp(22px,3vw,34px);display:grid;gap:18px}
+.fl label{display:flex;justify-content:space-between;font-weight:600;font-size:14.5px;margin-bottom:6px}
+.fl output{font-family:"Plus Jakarta Sans";font-weight:700;white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--ink);height:26px}
+.out{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:end;padding-top:16px;border-top:1px solid var(--line)}
+.out .big{font-family:"Plus Jakarta Sans";font-weight:800;font-size:clamp(36px,5vw,52px);letter-spacing:-.03em;line-height:1;white-space:nowrap}
+.out small{display:block;color:var(--mute);font-size:13.5px}
+.note{font-size:13px;color:var(--mute);margin:0}
+@media(max-width:860px){.simg{grid-template-columns:minmax(0,1fr)}}
+/* sobre */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.nums div{padding:18px;border-radius:18px;background:var(--soft)}
+.nums b{display:block;font-family:"Plus Jakarta Sans";font-size:clamp(20px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+.nums span{font-size:13.5px;color:var(--mute)}
+.stack{position:relative;aspect-ratio:1/1}
+.stack img{position:absolute;border-radius:24px;object-fit:cover;box-shadow:0 30px 50px -30px #0b1d2b88}
+.stack img:nth-child(1){left:0;top:0;width:68%;height:72%}
+.stack img:nth-child(2){right:0;bottom:0;width:58%;height:56%;border:8px solid #fff}
+@media(max-width:860px){.about{grid-template-columns:minmax(0,1fr)}.stack{max-width:520px}}
+@media(max-width:420px){.nums{grid-template-columns:minmax(0,1fr)}}
+/* footer */
+footer{background:var(--navy);color:#b9cbd7;padding:64px 0 26px}
+.fg{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:30px}
+footer h3{color:#fff;font-size:16px;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
+.fl1 img{width:110px}.fl1 p{font-size:15px;max-width:34ch}
+.soc{display:flex;gap:8px;margin-top:12px}.soc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#ffffff14}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid #ffffff17;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px}
+@media(max-width:900px){.fg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:520px){.fg{grid-template-columns:minmax(0,1fr)}}
+.fab{position:fixed;right:16px;bottom:16px;z-index:55;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 14px 30px -10px #0008;color:#fff}
+.fab svg{width:30px;height:30px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;z-index:95;transition:transform .3s;white-space:nowrap}
+.toast.on{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+ <symbol id="bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18V7M3 13h18v5M21 13a3 3 0 0 0-3-3h-7v3M7 11.5a1.5 1.5 0 1 0 0-.01"/></symbol>
+ <symbol id="bath" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3ZM6 12V6a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></symbol>
+ <symbol id="car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 16h14M5 16v2M19 16v2M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2a2 2 0 0 1 1.9 1.5L20 16"/></symbol>
+ <symbol id="area" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+ <symbol id="heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></symbol>
+ <symbol id="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+ <symbol id="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+</svg>
+
+<div id="intro" aria-hidden="true"><div class="in"><img src="img/logo.png" alt=""><i></i></div></div>
+<header id="hd">
+ <div class="wrap hd">
+  <a class="logo" href="#topo" aria-label="JCM Imobiliária e Construções, início"><img src="img/logo.png" width="74" height="50" alt="JCM Imobiliária & Construções"></a>
+  <nav class="main" id="menu"><a href="#imoveis">Comprar</a><a href="#avaliar">Vender</a><a href="#simulador">Financiar</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav>
+  <div class="hr">
+   <button class="fav" id="favBtn" aria-label="Ver favoritos"><svg class="ico"><use href="#heart"/></svg><b id="favN"></b></button>
+   <a class="btn btn-wa" href="https://wa.me/5521967765878?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20JC%20Im%C3%B3veis." target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Falar com corretor</a>
+   <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<section class="hero" id="topo">
+ <img src="img/vilanova.jpg" alt="Casa à venda no Vila Nova, Campo Grande">
+ <div class="wrap" style="width:100%">
+  <h1>O lar certo na Zona Oeste do Rio.</h1>
+  <p>Casas e apartamentos em Campo Grande, Santa Cruz, Paciência e Guaratiba, com a atenção de uma imobiliária de família há mais de 15 anos.</p>
+  <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-m="comprar">Comprar</button><button role="tab" aria-selected="false" data-m="vender">Vender</button><button role="tab" aria-selected="false" data-m="avaliar">Avaliar imóvel</button></div>
+  <form class="pill" id="busca" autocomplete="off">
+   <label class="f"><span>Onde?</span><input id="q" placeholder="Bairro, rua ou código" aria-label="Bairro, rua ou código"><div class="sug" id="sug" role="listbox"></div></label>
+   <label class="f"><span>Tipo</span><select id="fTipo"><option value="">Todos</option><option>Apartamento</option><option>Casa</option></select></label>
+   <label class="f"><span>Quartos</span><select id="fQ"><option value="0">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option></select></label>
+   <label class="f"><span>Valor até</span><select id="fP"><option value="0">Qualquer</option><option value="120000">R$ 120 mil</option><option value="200000">R$ 200 mil</option><option value="350000">R$ 350 mil</option><option value="500000">R$ 500 mil</option></select></label>
+   <button class="btn btn-ink go" type="submit"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar</button>
+  </form>
+  <div class="hmeta"><span><svg><use href="#chk"/></svg>CRECI CJ/RJ 00887/O</span><span><svg><use href="#pin"/></svg>Sede própria na Estrada Santa Maria, 903</span><span><svg><use href="#wa"/></svg>Resposta rápida pelo WhatsApp</span></div>
+ </div>
+</section>
+
+<section id="imoveis">
+ <div class="wrap">
+  <div class="quick" id="quick"></div>
+ </div>
+ <div class="bar"><div class="wrap barin">
+  <div class="chips" id="chips"><button class="chip" data-t="" aria-pressed="true">Todos</button><button class="chip" data-t="Apartamento" aria-pressed="false">Apartamentos</button><button class="chip" data-t="Casa" aria-pressed="false">Casas</button><button class="chip" data-f="fav" aria-pressed="false">Favoritos</button></div>
+  <select class="sel" id="ord" aria-label="Ordenar"><option value="rel">Mais relevantes</option><option value="pa">Menor preço</option><option value="pd">Maior preço</option><option value="ad">Maior área</option></select>
+  <div class="view" role="group" aria-label="Modo de visualização"><button id="vL" aria-pressed="true">Lista</button><button id="vM" aria-pressed="false"><svg width="16" height="16"><use href="#pin"/></svg>Mapa</button></div>
+ </div></div>
+ <div class="wrap">
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="ex" id="ex">
+   <div class="grid" id="lista"></div>
+   <div class="mapbox"><div class="fig" id="map">
+    <svg viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+     <rect width="1000" height="800" fill="#dff1fb"/>
+     <path fill="#f3f1ea" d="M0 0h1000v560c-60 30-120 18-170 46s-80 80-160 76-110-60-190-52-120 70-200 62S120 620 60 630L0 640Z"/>
+     <path fill="#e5eedc" d="M560 90c70-20 160 10 200 60s20 110-40 130-140 0-180-40-60-120 20-150Z M180 380c50-30 120-20 150 20s0 90-60 96-140-80-90-116Z M760 420c40-20 110 0 120 40s-40 70-90 60-70-80-30-100Z"/>
+     <path d="M40 300C200 280 300 350 420 360s250-60 380-110 160-90 200-110" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+     <path d="M40 300C200 280 300 350 420 360s250-60 380-110 160-90 200-110" fill="none" stroke="#f6c86a" stroke-width="5" stroke-linecap="round"/>
+     <path d="M470 360c10 80 0 160-40 250M600 330c40 60 120 90 230 70" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+     <g font-family="Inter,sans-serif" font-size="21" font-weight="600" fill="#8a97a3" text-anchor="middle">
+      <text x="130" y="325">Santa Cruz</text><text x="290" y="275">Paciência</text><text x="325" y="395">Cosmos</text><text x="560" y="505">Campo Grande</text><text x="660" y="250">Santíssimo</text><text x="740" y="180">Bangu</text><text x="400" y="640">Guaratiba</text><text x="860" y="140">Pavuna ↗</text>
+      <text x="600" y="740" fill="#7fb8d6" font-style="italic">Baía de Sepetiba</text>
+     </g>
+     <g fill="#0E1A24"><circle cx="130" cy="290" r="6"/><circle cx="290" cy="240" r="6"/><circle cx="500" cy="330" r="6"/><circle cx="585" cy="395" r="6"/><circle cx="455" cy="450" r="6"/><circle cx="860" cy="104" r="6"/></g>
+     <text x="200" y="345" font-family="Inter" font-size="16" fill="#b08a3a">Av. Brasil</text>
+    </svg>
+    <span class="mtag">Mapa ilustrativo</span>
+   </div></div>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="avaliar">
+ <div class="wrap">
+  <div class="val">
+   <div style="position:relative;z-index:1"><h2>Quanto vale o seu imóvel hoje?</h2><p class="lead">Responda três perguntas rápidas e receba uma avaliação de quem negocia imóveis na Zona Oeste todos os dias. Sem compromisso.</p></div>
+   <div class="steps" id="steps"></div>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="simulador" style="padding-top:0">
+ <div class="wrap simg">
+  <div><h2>Descubra a parcela antes de visitar.</h2><p class="lead">Uma estimativa rápida para planejar a compra. Depois, ajudamos a comparar os bancos e a usar o seu FGTS.</p></div>
+  <div class="sbox">
+   <div class="fl"><label for="sV">Valor do imóvel <output id="oV"></output></label><input type="range" id="sV" min="50000" max="800000" step="5000" value="250000"></div>
+   <div class="fl"><label for="sE">Entrada <output id="oE"></output></label><input type="range" id="sE" min="0" max="80" step="5" value="20"></div>
+   <div class="fl"><label for="sP">Prazo <output id="oP"></output></label><input type="range" id="sP" min="5" max="35" step="1" value="30"></div>
+   <div class="fl"><label for="sT">Juros ao ano <output id="oT"></output></label><input type="range" id="sT" min="5" max="14" step="0.25" value="10.5"></div>
+   <div class="out"><div><small>1ª parcela (SAC)</small><div class="big" id="rS"></div></div><div><small>Parcela fixa (Price)</small><b id="rP" style="font-size:20px;white-space:nowrap"></b></div><div><small>Renda sugerida</small><b id="rR" style="font-size:20px;white-space:nowrap"></b></div></div>
+   <p class="note">Estimativa sem seguros, taxas e correção. Condições reais dependem do banco e do seu perfil.</p>
+   <a class="btn btn-ink" id="simWa" target="_blank" rel="noopener" href="https://wa.me/5521967765878">Quero ajuda com o financiamento</a>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="sobre" style="background:var(--soft)">
+ <div class="wrap about">
+  <div class="stack" aria-hidden="true"><img src="img/casablanca.jpg" alt=""><img src="img/novavida.jpg" alt=""></div>
+  <div>
+   <h2>Imobiliária de família, feita para realizar sonhos.</h2>
+   <p class="lead">A JC Imóveis nasceu familiar e segue assim há mais de 15 anos. Trabalhamos com seriedade, ética e transparência, porque para nós uma compra ou venda é um compromisso, não só uma transação.</p>
+   <p class="lead">Os produtos são imóveis, mas o foco são as pessoas. Entender o que você precisa é o primeiro passo para encontrar o lugar certo.</p>
+   <div class="nums"><div><b>+15 anos</b><span>no mercado imobiliário</span></div><div><b>17 bairros</b><span>com imóveis na carteira</span></div><div><b>Sede própria</b><span>em Campo Grande</span></div></div>
+  </div>
+ </div>
+</section>
+
+<footer id="contato">
+ <div class="wrap">
+  <div class="fg">
+   <div class="fl1"><img src="img/logo.png" alt="JCM Imobiliária & Construções"><p>JC Imóveis, imobiliária em Campo Grande para toda a Zona Oeste do Rio de Janeiro. CRECI CJ/RJ 00887/O.</p>
+    <div class="soc"><a href="https://www.instagram.com/JCMIEC/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a><a href="https://www.facebook.com/profile.php?id=61550780771052" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8V6.5c0-.7.5-1 1-1h2V2h-3c-3 0-4 2-4 4.3V8H7.5v3.5H10V22h4V11.5h2.8l.5-3.5H14Z"/></svg></a></div></div>
+   <div><h3>Endereço</h3><ul><li>Estrada Santa Maria, 903</li><li>Campo Grande, Rio de Janeiro</li><li><a href="https://www.google.com/maps/search/?api=1&query=Estrada+Santa+Maria+903+Campo+Grande+Rio+de+Janeiro" target="_blank" rel="noopener">Como chegar</a></li></ul></div>
+   <div><h3>Contato</h3><ul><li><a href="https://wa.me/5521967765878" target="_blank" rel="noopener">WhatsApp (21) 96776-5878</a></li><li><a href="tel:+552124164324">(21) 2416-4324</a></li><li><a href="mailto:jcm@jcmiec.com.br">jcm@jcmiec.com.br</a></li></ul></div>
+   <div><h3>Bairros</h3><ul id="fb"></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 JC Imóveis. Todos os direitos reservados.</span><span>Valores e disponibilidade sujeitos a alteração.</span></div>
+ </div>
+</footer>
+<a class="fab" href="https://wa.me/5521967765878?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20JC%20Im%C3%B3veis." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mT"><div class="md" id="md"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+{
+const WA='5521967765878',base='https://www.jcmiec.com.br/imovel/';
+const L=[
+ {cod:'JCCA30086',tipo:'Casa',badge:'Casa linear',t:'Casa com 3 quartos no Vila Nova',bairro:'Campo Grande',rua:'Rua São Magno',preco:360000,q:3,b:3,v:2,a:140,img:'vilanova',url:'casa-linear-sala-e-3-quartos-bairro-vila-nova/JCCA30086',x:50,y:41.25,d:'Casa no centro de terreno de 300 m², perto do comércio e do transporte. Sala, 3 quartos, banheiros com azulejo até o teto, copa cozinha separada e banheiro externo.'},
+ {cod:'JCAP20736',tipo:'Apartamento',badge:'Novo na carteira',t:'Parque Riviera Tropical',bairro:'Paciência',rua:'Estrada do Campinho',preco:150000,cond:450,q:2,b:1,v:1,a:48,img:'riviera',url:'condominio-residencial-parque-riviera-tropical/JCAP20736',x:29,y:30,d:'Apartamento claro e arejado com sala de teto rebaixado e iluminação LED, 2 quartos e cozinha integrada à área de serviço.'},
+ {cod:'JCCA20241',tipo:'Casa',badge:'Renda extra',t:'Duas casas com entradas independentes',bairro:'Campo Grande',rua:'Estrada Professor Daltro Santos',preco:480000,q:2,b:2,v:2,a:95,img:'duascasas',url:'2-casas-com-sala-e-2-quartos-e-com-entradas-independentes/JCCA20241',x:58.5,y:49.375,d:'Duas moradias no mesmo terreno de 180 m², com entradas separadas. Porcelanato, varanda e garagem para 2 carros.'},
+ {cod:'JCAP20734',tipo:'Apartamento',badge:'Condomínio fechado',t:'Residencial Casa Blanca',bairro:'Santa Cruz',rua:'Av. Padre Guilherme Decaminada',preco:110000,cond:280,q:2,b:1,v:1,a:47,img:'casablanca',url:'condominio-residencial-casa-blanca/JCAP20734',x:13,y:36.25,d:'Apartamento tipo casa com varanda, em condomínio com portaria 24h, playground, espaço gourmet com churrasqueira e campinho.'},
+ {cod:'JCCA30048',tipo:'Casa',badge:'Pronta para morar',t:'Casa com 3 quartos e suíte',bairro:'Campo Grande',rua:'Rua General Cordolino de Azevedo',preco:325000,q:3,b:3,v:1,a:74,img:'casavazia',url:'casa-vazia-sala-03-quartos/JCCA30048',x:45.5,y:56.25,d:'Casa vazia perto de comércio e transporte: sala, 3 quartos sendo 1 suíte, área de serviço com tanque.'},
+ {cod:'JCAP10028',tipo:'Apartamento',badge:'Reformado',t:'Condomínio Nova Vida',bairro:'Pavuna',rua:'Rua Iguaba Grande',preco:50000,cond:325,q:1,b:1,v:1,a:40,img:'novavida',url:'condominio-nova-vida/JCAP10028',x:86,y:13,d:'Totalmente reformado, com elétrica e hidráulica novas, piso laminado e banheiro com bancada em granito.'}
+];
+const BA=[['Campo Grande','campo-grande'],['Santa Cruz','santa-cruz'],['Paciência','paciencia'],['Guaratiba','guaratiba'],['Cosmos','cosmos'],['Bangu','bangu']];
+const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const k=n=>n>=1000?'R$ '+Math.round(n/1000)+' mil':brl(n);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+const $=id=>document.getElementById(id);
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+let favs=[];try{favs=JSON.parse(localStorage.getItem('jc-favs')||'[]')}catch(e){}
+const saveFav=()=>{try{localStorage.setItem('jc-favs',JSON.stringify(favs))}catch(e){}$('favN').textContent=favs.length||''};
+const st={q:'',tipo:'',quartos:0,preco:0,fav:false,ord:'rel',map:false,hi:''};
+let toastT;const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2200)};
+const sp=(i,n,l)=>`<span><svg><use href="#${i}"/></svg>${n} ${l}</span>`;
+function list(){
+ let r=L.filter(i=>(!st.tipo||i.tipo===st.tipo)&&(!st.quartos||i.q>=st.quartos)&&(!st.preco||i.preco<=st.preco)&&(!st.fav||favs.includes(i.cod))&&(!st.q||norm(i.bairro+' '+i.rua+' '+i.cod+' '+i.t).includes(norm(st.q))));
+ if(st.ord==='pa')r.sort((a,b)=>a.preco-b.preco);if(st.ord==='pd')r.sort((a,b)=>b.preco-a.preco);if(st.ord==='ad')r.sort((a,b)=>b.a-a.a);
+ return r}
+function render(){
+ const r=list();
+ $('count').textContent=r.length+(r.length===1?' imóvel em destaque':' imóveis em destaque')+(st.q?' para "'+st.q+'"':'');
+ $('lista').innerHTML=r.length?r.map(i=>`<article class="card${st.hi===i.cod?' hi':''}" data-c="${i.cod}" tabindex="0" aria-label="${esc(i.t)}, ${brl(i.preco)}">
+  <div class="ph"><img src="img/${i.img}.jpg" alt="" loading="lazy"><span class="badge">${esc(i.badge)}</span><button class="heart" data-h="${i.cod}" aria-label="Favoritar ${i.cod}" aria-pressed="${favs.includes(i.cod)}"><svg><use href="#heart"/></svg></button></div>
+  <div class="cinfo"><div class="crow"><span class="price">${brl(i.preco)}</span><span class="m2">${brl(Math.round(i.preco/i.a))}/m²</span></div>
+  <div class="ct">${esc(i.t)}</div><div class="cl">${esc(i.tipo)} em ${esc(i.bairro)} · ${esc(i.rua)}</div>
+  <div class="specs">${sp('area',i.a,'m²')}${sp('bed',i.q,i.q>1?'quartos':'quarto')}${sp('bath',i.b,i.b>1?'banh.':'banh.')}${sp('car',i.v,i.v>1?'vagas':'vaga')}</div>
+  ${i.cond?`<div class="cond">Condomínio ${brl(i.cond)}</div>`:''}</div></article>`).join(''):`<div class="empty"><h3>${st.fav?'Você ainda não favoritou imóveis':'Nenhum destaque com esses filtros'}</h3><p class="lead" style="margin:10px auto 20px">${st.fav?'Toque no coração das fotos para guardar os que gostar.':'Temos mais opções na carteira. Conte o que procura e a gente busca para você.'}</p>${st.fav?'':`<a class="btn btn-wa" target="_blank" rel="noopener" href="${wa('Olá! Procuro '+(st.tipo||'imóvel').toLowerCase()+(st.q?' em '+st.q:'')+(st.quartos?' com '+st.quartos+'+ quartos':'')+(st.preco?' até '+brl(st.preco):'')+'.')}"><svg class="ico"><use href="#wa"/></svg>Pedir ajuda na busca</a>`}</div>`;
+ const m=$('map');m.querySelectorAll('.pin').forEach(p=>p.remove());
+ r.forEach(i=>{const b=document.createElement('button');b.className='pin'+(st.hi===i.cod?' hi':'');b.style.left=i.x+'%';b.style.top=i.y+'%';b.textContent=k(i.preco);b.dataset.c=i.cod;b.setAttribute('aria-label',i.t+', '+brl(i.preco));m.appendChild(b)});
+ document.querySelectorAll('#chips .chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.f==='fav'?st.fav:(!st.fav&&c.dataset.t===st.tipo))));
+}
+/* quick */
+const Q=[{l:'Apartamentos',s:L.filter(i=>i.tipo==='Apartamento').length+' em destaque',img:'riviera',f:{tipo:'Apartamento'}},{l:'Casas',s:L.filter(i=>i.tipo==='Casa').length+' em destaque',img:'casavazia',f:{tipo:'Casa'}},{l:'Até R$ 150 mil',s:'Para sair do aluguel',img:'casablanca',f:{preco:150000}},{l:'3 quartos ou mais',s:'Espaço para a família',img:'vilanova',f:{quartos:3}}];
+$('quick').innerHTML=Q.map((q,n)=>`<button class="qk" data-q="${n}"><img src="img/${q.img}.jpg" alt=""><span><b>${q.l}</b><small>${q.s}</small></span></button>`).join('');
+$('quick').addEventListener('click',e=>{const b=e.target.closest('.qk');if(!b)return;Object.assign(st,{q:'',tipo:'',quartos:0,preco:0,fav:false},Q[b.dataset.q].f);syncForm();render();$('count').scrollIntoView({block:'center'})});
+function syncForm(){$('q').value=st.q;$('fTipo').value=st.tipo;$('fQ').value=st.quartos;$('fP').value=st.preco}
+/* busca + sugestões */
+const sug=$('sug'),qi=$('q');
+const opts=[...new Set(L.map(i=>i.bairro))].map(b=>({v:b,s:L.filter(i=>i.bairro===b).length+' imóveis'})).concat(L.map(i=>({v:i.cod,s:i.t})));
+function showSug(){const v=norm(qi.value.trim());const o=(v?opts.filter(x=>norm(x.v+' '+x.s).includes(v)):opts.slice(0,5)).slice(0,6);sug.innerHTML=o.map(x=>`<button type="button" data-v="${esc(x.v)}"><span>${esc(x.v)}</span><small>${esc(x.s)}</small></button>`).join('');sug.classList.toggle('on',o.length>0)}
+qi.addEventListener('focus',showSug);qi.addEventListener('input',showSug);
+qi.addEventListener('keydown',e=>{if(e.key==='Escape')sug.classList.remove('on');if(e.key==='ArrowDown'){const f=sug.querySelector('button');if(f){e.preventDefault();f.focus()}}});
+sug.addEventListener('keydown',e=>{const b=document.activeElement;if(e.key==='ArrowDown'&&b.nextElementSibling){e.preventDefault();b.nextElementSibling.focus()}if(e.key==='ArrowUp'){e.preventDefault();(b.previousElementSibling||qi).focus()}});
+sug.addEventListener('mousedown',e=>e.preventDefault());
+sug.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;qi.value=b.dataset.v;sug.classList.remove('on');$('busca').requestSubmit()});
+document.addEventListener('click',e=>{if(!e.target.closest('.pill .f:first-child'))sug.classList.remove('on')});
+$('busca').addEventListener('submit',e=>{e.preventDefault();Object.assign(st,{q:qi.value.trim(),tipo:$('fTipo').value,quartos:+$('fQ').value,preco:+$('fP').value,fav:false});sug.classList.remove('on');render();$('count').scrollIntoView({block:'center'})});
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));if(b.dataset.m!=='comprar')$('avaliar').scrollIntoView()}));
+/* barra */
+$('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;if(c.dataset.f==='fav'){st.fav=!st.fav}else{st.fav=false;st.tipo=c.dataset.t;$('fTipo').value=st.tipo}render()});
+$('ord').addEventListener('change',e=>{st.ord=e.target.value;render()});
+const setView=m=>{st.map=m;$('ex').classList.toggle('map',m);$('vL').setAttribute('aria-pressed',String(!m));$('vM').setAttribute('aria-pressed',String(m))};
+$('vL').addEventListener('click',()=>setView(false));$('vM').addEventListener('click',()=>setView(true));
+$('favBtn').addEventListener('click',()=>{st.fav=true;render();$('count').scrollIntoView({block:'center'})});
+/* cards */
+$('lista').addEventListener('click',e=>{const h=e.target.closest('.heart');if(h){e.stopPropagation();const c=h.dataset.h;const on=!favs.includes(c);favs=on?[...favs,c]:favs.filter(x=>x!==c);saveFav();h.setAttribute('aria-pressed',String(on));toast(on?'Salvo nos favoritos':'Removido dos favoritos');if(st.fav)render();return}const c=e.target.closest('.card');if(c)openMd(c.dataset.c)});
+$('lista').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.classList.contains('card'))openMd(e.target.dataset.c)});
+$('lista').addEventListener('mouseover',e=>{const c=e.target.closest('.card');const id=c?c.dataset.c:'';document.querySelectorAll('.pin').forEach(p=>p.classList.toggle('hi',p.dataset.c===id))});
+$('map').addEventListener('click',e=>{const p=e.target.closest('.pin');if(!p)return;st.hi=p.dataset.c;render();const c=document.querySelector(`.card[data-c="${p.dataset.c}"]`);if(c)c.scrollIntoView({block:'center'})});
+/* modal + agendamento */
+let last;
+function openMd(cod){const i=L.find(x=>x.cod===cod);if(!i)return;last=document.activeElement;
+ const dn=['dom','seg','ter','qua','qui','sex','sáb'];const ds=[];for(let n=1;ds.length<6;n++){const d=new Date();d.setDate(d.getDate()+n);if(d.getDay()!==0)ds.push(d)}
+ $('md').innerHTML=`<div class="mimg"><img src="img/${i.img}.jpg" alt="${esc(i.t)}"><button class="x" id="mx" aria-label="Fechar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+ <div class="mb"><span class="cl">${i.cod} · ${esc(i.tipo)} em ${esc(i.bairro)}</span><h2 id="mT" style="font-size:28px">${esc(i.t)}</h2>
+ <div class="crow" style="justify-content:flex-start;gap:14px"><span class="price" style="font-size:30px">${brl(i.preco)}</span>${i.cond?`<span class="cond">+ cond. ${brl(i.cond)}</span>`:''}</div>
+ <div class="specs">${sp('area',i.a,'m²')}${sp('bed',i.q,i.q>1?'quartos':'quarto')}${sp('bath',i.b,'banheiros')}${sp('car',i.v,i.v>1?'vagas':'vaga')}</div>
+ <p>${esc(i.d)}</p><p class="cl">${esc(i.rua)}, ${esc(i.bairro)}, Rio de Janeiro</p>
+ <div class="lbl">Agende uma visita</div><div class="days" id="days">${ds.map((d,n)=>`<button class="day" data-d="${dn[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}" aria-pressed="${n===0}">${dn[d.getDay()]}<b>${d.getDate()}</b></button>`).join('')}</div>
+ <div class="days" id="per"><button class="chip" data-p="manhã" aria-pressed="true">Manhã</button><button class="chip" data-p="tarde" aria-pressed="false">Tarde</button></div>
+ <div class="mact"><a class="btn btn-wa" id="agWa" target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Agendar pelo WhatsApp</a><a class="btn btn-line" href="${base+i.url}" target="_blank" rel="noopener">Ver todas as fotos</a></div></div>`;
+ const upd=()=>{const d=$('days').querySelector('[aria-pressed=true]').dataset.d,p=$('per').querySelector('[aria-pressed=true]').dataset.p;$('agWa').href=wa('Olá! Quero agendar uma visita ao imóvel '+i.cod+' ('+i.t+', '+i.bairro+') na '+d+', de '+p+'.')};
+ ['days','per'].forEach(id=>$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));upd()}));upd();
+ $('ov').classList.add('on');document.body.style.overflow='hidden';$('mx').focus();$('mx').addEventListener('click',closeMd)}
+function closeMd(){$('ov').classList.remove('on');document.body.style.overflow='';if(last)last.focus()}
+$('ov').addEventListener('click',e=>{if(e.target.id==='ov')closeMd()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('ov').classList.contains('on'))closeMd()});
+/* avaliação em passos */
+const V={step:0,tipo:'',bairro:'',q:''};
+const S=[{t:'Que tipo de imóvel?',o:['Casa','Apartamento','Casa em condomínio','Terreno'],k:'tipo'},{t:'Em qual bairro?',o:['Campo Grande','Santa Cruz','Paciência','Guaratiba','Cosmos','Outro'],k:'bairro'},{t:'Quantos quartos?',o:['1','2','3','4 ou mais'],k:'q'}];
+function steps(){const s=V.step;const pr=`<div class="prog">${[0,1,2,3].map(n=>`<i class="${n<=s?'on':''}"></i>`).join('')}</div>`;
+ if(s<3){$('steps').innerHTML=pr+`<h3>${S[s].t}</h3><div class="opts">${S[s].o.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('')}</div>${s?'<button class="btn" style="background:none;color:var(--mute);padding:0;min-height:40px;margin-top:8px" id="bk">Voltar</button>':''}`}
+ else{$('steps').innerHTML=pr+`<h3>Pronto! Como podemos te chamar?</h3><p class="cond" style="margin:6px 0 0">${esc(V.tipo)} em ${esc(V.bairro)}, ${esc(V.q)} quarto(s)</p><input id="vn" placeholder="Seu nome" autocomplete="name" aria-label="Seu nome"><a class="btn btn-wa" id="vw" style="width:100%;margin-top:10px" target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Receber avaliação no WhatsApp</a><button class="btn" style="background:none;color:var(--mute);padding:0;min-height:40px;margin-top:6px" id="bk">Voltar</button>`;
+  const u=()=>{$('vw').href=wa('Olá! Quero avaliar meu imóvel. '+(($('vn').value.trim())?'Sou '+$('vn').value.trim()+'. ':'')+'É '+V.tipo.toLowerCase()+' em '+V.bairro+', com '+V.q+' quarto(s).')};$('vn').addEventListener('input',u);u()}
+ const bk=$('bk');if(bk)bk.addEventListener('click',()=>{V.step--;steps()})}
+$('steps').addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b)return;V[S[V.step].k]=b.dataset.o;V.step++;steps()});steps();
+/* simulador */
+const R=['sV','sE','sP','sT'].map($);
+function sim(){const Vv=+R[0].value,E=+R[1].value/100,N=+R[2].value*12,i=Math.pow(1+ +R[3].value/100,1/12)-1,F=Vv*(1-E);const pr=F*i/(1-Math.pow(1+i,-N)),sac=F/N+F*i;
+ $('oV').textContent=brl(Vv);$('oE').textContent=Math.round(E*100)+'% · '+brl(Vv*E);$('oP').textContent=R[2].value+' anos';$('oT').textContent=(+R[3].value).toLocaleString('pt-BR')+'%';
+ $('rS').textContent=brl(sac);$('rP').textContent=brl(pr);$('rR').textContent=brl(sac/0.3);
+ $('simWa').href=wa('Olá! Simulei um imóvel de '+brl(Vv)+' com entrada de '+brl(Vv*E)+' em '+R[2].value+' anos. Podem me ajudar com o financiamento?')}
+R.forEach(r=>r.addEventListener('input',sim));sim();
+/* header + menu */
+const hd=$('hd');const onS=()=>hd.classList.toggle('solid',scrollY>40);addEventListener('scroll',onS,{passive:true});onS();
+const bg=$('burger'),mn=$('menu');bg.addEventListener('click',()=>{const o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',String(o));hd.classList.add('solid')});
+mn.addEventListener('click',e=>{if(e.target.tagName==='A'){mn.classList.remove('open');bg.setAttribute('aria-expanded','false')}});
+$('fb').innerHTML=BA.map(([n,s])=>`<li><a href="https://www.jcmiec.com.br/bairro/rj-rio-de-janeiro-${s}" target="_blank" rel="noopener">${n}</a></li>`).join('');
+saveFav();render();
+setTimeout(()=>{const it=$('intro');if(it)it.remove()},2700);
+}
+</script>
+</body>
+</html>
