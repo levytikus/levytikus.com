@@ -148,6 +148,19 @@ nav.main a:hover{opacity:1;background:#ffffff1f}
 .pin{position:absolute;transform:translate(-50%,calc(-100% - 10px));background:#fff;color:var(--ink);border:0;font:700 13px "Plus Jakarta Sans",sans-serif;padding:7px 11px;border-radius:999px;box-shadow:0 6px 16px -4px #0b1d2b66;cursor:pointer;white-space:nowrap;transition:transform .2s,background .2s}
 .pin:after{content:"";position:absolute;left:50%;bottom:-5px;margin-left:-5px;border:5px solid transparent;border-bottom:0;border-top-color:#fff}
 .pin.hi,.pin:hover{background:var(--ink);color:#fff;transform:translate(-50%,calc(-100% - 10px)) scale(1.08);z-index:2}.pin.hi:after,.pin:hover:after{border-top-color:var(--ink)}
+.mapbox{position:sticky;top:156px;align-self:start;border-radius:22px;overflow:hidden;display:none;box-shadow:inset 0 0 0 1px var(--line)}
+#map{height:calc(100vh - 190px);min-height:420px;max-height:760px;background:#eef3f6}
+@media(max-width:1060px){#map{height:420px}}
+.mapbox .mtag{z-index:500}
+a.card{display:block;text-decoration:none;color:inherit}
+.nf{position:absolute;right:12px;bottom:12px;background:#0b1d2bcc;color:#fff;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px}
+.leaflet-div-icon,.leaflet-marker-icon{background:none;border:0}
+.pin{position:relative;display:inline-block;transform:translate(-50%,-100%);background:#fff;color:var(--ink);font:700 12.5px "Plus Jakarta Sans",sans-serif;padding:6px 10px;border-radius:999px;box-shadow:0 6px 16px -4px #0b1d2b66;white-space:nowrap;cursor:pointer}
+.pin.hi{background:var(--ink);color:#fff}
+.clu{display:grid;place-items:center;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;font:700 14px "Plus Jakarta Sans",sans-serif;box-shadow:0 0 0 6px #0e1a2433}
+.pop{display:block;text-decoration:none;color:var(--ink)}.pop img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;margin-bottom:8px}.pop b{display:block;font:800 18px "Plus Jakarta Sans"}.pop span{font-size:13px;color:var(--mute)}
+.leaflet-popup-content{margin:10px}
+.blist a small{font-size:12.5px;color:var(--mute);font-weight:600;margin-left:2px}.blist a:hover small{color:#cfd8df}
 /* visita / modal */
 .ov{position:fixed;inset:0;z-index:90;background:#0b1d2b99;backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px}
 .ov.on{display:flex}
@@ -239,6 +252,9 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
 .fab svg{width:30px;height:30px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -272,9 +288,9 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
   <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-m="comprar">Comprar</button><button role="tab" aria-selected="false" data-m="vender">Vender</button><button role="tab" aria-selected="false" data-m="avaliar">Avaliar imóvel</button></div>
   <form class="pill" id="busca" autocomplete="off">
    <label class="f"><span>Onde?</span><input id="q" placeholder="Bairro, rua ou código" aria-label="Bairro, rua ou código"><div class="sug" id="sug" role="listbox"></div></label>
-   <label class="f"><span>Tipo</span><select id="fTipo"><option value="">Todos</option><option>Apartamento</option><option>Casa</option></select></label>
+   <label class="f"><span>Tipo</span><select id="fTipo"><option value="">Todos</option><option>Apartamento</option><option>Casa</option><option>Terreno</option><option>Comercial e rural</option></select></label>
    <label class="f"><span>Quartos</span><select id="fQ"><option value="0">Qualquer</option><option value="1">1 ou mais</option><option value="2">2 ou mais</option><option value="3">3 ou mais</option></select></label>
-   <label class="f"><span>Valor até</span><select id="fP"><option value="0">Qualquer</option><option value="120000">R$ 120 mil</option><option value="200000">R$ 200 mil</option><option value="350000">R$ 350 mil</option><option value="500000">R$ 500 mil</option></select></label>
+   <label class="f"><span>Valor até</span><select id="fP"><option value="0">Qualquer</option><option value="150000">R$ 150 mil</option><option value="250000">R$ 250 mil</option><option value="350000">R$ 350 mil</option><option value="500000">R$ 500 mil</option><option value="800000">R$ 800 mil</option></select></label>
    <button class="btn btn-ink go" type="submit"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Buscar</button>
   </form>
   <div class="hmeta"><span><svg><use href="#chk"/></svg>CRECI CJ/RJ 00887/O</span><span><svg><use href="#pin"/></svg>Sede própria na Estrada Santa Maria, 903</span><span><svg><use href="#wa"/></svg>Resposta rápida pelo WhatsApp</span></div>
@@ -286,31 +302,15 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
   <div class="quick" id="quick"></div>
  </div>
  <div class="bar"><div class="wrap barin">
-  <div class="chips" id="chips"><button class="chip" data-t="" aria-pressed="true">Todos</button><button class="chip" data-t="Apartamento" aria-pressed="false">Apartamentos</button><button class="chip" data-t="Casa" aria-pressed="false">Casas</button></div>
+  <div class="chips" id="chips"><button class="chip" data-t="" aria-pressed="true">Todos</button><button class="chip" data-t="Apartamento" aria-pressed="false">Apartamentos</button><button class="chip" data-t="Casa" aria-pressed="false">Casas</button><button class="chip" data-t="Terreno" aria-pressed="false">Terrenos</button></div>
   <select class="sel" id="ord" aria-label="Ordenar"><option value="rel">Mais relevantes</option><option value="pa">Menor preço</option><option value="pd">Maior preço</option><option value="ad">Maior área</option></select>
   <div class="view" role="group" aria-label="Modo de visualização"><button id="vL" aria-pressed="true">Lista</button><button id="vM" aria-pressed="false"><svg width="16" height="16"><use href="#pin"/></svg>Mapa</button></div>
  </div></div>
  <div class="wrap">
   <p class="count" id="count" aria-live="polite"></p>
   <div class="ex" id="ex">
-   <div class="grid" id="lista"></div>
-   <div class="mapbox"><div class="fig" id="map">
-    <svg viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-     <rect width="1000" height="800" fill="#dff1fb"/>
-     <path fill="#f3f1ea" d="M0 0h1000v560c-60 30-120 18-170 46s-80 80-160 76-110-60-190-52-120 70-200 62S120 620 60 630L0 640Z"/>
-     <path fill="#e5eedc" d="M560 90c70-20 160 10 200 60s20 110-40 130-140 0-180-40-60-120 20-150Z M180 380c50-30 120-20 150 20s0 90-60 96-140-80-90-116Z M760 420c40-20 110 0 120 40s-40 70-90 60-70-80-30-100Z"/>
-     <path d="M40 300C200 280 300 350 420 360s250-60 380-110 160-90 200-110" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
-     <path d="M40 300C200 280 300 350 420 360s250-60 380-110 160-90 200-110" fill="none" stroke="#f6c86a" stroke-width="5" stroke-linecap="round"/>
-     <path d="M470 360c10 80 0 160-40 250M600 330c40 60 120 90 230 70" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
-     <g font-family="Inter,sans-serif" font-size="21" font-weight="600" fill="#8a97a3" text-anchor="middle">
-      <text x="130" y="325">Santa Cruz</text><text x="290" y="275">Paciência</text><text x="325" y="395">Cosmos</text><text x="560" y="505">Campo Grande</text><text x="660" y="250">Santíssimo</text><text x="740" y="180">Bangu</text><text x="400" y="640">Guaratiba</text><text x="860" y="140">Pavuna ↗</text>
-      <text x="600" y="740" fill="#7fb8d6" font-style="italic">Baía de Sepetiba</text>
-     </g>
-     <g fill="#0E1A24"><circle cx="130" cy="290" r="6"/><circle cx="290" cy="240" r="6"/><circle cx="500" cy="330" r="6"/><circle cx="585" cy="395" r="6"/><circle cx="455" cy="450" r="6"/><circle cx="860" cy="104" r="6"/></g>
-     <text x="200" y="345" font-family="Inter" font-size="16" fill="#b08a3a">Av. Brasil</text>
-    </svg>
-    <span class="mtag">Mapa ilustrativo</span>
-   </div></div>
+   <div><div class="grid" id="lista"></div><div style="text-align:center;margin-top:30px"><button class="btn btn-line" id="more" style="display:none"></button></div></div>
+   <div class="mapbox"><div id="map"></div><span class="mtag">Localização aproximada</span></div>
   </div>
  </div>
 </section>
@@ -388,90 +388,86 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
 </footer>
 <a class="fab" href="https://wa.me/5521967765878?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20JC%20Im%C3%B3veis." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg><use href="#wa"/></svg></a>
 
-<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mT"><div class="md" id="md"></div></div>
 
 <script>
 {
 const WA='5521967765878',base='https://www.jcmiec.com.br/imovel/';
-const L=[
- {cod:'JCCA30086',tipo:'Casa',badge:'Casa linear',t:'Casa com 3 quartos no Vila Nova',bairro:'Campo Grande',rua:'Rua São Magno',preco:360000,q:3,b:3,v:2,a:140,img:'vilanova',url:'casa-linear-sala-e-3-quartos-bairro-vila-nova/JCCA30086',x:50,y:41.25,d:'Casa no centro de terreno de 300 m², perto do comércio e do transporte. Sala, 3 quartos, banheiros com azulejo até o teto, copa cozinha separada e banheiro externo.'},
- {cod:'JCAP20736',tipo:'Apartamento',badge:'Novo na carteira',t:'Parque Riviera Tropical',bairro:'Paciência',rua:'Estrada do Campinho',preco:150000,cond:450,q:2,b:1,v:1,a:48,img:'riviera',url:'condominio-residencial-parque-riviera-tropical/JCAP20736',x:29,y:30,d:'Apartamento claro e arejado com sala de teto rebaixado e iluminação LED, 2 quartos e cozinha integrada à área de serviço.'},
- {cod:'JCCA20241',tipo:'Casa',badge:'Renda extra',t:'Duas casas com entradas independentes',bairro:'Campo Grande',rua:'Estrada Professor Daltro Santos',preco:480000,q:2,b:2,v:2,a:95,img:'duascasas',url:'2-casas-com-sala-e-2-quartos-e-com-entradas-independentes/JCCA20241',x:58.5,y:49.375,d:'Duas moradias no mesmo terreno de 180 m², com entradas separadas. Porcelanato, varanda e garagem para 2 carros.'},
- {cod:'JCAP20734',tipo:'Apartamento',badge:'Condomínio fechado',t:'Residencial Casa Blanca',bairro:'Santa Cruz',rua:'Av. Padre Guilherme Decaminada',preco:110000,cond:280,q:2,b:1,v:1,a:47,img:'casablanca',url:'condominio-residencial-casa-blanca/JCAP20734',x:13,y:36.25,d:'Apartamento tipo casa com varanda, em condomínio com portaria 24h, playground, espaço gourmet com churrasqueira e campinho.'},
- {cod:'JCCA30048',tipo:'Casa',badge:'Pronta para morar',t:'Casa com 3 quartos e suíte',bairro:'Campo Grande',rua:'Rua General Cordolino de Azevedo',preco:325000,q:3,b:3,v:1,a:74,img:'casavazia',url:'casa-vazia-sala-03-quartos/JCCA30048',x:45.5,y:56.25,d:'Casa vazia perto de comércio e transporte: sala, 3 quartos sendo 1 suíte, área de serviço com tanque.'},
- {cod:'JCAP10028',tipo:'Apartamento',badge:'Reformado',t:'Condomínio Nova Vida',bairro:'Pavuna',rua:'Rua Iguaba Grande',preco:50000,cond:325,q:1,b:1,v:1,a:40,img:'novavida',url:'condominio-nova-vida/JCAP10028',x:86,y:13,d:'Totalmente reformado, com elétrica e hidráulica novas, piso laminado e banheiro com bancada em granito.'}
-];
+let L=[];let FB='';
 const BA=[['Bangu','bangu'],['Barra da Tijuca','barra-da-tijuca'],['Campo Grande','campo-grande'],['Cosmos','cosmos'],['Guaratiba','guaratiba'],['Inhoaíba','inhoaiba'],['Maracanã','maracana'],['Paciência','paciencia'],['Padre Miguel','padre-miguel'],['Piedade','piedade'],['Quintino Bocaiúva','quintino-bocaiuva'],['Santa Cruz','santa-cruz'],['Santíssimo','santissimo'],['Senador Camará','senador-camara'],['Senador Vasconcelos','senador-vasconcelos'],['Tijuca','tijuca'],['Vigário Geral','vigario-geral']];
-const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
-const k=n=>n>=1000?'R$ '+Math.round(n/1000)+' mil':brl(n);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const brl=n=>Number(n).toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const k=n=>n>=1e6?'R$ '+(n/1e6).toLocaleString('pt-BR',{maximumFractionDigits:1})+' mi':n>=1000?'R$ '+Math.round(n/1000)+' mil':brl(n);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
 const $=id=>document.getElementById(id);
-const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-const st={q:'',tipo:'',quartos:0,preco:0,ord:'rel',map:false,hi:''};
+const norm=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const cat=t=>/apart|cobert|kitnet|conjug|flat/i.test(t)?'Apartamento':/casa/i.test(t)?'Casa':/terreno|lote/i.test(t)?'Terreno':'Comercial e rural';
+const foto=(i,t)=>{let p='';if(i.fp)p=i.fp[0];else if(i.g){const [a,b]=String(i.fid).split('/');p=a+'/img/'+(b||a)+'_G'+String(i.g).split(',')[0]+'.jpg'}return p?FB+(t?p.replace(/\.jpg$/i,'_t.jpg'):p):''};
+const nf=i=>i.fp?i.fp.length:i.g?String(i.g).split(',').length:0;
+const titulo=i=>i.ch||(i.tipo+' em '+i.bairro);
+const st={q:'',tipo:'',quartos:0,preco:0,ord:'rel',map:false,hi:'',n:12};
 const sp=(i,n,l)=>`<span><svg><use href="#${i}"/></svg>${n} ${l}</span>`;
 function list(){
- let r=L.filter(i=>(!st.tipo||i.tipo===st.tipo)&&(!st.quartos||i.q>=st.quartos)&&(!st.preco||i.preco<=st.preco)&&(!st.q||norm(i.bairro+' '+i.rua+' '+i.cod+' '+i.t).includes(norm(st.q))));
- if(st.ord==='pa')r.sort((a,b)=>a.preco-b.preco);if(st.ord==='pd')r.sort((a,b)=>b.preco-a.preco);if(st.ord==='ad')r.sort((a,b)=>b.a-a.a);
+ let r=L.filter(i=>(!st.tipo||i.cat===st.tipo)&&(!st.quartos||i.q>=st.quartos)&&(!st.preco||i.preco<=st.preco)&&(!st.q||i.busca.includes(norm(st.q))));
+ if(st.ord==='pa')r.sort((a,b)=>a.preco-b.preco);if(st.ord==='pd')r.sort((a,b)=>b.preco-a.preco);if(st.ord==='ad')r.sort((a,b)=>(b.au||b.at)-(a.au||a.at));
  return r}
+let map,layer;
+function card(i){const a=i.au||i.at;return `<a class="card" href="imovel.html?c=${i.c}" data-c="${i.c}" aria-label="${esc(titulo(i))}, ${brl(i.preco)}">
+  <div class="ph">${foto(i,1)?`<img src="${foto(i,1)}" alt="" loading="lazy">`:''}${i.tarja?`<span class="badge">${esc(i.tarja)}</span>`:''}<span class="nf">${nf(i)} fotos</span></div>
+  <div class="cinfo"><div class="crow"><span class="price">${brl(i.preco)}</span>${a?`<span class="m2">${brl(Math.round(i.preco/a))}/m²</span>`:''}</div>
+  <div class="ct">${esc(titulo(i))}</div><div class="cl">${esc(i.tipo)} em ${esc(i.bairro)}${i.rua?' · '+esc(i.rua):''}</div>
+  <div class="specs">${a?sp('area',a,'m²'):''}${i.q?sp('bed',i.q,i.q>1?'quartos':'quarto'):''}${i.b?sp('bath',i.b,'banh.'):''}${i.v?sp('car',i.v,i.v>1?'vagas':'vaga'):''}</div>
+  ${i.cond>1?`<div class="cond">Condomínio ${brl(i.cond)}</div>`:''}</div></a>`}
 function render(){
- const r=list();
- $('count').textContent=r.length+(r.length===1?' imóvel em destaque':' imóveis em destaque')+(st.q?' para "'+st.q+'"':'');
- $('lista').innerHTML=r.length?r.map(i=>`<article class="card${st.hi===i.cod?' hi':''}" data-c="${i.cod}" tabindex="0" aria-label="${esc(i.t)}, ${brl(i.preco)}">
-  <div class="ph"><img src="img/${i.img}.jpg" alt="" loading="lazy"><span class="badge">${esc(i.badge)}</span></div>
-  <div class="cinfo"><div class="crow"><span class="price">${brl(i.preco)}</span><span class="m2">${brl(Math.round(i.preco/i.a))}/m²</span></div>
-  <div class="ct">${esc(i.t)}</div><div class="cl">${esc(i.tipo)} em ${esc(i.bairro)} · ${esc(i.rua)}</div>
-  <div class="specs">${sp('area',i.a,'m²')}${sp('bed',i.q,i.q>1?'quartos':'quarto')}${sp('bath',i.b,i.b>1?'banh.':'banh.')}${sp('car',i.v,i.v>1?'vagas':'vaga')}</div>
-  ${i.cond?`<div class="cond">Condomínio ${brl(i.cond)}</div>`:''}</div></article>`).join(''):`<div class="empty"><h3>Nenhum destaque com esses filtros</h3><p class="lead" style="margin:10px auto 20px">Temos mais opções na carteira. Conte o que procura e a gente busca para você.</p>${`<a class="btn btn-wa" target="_blank" rel="noopener" href="${wa('Olá! Procuro '+(st.tipo||'imóvel').toLowerCase()+(st.q?' em '+st.q:'')+(st.quartos?' com '+st.quartos+'+ quartos':'')+(st.preco?' até '+brl(st.preco):'')+'.')}"><svg class="ico"><use href="#wa"/></svg>Pedir ajuda na busca</a>`}</div>`;
- const m=$('map');m.querySelectorAll('.pin').forEach(p=>p.remove());
- r.forEach(i=>{const b=document.createElement('button');b.className='pin'+(st.hi===i.cod?' hi':'');b.style.left=i.x+'%';b.style.top=i.y+'%';b.textContent=k(i.preco);b.dataset.c=i.cod;b.setAttribute('aria-label',i.t+', '+brl(i.preco));m.appendChild(b)});
+ if(!L.length)return;
+ const r=list();const vis=r.slice(0,st.n);
+ $('count').textContent=r.length.toLocaleString('pt-BR')+(r.length===1?' imóvel à venda':' imóveis à venda')+(st.q?' para "'+st.q+'"':'')+(r.length>vis.length?' · mostrando '+vis.length:'');
+ $('lista').innerHTML=r.length?vis.map(card).join(''):`<div class="empty"><h3>Nenhum imóvel com esses filtros</h3><p class="lead" style="margin:10px auto 20px">Conte o que procura e a gente busca para você.</p><a class="btn btn-wa" target="_blank" rel="noopener" href="${wa('Olá! Procuro '+(st.tipo||'imóvel').toLowerCase()+(st.q?' em '+st.q:'')+(st.quartos?' com '+st.quartos+'+ quartos':'')+(st.preco?' até '+brl(st.preco):'')+'.')}"><svg class="ico"><use href="#wa"/></svg>Pedir ajuda na busca</a></div>`;
+ $('more').style.display=r.length>vis.length?'':'none';$('more').textContent='Mostrar mais '+Math.min(12,r.length-vis.length)+' imóveis';
  document.querySelectorAll('#chips .chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.t===st.tipo)));
+ if(map&&layer){layer.clearLayers();r.filter(i=>i.lat).forEach(i=>{const m=L2.marker([i.lat,i.lng],{icon:L2.divIcon({className:'',html:`<span class="pin" data-c="${i.c}">${k(i.preco)}</span>`,iconSize:null})});m.bindPopup(`<a class="pop" href="imovel.html?c=${i.c}">${foto(i,1)?`<img src="${foto(i,1)}" alt="">`:''}<b>${brl(i.preco)}</b><span>${esc(i.tipo)} em ${esc(i.bairro)}</span></a>`,{maxWidth:240,minWidth:200});layer.addLayer(m)});
+  if(st.map)fit()}
 }
+function fit(){const pts=list().filter(i=>i.lat).map(i=>[i.lat,i.lng]);if(pts.length)map.fitBounds(pts,{padding:[30,30],maxZoom:15})}
+const L2=window.L;
+function initMap(){if(map||!L2)return;map=L2.map('map',{scrollWheelZoom:false,zoomControl:true}).setView([-22.9,-43.55],11);
+ L2.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:19}).addTo(map);
+ layer=L2.markerClusterGroup?L2.markerClusterGroup({showCoverageOnHover:false,maxClusterRadius:46,iconCreateFunction:c=>L2.divIcon({className:'',html:`<span class="clu">${c.getChildCount()}</span>`,iconSize:null})}):L2.layerGroup();
+ map.addLayer(layer);render()}
 /* quick */
-const Q=[{l:'Apartamentos',s:L.filter(i=>i.tipo==='Apartamento').length+' em destaque',img:'riviera',f:{tipo:'Apartamento'}},{l:'Casas',s:L.filter(i=>i.tipo==='Casa').length+' em destaque',img:'casavazia',f:{tipo:'Casa'}},{l:'Até R$ 150 mil',s:'Para sair do aluguel',img:'casablanca',f:{preco:150000}},{l:'3 quartos ou mais',s:'Espaço para a família',img:'vilanova',f:{quartos:3}}];
-$('quick').innerHTML=Q.map((q,n)=>`<button class="qk" data-q="${n}"><img src="img/${q.img}.jpg" alt=""><span><b>${q.l}</b><small>${q.s}</small></span></button>`).join('');
-$('quick').addEventListener('click',e=>{const b=e.target.closest('.qk');if(!b)return;Object.assign(st,{q:'',tipo:'',quartos:0,preco:0},Q[b.dataset.q].f);syncForm();render();$('count').scrollIntoView({block:'center'})});
+let Q=[];
+function quick(){Q=[{l:'Apartamentos',s:L.filter(i=>i.cat==='Apartamento').length+' à venda',img:'riviera',f:{tipo:'Apartamento'}},{l:'Casas',s:L.filter(i=>i.cat==='Casa').length+' à venda',img:'casavazia',f:{tipo:'Casa'}},{l:'Até R$ 150 mil',s:L.filter(i=>i.preco<=150000).length+' opções para sair do aluguel',img:'casablanca',f:{preco:150000}},{l:'3 quartos ou mais',s:L.filter(i=>i.q>=3).length+' para a família',img:'vilanova',f:{quartos:3}}];
+ $('quick').innerHTML=Q.map((q,n)=>`<button class="qk" data-q="${n}"><img src="img/${q.img}.jpg" alt=""><span><b>${q.l}</b><small>${q.s}</small></span></button>`).join('')}
+$('quick').addEventListener('click',e=>{const b=e.target.closest('.qk');if(!b)return;Object.assign(st,{q:'',tipo:'',quartos:0,preco:0,n:12},Q[b.dataset.q].f);syncForm();render();$('count').scrollIntoView({block:'center'})});
 function syncForm(){$('q').value=st.q;$('fTipo').value=st.tipo;$('fQ').value=st.quartos;$('fP').value=st.preco}
 /* busca + sugestões */
-const sug=$('sug'),qi=$('q');
-const opts=[...new Set(L.map(i=>i.bairro))].map(b=>({v:b,s:L.filter(i=>i.bairro===b).length+' imóveis'})).concat(L.map(i=>({v:i.cod,s:i.t})));
-function showSug(){const v=norm(qi.value.trim());const o=(v?opts.filter(x=>norm(x.v+' '+x.s).includes(v)):opts.slice(0,5)).slice(0,6);sug.innerHTML=o.map(x=>`<button type="button" data-v="${esc(x.v)}"><span>${esc(x.v)}</span><small>${esc(x.s)}</small></button>`).join('');sug.classList.toggle('on',o.length>0)}
+const sug=$('sug'),qi=$('q');let opts=[];
+function showSug(){const v=norm(qi.value.trim());const o=(v?opts.filter(x=>norm(x.v+' '+x.s).includes(v)):opts.slice(0,6)).slice(0,7);sug.innerHTML=o.map(x=>`<button type="button" data-v="${esc(x.v)}"><span>${esc(x.v)}</span><small>${esc(x.s)}</small></button>`).join('');sug.classList.toggle('on',o.length>0)}
 qi.addEventListener('focus',showSug);qi.addEventListener('input',showSug);
 qi.addEventListener('keydown',e=>{if(e.key==='Escape')sug.classList.remove('on');if(e.key==='ArrowDown'){const f=sug.querySelector('button');if(f){e.preventDefault();f.focus()}}});
 sug.addEventListener('keydown',e=>{const b=document.activeElement;if(e.key==='ArrowDown'&&b.nextElementSibling){e.preventDefault();b.nextElementSibling.focus()}if(e.key==='ArrowUp'){e.preventDefault();(b.previousElementSibling||qi).focus()}});
 sug.addEventListener('mousedown',e=>e.preventDefault());
 sug.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;qi.value=b.dataset.v;sug.classList.remove('on');$('busca').requestSubmit()});
 document.addEventListener('click',e=>{if(!e.target.closest('.pill .f:first-child'))sug.classList.remove('on')});
-$('busca').addEventListener('submit',e=>{e.preventDefault();Object.assign(st,{q:qi.value.trim(),tipo:$('fTipo').value,quartos:+$('fQ').value,preco:+$('fP').value});sug.classList.remove('on');render();$('count').scrollIntoView({block:'center'})});
+$('busca').addEventListener('submit',e=>{e.preventDefault();const v=qi.value.trim();const hit=L.find(i=>i.c===v.toUpperCase());if(hit){location.href='imovel.html?c='+hit.c;return}Object.assign(st,{q:v,tipo:$('fTipo').value,quartos:+$('fQ').value,preco:+$('fP').value,n:12});sug.classList.remove('on');render();$('count').scrollIntoView({block:'center'})});
 document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));if(b.dataset.m!=='comprar')$('avaliar').scrollIntoView()}));
 /* barra */
-$('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;st.tipo=c.dataset.t;$('fTipo').value=st.tipo;render()});
-$('ord').addEventListener('change',e=>{st.ord=e.target.value;render()});
-const setView=m=>{st.map=m;$('ex').classList.toggle('map',m);$('vL').setAttribute('aria-pressed',String(!m));$('vM').setAttribute('aria-pressed',String(m))};
+$('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;st.tipo=c.dataset.t;st.n=12;$('fTipo').value=st.tipo;render()});
+$('ord').addEventListener('change',e=>{st.ord=e.target.value;st.n=12;render()});
+$('more').addEventListener('click',()=>{st.n+=12;render()});
+const setView=m=>{st.map=m;$('ex').classList.toggle('map',m);$('vL').setAttribute('aria-pressed',String(!m));$('vM').setAttribute('aria-pressed',String(m));if(m){initMap();if(map)setTimeout(()=>{map.invalidateSize();fit()},60)}};
 $('vL').addEventListener('click',()=>setView(false));$('vM').addEventListener('click',()=>setView(true));
-/* cards */
-$('lista').addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openMd(c.dataset.c)});
-$('lista').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.classList.contains('card'))openMd(e.target.dataset.c)});
 $('lista').addEventListener('mouseover',e=>{const c=e.target.closest('.card');const id=c?c.dataset.c:'';document.querySelectorAll('.pin').forEach(p=>p.classList.toggle('hi',p.dataset.c===id))});
-$('map').addEventListener('click',e=>{const p=e.target.closest('.pin');if(!p)return;st.hi=p.dataset.c;render();const c=document.querySelector(`.card[data-c="${p.dataset.c}"]`);if(c)c.scrollIntoView({block:'center'})});
-/* modal + agendamento */
-let last;
-function openMd(cod){const i=L.find(x=>x.cod===cod);if(!i)return;last=document.activeElement;
- const dn=['dom','seg','ter','qua','qui','sex','sáb'];const ds=[];for(let n=1;ds.length<6;n++){const d=new Date();d.setDate(d.getDate()+n);if(d.getDay()!==0)ds.push(d)}
- $('md').innerHTML=`<div class="mimg"><img src="img/${i.img}.jpg" alt="${esc(i.t)}"><button class="x" id="mx" aria-label="Fechar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
- <div class="mb"><span class="cl">${i.cod} · ${esc(i.tipo)} em ${esc(i.bairro)}</span><h2 id="mT" style="font-size:28px">${esc(i.t)}</h2>
- <div class="crow" style="justify-content:flex-start;gap:14px"><span class="price" style="font-size:30px">${brl(i.preco)}</span>${i.cond?`<span class="cond">+ cond. ${brl(i.cond)}</span>`:''}</div>
- <div class="specs">${sp('area',i.a,'m²')}${sp('bed',i.q,i.q>1?'quartos':'quarto')}${sp('bath',i.b,'banheiros')}${sp('car',i.v,i.v>1?'vagas':'vaga')}</div>
- <p>${esc(i.d)}</p><p class="cl">${esc(i.rua)}, ${esc(i.bairro)}, Rio de Janeiro</p>
- <div class="lbl">Agende uma visita</div><div class="days" id="days">${ds.map((d,n)=>`<button class="day" data-d="${dn[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}" aria-pressed="${n===0}">${dn[d.getDay()]}<b>${d.getDate()}</b></button>`).join('')}</div>
- <div class="days" id="per"><button class="chip" data-p="manhã" aria-pressed="true">Manhã</button><button class="chip" data-p="tarde" aria-pressed="false">Tarde</button></div>
- <div class="mact"><a class="btn btn-wa" id="agWa" target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Agendar pelo WhatsApp</a><a class="btn btn-line" href="${base+i.url}" target="_blank" rel="noopener">Ver todas as fotos</a></div></div>`;
- const upd=()=>{const d=$('days').querySelector('[aria-pressed=true]').dataset.d,p=$('per').querySelector('[aria-pressed=true]').dataset.p;$('agWa').href=wa('Olá! Quero agendar uma visita ao imóvel '+i.cod+' ('+i.t+', '+i.bairro+') na '+d+', de '+p+'.')};
- ['days','per'].forEach(id=>$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));upd()}));upd();
- $('ov').classList.add('on');document.body.style.overflow='hidden';$('mx').focus();$('mx').addEventListener('click',closeMd)}
-function closeMd(){$('ov').classList.remove('on');document.body.style.overflow='';if(last)last.focus()}
-$('ov').addEventListener('click',e=>{if(e.target.id==='ov')closeMd()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('ov').classList.contains('on'))closeMd()});
+/* dados */
+function bairros(){const cnt={};L.forEach(i=>cnt[i.bairro]=(cnt[i.bairro]||0)+1);
+ const nomes=[...new Set([...Object.keys(cnt).filter(b=>cnt[b]>=2),...BA.map(b=>b[0])])].sort((a,b)=>(cnt[b]||0)-(cnt[a]||0)||a.localeCompare(b));
+ $('blist').innerHTML=nomes.map(n=>cnt[n]?`<a href="#imoveis" data-b="${esc(n)}"><svg><use href="#pin"/></svg>${esc(n)}<small>${cnt[n]}</small></a>`:`<a href="https://www.jcmiec.com.br/bairro/rj-rio-de-janeiro-${(BA.find(b=>b[0]===n)||[])[1]}" target="_blank" rel="noopener"><svg><use href="#pin"/></svg>${esc(n)}</a>`).join('')}
+$('blist').addEventListener('click',e=>{const a=e.target.closest('[data-b]');if(!a)return;e.preventDefault();Object.assign(st,{q:a.dataset.b,tipo:'',quartos:0,preco:0,n:12});syncForm();render();$('count').scrollIntoView({block:'center'})});
+const pr=new URLSearchParams(location.search);
+fetch('data/imoveis.json').then(r=>r.json()).then(j=>{FB=j.fotoBase;L=j.imoveis.map(i=>Object.assign(i,{cat:cat(i.tipo),busca:norm([i.c,i.bairro,i.rua,i.tipo,i.ch].join(' '))}));
+ opts=Object.entries(L.reduce((a,i)=>(a[i.bairro]=(a[i.bairro]||0)+1,a),{})).sort((a,b)=>b[1]-a[1]).map(([b,n])=>({v:b,s:n+(n>1?' imóveis':' imóvel')}));
+ quick();bairros();if(pr.get('bairro')){st.q=pr.get('bairro');syncForm()}render();
+ if(location.hash==='#imoveis'&&pr.get('bairro'))$('count').scrollIntoView({block:'center'});
+}).catch(()=>{$('count').textContent='Não foi possível carregar os imóveis agora.'});
 /* avaliação em passos */
 const V={step:0,tipo:'',bairro:'',q:''};
 const S=[{t:'Que tipo de imóvel?',o:['Casa','Apartamento','Casa em condomínio','Terreno'],k:'tipo'},{t:'Em qual bairro?',o:['Campo Grande','Santa Cruz','Paciência','Guaratiba','Cosmos','Outro'],k:'bairro'},{t:'Quantos quartos?',o:['1','2','3','4 ou mais'],k:'q'}];
@@ -487,11 +483,10 @@ function sim(){const Vv=+R[0].value,E=+R[1].value/100,N=+R[2].value*12,i=Math.po
  $('oV').textContent=brl(Vv);$('oE').textContent=Math.round(E*100)+'% · '+brl(Vv*E);$('oP').textContent=R[2].value+' anos';$('oT').textContent=(+R[3].value).toLocaleString('pt-BR')+'%';
  $('rS').textContent=brl(sac);$('rP').textContent=brl(pr);$('rR').textContent=brl(sac/0.3);
  $('simWa').href=wa('Olá! Simulei um imóvel de '+brl(Vv)+' com entrada de '+brl(Vv*E)+' em '+R[2].value+' anos. Podem me ajudar com o financiamento?')}
-R.forEach(r=>r.addEventListener('input',sim));sim();
+if(pr.get('valor'))R[0].value=Math.min(800000,Math.max(50000,+pr.get('valor')||250000));R.forEach(r=>r.addEventListener('input',sim));sim();
 /* header + menu */
 const bg=$('burger'),mn=$('menu');bg.addEventListener('click',()=>{const o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',String(o))});
 mn.addEventListener('click',e=>{if(e.target.tagName==='A'){mn.classList.remove('open');bg.setAttribute('aria-expanded','false')}});
-$('blist').innerHTML=BA.map(([n,sl])=>`<a href="https://www.jcmiec.com.br/bairro/rj-rio-de-janeiro-${sl}" target="_blank" rel="noopener"><svg><use href="#pin"/></svg>${n}</a>`).join('');
 $('dbtn').addEventListener('click',e=>{const o=$('dgrid').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',String(o));e.currentTarget.textContent=o?'Mostrar menos':'Ver mais avaliações'});
 render();
 setTimeout(()=>{const it=$('intro');if(it)it.remove()},2700);
