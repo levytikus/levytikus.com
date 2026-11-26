@@ -69,7 +69,7 @@ nav.main a:hover{opacity:1;background:#ffffff1f}
  nav.main.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;margin:0;background:#000;color:#fff;padding:8px max(5vw,16px) 18px;box-shadow:0 20px 30px -20px #000}
  nav.main.open a{padding:14px 6px;font-size:17px;border-radius:0;border-bottom:1px solid #ffffff1a}}
 /* hero */
-.hero{position:relative;min-height:min(92vh,780px);display:flex;align-items:flex-end;color:#fff;padding:140px 0 56px;isolation:isolate}
+.hero{position:relative;min-height:min(92vh,780px);display:flex;align-items:flex-end;color:#fff;padding:140px 0 56px;isolation:isolate;overflow:hidden}
 .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.05)}
 .hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0b1d2bb3 0%,#0b1d2b66 30%,#0b1d2bd9 70%,#0b1d2bf7 100%)}
 .hero h1{font-size:clamp(40px,6.4vw,80px);font-weight:800;max-width:15ch;letter-spacing:-.035em}
@@ -164,6 +164,17 @@ nav.main a:hover{opacity:1;background:#ffffff1f}
 .lbl{font-weight:600;font-size:14px;margin-top:4px}
 .mact{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-top:4px}
 @media(max-width:760px){.md{grid-template-columns:minmax(0,1fr)}.md .mimg{min-height:220px}}
+/* bairros */
+.blist{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.blist a{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);text-decoration:none;font-weight:600;font-size:15px;transition:background .2s,color .2s,box-shadow .2s}
+.blist a:hover{background:var(--ink);color:#fff;box-shadow:none}
+.blist a svg{width:16px;height:16px;color:var(--sky)}
+.guide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 20px;margin:26px 0 0;padding:0;list-style:none;font-size:15px;color:var(--ink2)}
+.guide li{display:flex;gap:10px}.guide li:before{content:"";width:18px;height:18px;flex:none;margin-top:3px;border-radius:6px;background:var(--sky) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E1A24' stroke-width='3.5'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat}
+.glinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.glinks a{min-height:42px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;background:var(--soft);text-decoration:none;font-weight:600;font-size:14px}
+.glinks a:hover{background:#e9f6fd}
+@media(max-width:460px){.guide{grid-template-columns:minmax(0,1fr)}}
 /* avaliação */
 .val{background:var(--navy);color:#fff;border-radius:30px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;position:relative;overflow:hidden}
 .val:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#36b8f055,transparent 70%)}
@@ -200,14 +211,14 @@ input[type=range]{width:100%;accent-color:var(--ink);height:26px}
 @media(max-width:420px){.nums{grid-template-columns:minmax(0,1fr)}}
 /* footer */
 footer{background:var(--navy);color:#b9cbd7;padding:64px 0 26px}
-.fg{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:30px}
+.fg{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(4,minmax(0,1fr));gap:30px}
 footer h3{color:#fff;font-size:16px;margin-bottom:12px}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
 footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
 .fl1 img{width:110px}.fl1 p{font-size:15px;max-width:34ch}
 .soc{display:flex;gap:8px;margin-top:12px}.soc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#ffffff14}
 .legal{margin-top:40px;padding-top:20px;border-top:1px solid #ffffff17;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px}
-@media(max-width:900px){.fg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:1000px){.fg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fg .fl1{grid-column:1/-1}}
 @media(max-width:520px){.fg{grid-template-columns:minmax(0,1fr)}}
 .fab{position:fixed;right:16px;bottom:16px;z-index:55;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 14px 30px -10px #0008;color:#fff}
 .fab svg{width:30px;height:30px}
@@ -229,7 +240,7 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
 <header id="hd">
  <div class="wrap hd">
   <a class="logo" href="#topo" aria-label="JCM Imobiliária e Construções, início"><img src="img/logo.png" width="74" height="50" alt="JCM Imobiliária & Construções"></a>
-  <nav class="main" id="menu"><a href="#imoveis">Comprar</a><a href="#avaliar">Vender</a><a href="#simulador">Financiar</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav>
+  <nav class="main" id="menu"><a href="#imoveis">Comprar</a><a href="#bairros">Bairros</a><a href="#avaliar">Vender</a><a href="#simulador">Financiar</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav>
   <div class="hr">
    <a class="btn btn-wa" href="https://wa.me/5521967765878?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20JC%20Im%C3%B3veis." target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Falar com corretor</a>
    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -288,6 +299,14 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
  </div>
 </section>
 
+<section class="band" id="bairros" style="padding-bottom:0">
+ <div class="wrap">
+  <h2>Bairros onde atuamos</h2>
+  <p class="lead">Da Zona Oeste à Zona Norte, conhecemos o valor de cada região. Escolha um bairro e veja os imóveis disponíveis.</p>
+  <div class="blist" id="blist"></div>
+ </div>
+</section>
+
 <section class="band" id="avaliar">
  <div class="wrap">
   <div class="val">
@@ -299,7 +318,10 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
 
 <section class="band" id="simulador" style="padding-top:0">
  <div class="wrap simg">
-  <div><h2>Descubra a parcela antes de visitar.</h2><p class="lead">Uma estimativa rápida para planejar a compra. Depois, ajudamos a comparar os bancos e a usar o seu FGTS.</p></div>
+  <div><h2>Descubra a parcela antes de visitar.</h2><p class="lead">Uma estimativa rápida para planejar a compra. Depois, ajudamos a comparar os bancos e a usar o seu FGTS.</p>
+   <h3 style="margin-top:30px">Documentos para o financiamento</h3>
+   <ul class="guide"><li>RG e CPF</li><li>Comprovante de renda</li><li>Comprovante de residência</li><li>Certidão de estado civil</li><li>Extrato do FGTS, se for usar</li><li>Declaração de IR, quando houver</li></ul>
+   <div class="glinks"><a href="https://www.jcmiec.com.br/financeiras" target="_blank" rel="noopener">Financeiras</a><a href="https://www.jcmiec.com.br/dicas-de-financiamento" target="_blank" rel="noopener">Dicas de financiamento</a><a href="https://www.jcmiec.com.br/documentos-necessarios" target="_blank" rel="noopener">Lista completa de documentos</a></div></div>
   <div class="sbox">
    <div class="fl"><label for="sV">Valor do imóvel <output id="oV"></output></label><input type="range" id="sV" min="50000" max="800000" step="5000" value="250000"></div>
    <div class="fl"><label for="sE">Entrada <output id="oE"></output></label><input type="range" id="sE" min="0" max="80" step="5" value="20"></div>
@@ -329,9 +351,10 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
   <div class="fg">
    <div class="fl1"><img src="img/logo.png" alt="JCM Imobiliária & Construções"><p>JC Imóveis, imobiliária em Campo Grande para toda a Zona Oeste do Rio de Janeiro. CRECI CJ/RJ 00887/O.</p>
     <div class="soc"><a href="https://www.instagram.com/JCMIEC/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a><a href="https://www.facebook.com/profile.php?id=61550780771052" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8V6.5c0-.7.5-1 1-1h2V2h-3c-3 0-4 2-4 4.3V8H7.5v3.5H10V22h4V11.5h2.8l.5-3.5H14Z"/></svg></a></div></div>
-   <div><h3>Endereço</h3><ul><li>Estrada Santa Maria, 903</li><li>Campo Grande, Rio de Janeiro</li><li><a href="https://www.google.com/maps/search/?api=1&query=Estrada+Santa+Maria+903+Campo+Grande+Rio+de+Janeiro" target="_blank" rel="noopener">Como chegar</a></li></ul></div>
-   <div><h3>Contato</h3><ul><li><a href="https://wa.me/5521967765878" target="_blank" rel="noopener">WhatsApp (21) 96776-5878</a></li><li><a href="tel:+552124164324">(21) 2416-4324</a></li><li><a href="mailto:jcm@jcmiec.com.br">jcm@jcmiec.com.br</a></li></ul></div>
-   <div><h3>Bairros</h3><ul id="fb"></ul></div>
+   <div><h3>A JC Imóveis</h3><ul><li><a href="#sobre">Quem somos</a></li><li><a href="https://www.jcmiec.com.br/onde-estamos" target="_blank" rel="noopener">Onde estamos</a></li><li><a href="https://www.jcmiec.com.br/politica-de-privacidade" target="_blank" rel="noopener">Termo de uso</a></li><li><a href="https://www.jcmiec.com.br/contato/trabalhe-conosco" target="_blank" rel="noopener">Trabalhe conosco</a></li></ul></div>
+   <div><h3>Compra e venda</h3><ul><li><a href="https://www.jcmiec.com.br/contato/compre-ja" target="_blank" rel="noopener">Compre seu imóvel</a></li><li><a href="https://www.jcmiec.com.br/contato/venda-seu-imovel" target="_blank" rel="noopener">Venda seu imóvel</a></li><li><a href="#avaliar">Avaliar meu imóvel</a></li><li><a href="#bairros">Conheça os bairros</a></li></ul></div>
+   <div><h3>Útil</h3><ul><li><a href="https://www.jcmiec.com.br/dicionario-imobiliario" target="_blank" rel="noopener">Dicionário imobiliário</a></li><li><a href="https://www.jcmiec.com.br/sites-uteis" target="_blank" rel="noopener">Sites úteis</a></li><li><a href="https://www.jcmiec.com.br/financeiras" target="_blank" rel="noopener">Financeiras</a></li><li><a href="https://www.jcmiec.com.br/dicas-de-financiamento" target="_blank" rel="noopener">Dicas de financiamento</a></li><li><a href="https://www.jcmiec.com.br/documentos-necessarios" target="_blank" rel="noopener">Documentos necessários</a></li><li><a href="https://www.jcmiec.com.br/noticia/noticias" target="_blank" rel="noopener">Notícias</a></li></ul></div>
+   <div><h3>Contato</h3><ul><li><a href="https://www.jcmiec.com.br/contato/fale-conosco" target="_blank" rel="noopener">Fale conosco</a></li><li><a href="https://wa.me/5521967765878" target="_blank" rel="noopener">WhatsApp (21) 96776-5878</a></li><li><a href="tel:+552124164324">(21) 2416-4324</a></li><li><a href="mailto:jcm@jcmiec.com.br">jcm@jcmiec.com.br</a></li><li>Estrada Santa Maria, 903, Campo Grande</li><li><a href="https://www.google.com/maps/search/?api=1&query=Estrada+Santa+Maria+903+Campo+Grande+Rio+de+Janeiro" target="_blank" rel="noopener">Como chegar</a></li></ul></div>
   </div>
   <div class="legal"><span>© 2026 JC Imóveis. Todos os direitos reservados.</span><span>Valores e disponibilidade sujeitos a alteração.</span></div>
  </div>
@@ -351,7 +374,7 @@ const L=[
  {cod:'JCCA30048',tipo:'Casa',badge:'Pronta para morar',t:'Casa com 3 quartos e suíte',bairro:'Campo Grande',rua:'Rua General Cordolino de Azevedo',preco:325000,q:3,b:3,v:1,a:74,img:'casavazia',url:'casa-vazia-sala-03-quartos/JCCA30048',x:45.5,y:56.25,d:'Casa vazia perto de comércio e transporte: sala, 3 quartos sendo 1 suíte, área de serviço com tanque.'},
  {cod:'JCAP10028',tipo:'Apartamento',badge:'Reformado',t:'Condomínio Nova Vida',bairro:'Pavuna',rua:'Rua Iguaba Grande',preco:50000,cond:325,q:1,b:1,v:1,a:40,img:'novavida',url:'condominio-nova-vida/JCAP10028',x:86,y:13,d:'Totalmente reformado, com elétrica e hidráulica novas, piso laminado e banheiro com bancada em granito.'}
 ];
-const BA=[['Campo Grande','campo-grande'],['Santa Cruz','santa-cruz'],['Paciência','paciencia'],['Guaratiba','guaratiba'],['Cosmos','cosmos'],['Bangu','bangu']];
+const BA=[['Bangu','bangu'],['Barra da Tijuca','barra-da-tijuca'],['Campo Grande','campo-grande'],['Cosmos','cosmos'],['Guaratiba','guaratiba'],['Inhoaíba','inhoaiba'],['Maracanã','maracana'],['Paciência','paciencia'],['Padre Miguel','padre-miguel'],['Piedade','piedade'],['Quintino Bocaiúva','quintino-bocaiuva'],['Santa Cruz','santa-cruz'],['Santíssimo','santissimo'],['Senador Camará','senador-camara'],['Senador Vasconcelos','senador-vasconcelos'],['Tijuca','tijuca'],['Vigário Geral','vigario-geral']];
 const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
 const k=n=>n>=1000?'R$ '+Math.round(n/1000)+' mil':brl(n);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -441,7 +464,7 @@ R.forEach(r=>r.addEventListener('input',sim));sim();
 /* header + menu */
 const bg=$('burger'),mn=$('menu');bg.addEventListener('click',()=>{const o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',String(o))});
 mn.addEventListener('click',e=>{if(e.target.tagName==='A'){mn.classList.remove('open');bg.setAttribute('aria-expanded','false')}});
-$('fb').innerHTML=BA.map(([n,s])=>`<li><a href="https://www.jcmiec.com.br/bairro/rj-rio-de-janeiro-${s}" target="_blank" rel="noopener">${n}</a></li>`).join('');
+$('blist').innerHTML=BA.map(([n,sl])=>`<a href="https://www.jcmiec.com.br/bairro/rj-rio-de-janeiro-${sl}" target="_blank" rel="noopener"><svg><use href="#pin"/></svg>${n}</a>`).join('');
 render();
 setTimeout(()=>{const it=$('intro');if(it)it.remove()},2700);
 }
