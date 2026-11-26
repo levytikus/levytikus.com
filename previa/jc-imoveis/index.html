@@ -31,7 +31,7 @@ h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
 .band{padding:clamp(56px,8vw,112px) 0}
 .lead{font-size:18px;color:var(--mute);max-width:58ch;margin:12px 0 0}
 button{font-family:inherit}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;text-align:center;line-height:1.25;max-width:100%}
 .btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#22313e}
 .btn-sky{background:var(--sky);color:#06202f}.btn-sky:hover{background:#56c4f3}
 .btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#18984f}
@@ -56,23 +56,18 @@ button{font-family:inherit}
 .hero h1{animation-delay:1.85s}.hero p{animation-delay:1.97s}.hero .tabs{animation-delay:2.07s}.hero .pill{animation-delay:2.15s}.hero .hmeta{animation-delay:2.25s}#hd .hd{animation-delay:1.9s}
 @media(prefers-reduced-motion:reduce){#intro{display:none}.hero>img,.hero h1,.hero p,.hero .tabs,.hero .pill,.hero .hmeta,#hd .hd{animation:none}}
 /* header */
-header{position:fixed;inset:0 0 auto;z-index:60;transition:background .3s,box-shadow .3s,color .3s;color:#fff}
-header.solid{background:#ffffffeb;backdrop-filter:saturate(1.4) blur(14px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+header{position:fixed;inset:0 0 auto;z-index:60;background:#000;color:#fff;box-shadow:0 1px 0 #ffffff14}
 .hd{display:flex;align-items:center;gap:18px;height:76px}
 .logo{display:block;background:var(--navy);border-radius:14px;padding:5px 8px}
 .logo img{width:74px;height:auto}
 nav.main{display:flex;gap:2px;margin-left:12px}
 nav.main a{padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;opacity:.88}
-nav.main a:hover{opacity:1;background:#ffffff1f}header.solid nav.main a:hover{background:var(--soft)}
+nav.main a:hover{opacity:1;background:#ffffff1f}
 .hr{margin-left:auto;display:flex;gap:8px;align-items:center}
-.fav{position:relative;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#ffffff22;border:0;color:inherit;cursor:pointer}
-header.solid .fav{background:var(--soft)}
-.fav b{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;border-radius:10px;background:var(--sky);color:#06202f;font-size:12px;display:grid;place-items:center;padding:0 5px}
-.fav b:empty{display:none}
 .burger{display:none}
-@media(max-width:980px){nav.main{display:none}.hr .btn-wa{display:none}.burger{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:0;background:#ffffff22;color:inherit;cursor:pointer}header.solid .burger{background:var(--soft)}
- nav.main.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;margin:0;background:#fff;color:var(--ink);padding:8px max(5vw,16px) 18px;box-shadow:0 20px 30px -20px #0004}
- nav.main.open a{padding:14px 6px;font-size:17px;border-radius:0;border-bottom:1px solid var(--line)}}
+@media(max-width:980px){nav.main{display:none}.hr .btn-wa{display:none}.burger{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:0;background:#ffffff1f;color:inherit;cursor:pointer}
+ nav.main.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;margin:0;background:#000;color:#fff;padding:8px max(5vw,16px) 18px;box-shadow:0 20px 30px -20px #000}
+ nav.main.open a{padding:14px 6px;font-size:17px;border-radius:0;border-bottom:1px solid #ffffff1a}}
 /* hero */
 .hero{position:relative;min-height:min(92vh,780px);display:flex;align-items:flex-end;color:#fff;padding:140px 0 56px;isolation:isolate}
 .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.05)}
@@ -133,9 +128,6 @@ header.solid .fav{background:var(--soft)}
 .ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
 .card:hover .ph img{transform:scale(1.05)}
 .badge{position:absolute;left:12px;top:12px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:700;padding:6px 10px;border-radius:999px}
-.heart{position:absolute;right:10px;top:10px;width:42px;height:42px;border-radius:50%;border:0;background:#ffffffe6;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
-.heart svg{width:20px;height:20px}
-.heart[aria-pressed=true]{color:#e5484d}.heart[aria-pressed=true] path{fill:currentColor}
 .cinfo{padding:14px 2px 0}
 .crow{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .price{font-family:"Plus Jakarta Sans";font-weight:800;font-size:23px;letter-spacing:-.02em;white-space:nowrap}
@@ -219,8 +211,6 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
 @media(max-width:520px){.fg{grid-template-columns:minmax(0,1fr)}}
 .fab{position:fixed;right:16px;bottom:16px;z-index:55;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 14px 30px -10px #0008;color:#fff}
 .fab svg{width:30px;height:30px}
-.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;z-index:95;transition:transform .3s;white-space:nowrap}
-.toast.on{transform:translate(-50%,0)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -231,7 +221,6 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
  <symbol id="bath" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3ZM6 12V6a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></symbol>
  <symbol id="car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 16h14M5 16v2M19 16v2M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2a2 2 0 0 1 1.9 1.5L20 16"/></symbol>
  <symbol id="area" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
- <symbol id="heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></symbol>
  <symbol id="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></symbol>
  <symbol id="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
 </svg>
@@ -242,7 +231,6 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
   <a class="logo" href="#topo" aria-label="JCM Imobiliária e Construções, início"><img src="img/logo.png" width="74" height="50" alt="JCM Imobiliária & Construções"></a>
   <nav class="main" id="menu"><a href="#imoveis">Comprar</a><a href="#avaliar">Vender</a><a href="#simulador">Financiar</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav>
   <div class="hr">
-   <button class="fav" id="favBtn" aria-label="Ver favoritos"><svg class="ico"><use href="#heart"/></svg><b id="favN"></b></button>
    <a class="btn btn-wa" href="https://wa.me/5521967765878?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20JC%20Im%C3%B3veis." target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Falar com corretor</a>
    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
@@ -271,7 +259,7 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
   <div class="quick" id="quick"></div>
  </div>
  <div class="bar"><div class="wrap barin">
-  <div class="chips" id="chips"><button class="chip" data-t="" aria-pressed="true">Todos</button><button class="chip" data-t="Apartamento" aria-pressed="false">Apartamentos</button><button class="chip" data-t="Casa" aria-pressed="false">Casas</button><button class="chip" data-f="fav" aria-pressed="false">Favoritos</button></div>
+  <div class="chips" id="chips"><button class="chip" data-t="" aria-pressed="true">Todos</button><button class="chip" data-t="Apartamento" aria-pressed="false">Apartamentos</button><button class="chip" data-t="Casa" aria-pressed="false">Casas</button></div>
   <select class="sel" id="ord" aria-label="Ordenar"><option value="rel">Mais relevantes</option><option value="pa">Menor preço</option><option value="pd">Maior preço</option><option value="ad">Maior área</option></select>
   <div class="view" role="group" aria-label="Modo de visualização"><button id="vL" aria-pressed="true">Lista</button><button id="vM" aria-pressed="false"><svg width="16" height="16"><use href="#pin"/></svg>Mapa</button></div>
  </div></div>
@@ -351,7 +339,6 @@ footer a{text-decoration:none;color:#dbe6ee}footer a:hover{color:var(--sky)}
 <a class="fab" href="https://wa.me/5521967765878?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20JC%20Im%C3%B3veis." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg><use href="#wa"/></svg></a>
 
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mT"><div class="md" id="md"></div></div>
-<div class="toast" id="toast" role="status"></div>
 
 <script>
 {
@@ -371,32 +358,29 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
 const $=id=>document.getElementById(id);
 const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-let favs=[];try{favs=JSON.parse(localStorage.getItem('jc-favs')||'[]')}catch(e){}
-const saveFav=()=>{try{localStorage.setItem('jc-favs',JSON.stringify(favs))}catch(e){}$('favN').textContent=favs.length||''};
-const st={q:'',tipo:'',quartos:0,preco:0,fav:false,ord:'rel',map:false,hi:''};
-let toastT;const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2200)};
+const st={q:'',tipo:'',quartos:0,preco:0,ord:'rel',map:false,hi:''};
 const sp=(i,n,l)=>`<span><svg><use href="#${i}"/></svg>${n} ${l}</span>`;
 function list(){
- let r=L.filter(i=>(!st.tipo||i.tipo===st.tipo)&&(!st.quartos||i.q>=st.quartos)&&(!st.preco||i.preco<=st.preco)&&(!st.fav||favs.includes(i.cod))&&(!st.q||norm(i.bairro+' '+i.rua+' '+i.cod+' '+i.t).includes(norm(st.q))));
+ let r=L.filter(i=>(!st.tipo||i.tipo===st.tipo)&&(!st.quartos||i.q>=st.quartos)&&(!st.preco||i.preco<=st.preco)&&(!st.q||norm(i.bairro+' '+i.rua+' '+i.cod+' '+i.t).includes(norm(st.q))));
  if(st.ord==='pa')r.sort((a,b)=>a.preco-b.preco);if(st.ord==='pd')r.sort((a,b)=>b.preco-a.preco);if(st.ord==='ad')r.sort((a,b)=>b.a-a.a);
  return r}
 function render(){
  const r=list();
  $('count').textContent=r.length+(r.length===1?' imóvel em destaque':' imóveis em destaque')+(st.q?' para "'+st.q+'"':'');
  $('lista').innerHTML=r.length?r.map(i=>`<article class="card${st.hi===i.cod?' hi':''}" data-c="${i.cod}" tabindex="0" aria-label="${esc(i.t)}, ${brl(i.preco)}">
-  <div class="ph"><img src="img/${i.img}.jpg" alt="" loading="lazy"><span class="badge">${esc(i.badge)}</span><button class="heart" data-h="${i.cod}" aria-label="Favoritar ${i.cod}" aria-pressed="${favs.includes(i.cod)}"><svg><use href="#heart"/></svg></button></div>
+  <div class="ph"><img src="img/${i.img}.jpg" alt="" loading="lazy"><span class="badge">${esc(i.badge)}</span></div>
   <div class="cinfo"><div class="crow"><span class="price">${brl(i.preco)}</span><span class="m2">${brl(Math.round(i.preco/i.a))}/m²</span></div>
   <div class="ct">${esc(i.t)}</div><div class="cl">${esc(i.tipo)} em ${esc(i.bairro)} · ${esc(i.rua)}</div>
   <div class="specs">${sp('area',i.a,'m²')}${sp('bed',i.q,i.q>1?'quartos':'quarto')}${sp('bath',i.b,i.b>1?'banh.':'banh.')}${sp('car',i.v,i.v>1?'vagas':'vaga')}</div>
-  ${i.cond?`<div class="cond">Condomínio ${brl(i.cond)}</div>`:''}</div></article>`).join(''):`<div class="empty"><h3>${st.fav?'Você ainda não favoritou imóveis':'Nenhum destaque com esses filtros'}</h3><p class="lead" style="margin:10px auto 20px">${st.fav?'Toque no coração das fotos para guardar os que gostar.':'Temos mais opções na carteira. Conte o que procura e a gente busca para você.'}</p>${st.fav?'':`<a class="btn btn-wa" target="_blank" rel="noopener" href="${wa('Olá! Procuro '+(st.tipo||'imóvel').toLowerCase()+(st.q?' em '+st.q:'')+(st.quartos?' com '+st.quartos+'+ quartos':'')+(st.preco?' até '+brl(st.preco):'')+'.')}"><svg class="ico"><use href="#wa"/></svg>Pedir ajuda na busca</a>`}</div>`;
+  ${i.cond?`<div class="cond">Condomínio ${brl(i.cond)}</div>`:''}</div></article>`).join(''):`<div class="empty"><h3>Nenhum destaque com esses filtros</h3><p class="lead" style="margin:10px auto 20px">Temos mais opções na carteira. Conte o que procura e a gente busca para você.</p>${`<a class="btn btn-wa" target="_blank" rel="noopener" href="${wa('Olá! Procuro '+(st.tipo||'imóvel').toLowerCase()+(st.q?' em '+st.q:'')+(st.quartos?' com '+st.quartos+'+ quartos':'')+(st.preco?' até '+brl(st.preco):'')+'.')}"><svg class="ico"><use href="#wa"/></svg>Pedir ajuda na busca</a>`}</div>`;
  const m=$('map');m.querySelectorAll('.pin').forEach(p=>p.remove());
  r.forEach(i=>{const b=document.createElement('button');b.className='pin'+(st.hi===i.cod?' hi':'');b.style.left=i.x+'%';b.style.top=i.y+'%';b.textContent=k(i.preco);b.dataset.c=i.cod;b.setAttribute('aria-label',i.t+', '+brl(i.preco));m.appendChild(b)});
- document.querySelectorAll('#chips .chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.f==='fav'?st.fav:(!st.fav&&c.dataset.t===st.tipo))));
+ document.querySelectorAll('#chips .chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.t===st.tipo)));
 }
 /* quick */
 const Q=[{l:'Apartamentos',s:L.filter(i=>i.tipo==='Apartamento').length+' em destaque',img:'riviera',f:{tipo:'Apartamento'}},{l:'Casas',s:L.filter(i=>i.tipo==='Casa').length+' em destaque',img:'casavazia',f:{tipo:'Casa'}},{l:'Até R$ 150 mil',s:'Para sair do aluguel',img:'casablanca',f:{preco:150000}},{l:'3 quartos ou mais',s:'Espaço para a família',img:'vilanova',f:{quartos:3}}];
 $('quick').innerHTML=Q.map((q,n)=>`<button class="qk" data-q="${n}"><img src="img/${q.img}.jpg" alt=""><span><b>${q.l}</b><small>${q.s}</small></span></button>`).join('');
-$('quick').addEventListener('click',e=>{const b=e.target.closest('.qk');if(!b)return;Object.assign(st,{q:'',tipo:'',quartos:0,preco:0,fav:false},Q[b.dataset.q].f);syncForm();render();$('count').scrollIntoView({block:'center'})});
+$('quick').addEventListener('click',e=>{const b=e.target.closest('.qk');if(!b)return;Object.assign(st,{q:'',tipo:'',quartos:0,preco:0},Q[b.dataset.q].f);syncForm();render();$('count').scrollIntoView({block:'center'})});
 function syncForm(){$('q').value=st.q;$('fTipo').value=st.tipo;$('fQ').value=st.quartos;$('fP').value=st.preco}
 /* busca + sugestões */
 const sug=$('sug'),qi=$('q');
@@ -408,16 +392,15 @@ sug.addEventListener('keydown',e=>{const b=document.activeElement;if(e.key==='Ar
 sug.addEventListener('mousedown',e=>e.preventDefault());
 sug.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;qi.value=b.dataset.v;sug.classList.remove('on');$('busca').requestSubmit()});
 document.addEventListener('click',e=>{if(!e.target.closest('.pill .f:first-child'))sug.classList.remove('on')});
-$('busca').addEventListener('submit',e=>{e.preventDefault();Object.assign(st,{q:qi.value.trim(),tipo:$('fTipo').value,quartos:+$('fQ').value,preco:+$('fP').value,fav:false});sug.classList.remove('on');render();$('count').scrollIntoView({block:'center'})});
+$('busca').addEventListener('submit',e=>{e.preventDefault();Object.assign(st,{q:qi.value.trim(),tipo:$('fTipo').value,quartos:+$('fQ').value,preco:+$('fP').value});sug.classList.remove('on');render();$('count').scrollIntoView({block:'center'})});
 document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));if(b.dataset.m!=='comprar')$('avaliar').scrollIntoView()}));
 /* barra */
-$('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;if(c.dataset.f==='fav'){st.fav=!st.fav}else{st.fav=false;st.tipo=c.dataset.t;$('fTipo').value=st.tipo}render()});
+$('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;st.tipo=c.dataset.t;$('fTipo').value=st.tipo;render()});
 $('ord').addEventListener('change',e=>{st.ord=e.target.value;render()});
 const setView=m=>{st.map=m;$('ex').classList.toggle('map',m);$('vL').setAttribute('aria-pressed',String(!m));$('vM').setAttribute('aria-pressed',String(m))};
 $('vL').addEventListener('click',()=>setView(false));$('vM').addEventListener('click',()=>setView(true));
-$('favBtn').addEventListener('click',()=>{st.fav=true;render();$('count').scrollIntoView({block:'center'})});
 /* cards */
-$('lista').addEventListener('click',e=>{const h=e.target.closest('.heart');if(h){e.stopPropagation();const c=h.dataset.h;const on=!favs.includes(c);favs=on?[...favs,c]:favs.filter(x=>x!==c);saveFav();h.setAttribute('aria-pressed',String(on));toast(on?'Salvo nos favoritos':'Removido dos favoritos');if(st.fav)render();return}const c=e.target.closest('.card');if(c)openMd(c.dataset.c)});
+$('lista').addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openMd(c.dataset.c)});
 $('lista').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.classList.contains('card'))openMd(e.target.dataset.c)});
 $('lista').addEventListener('mouseover',e=>{const c=e.target.closest('.card');const id=c?c.dataset.c:'';document.querySelectorAll('.pin').forEach(p=>p.classList.toggle('hi',p.dataset.c===id))});
 $('map').addEventListener('click',e=>{const p=e.target.closest('.pin');if(!p)return;st.hi=p.dataset.c;render();const c=document.querySelector(`.card[data-c="${p.dataset.c}"]`);if(c)c.scrollIntoView({block:'center'})});
@@ -444,7 +427,7 @@ const V={step:0,tipo:'',bairro:'',q:''};
 const S=[{t:'Que tipo de imóvel?',o:['Casa','Apartamento','Casa em condomínio','Terreno'],k:'tipo'},{t:'Em qual bairro?',o:['Campo Grande','Santa Cruz','Paciência','Guaratiba','Cosmos','Outro'],k:'bairro'},{t:'Quantos quartos?',o:['1','2','3','4 ou mais'],k:'q'}];
 function steps(){const s=V.step;const pr=`<div class="prog">${[0,1,2,3].map(n=>`<i class="${n<=s?'on':''}"></i>`).join('')}</div>`;
  if(s<3){$('steps').innerHTML=pr+`<h3>${S[s].t}</h3><div class="opts">${S[s].o.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('')}</div>${s?'<button class="btn" style="background:none;color:var(--mute);padding:0;min-height:40px;margin-top:8px" id="bk">Voltar</button>':''}`}
- else{$('steps').innerHTML=pr+`<h3>Pronto! Como podemos te chamar?</h3><p class="cond" style="margin:6px 0 0">${esc(V.tipo)} em ${esc(V.bairro)}, ${esc(V.q)} quarto(s)</p><input id="vn" placeholder="Seu nome" autocomplete="name" aria-label="Seu nome"><a class="btn btn-wa" id="vw" style="width:100%;margin-top:10px" target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Receber avaliação no WhatsApp</a><button class="btn" style="background:none;color:var(--mute);padding:0;min-height:40px;margin-top:6px" id="bk">Voltar</button>`;
+ else{$('steps').innerHTML=pr+`<h3>Pronto! Como podemos te chamar?</h3><p class="cond" style="margin:6px 0 0">${esc(V.tipo)} em ${esc(V.bairro)}, ${esc(V.q)} quarto(s)</p><input id="vn" placeholder="Seu nome" autocomplete="name" aria-label="Seu nome"><a class="btn btn-wa" id="vw" style="width:100%;margin-top:10px" target="_blank" rel="noopener"><svg class="ico"><use href="#wa"/></svg>Receber avaliação</a><button class="btn" style="background:none;color:var(--mute);padding:0;min-height:40px;margin-top:6px" id="bk">Voltar</button>`;
   const u=()=>{$('vw').href=wa('Olá! Quero avaliar meu imóvel. '+(($('vn').value.trim())?'Sou '+$('vn').value.trim()+'. ':'')+'É '+V.tipo.toLowerCase()+' em '+V.bairro+', com '+V.q+' quarto(s).')};$('vn').addEventListener('input',u);u()}
  const bk=$('bk');if(bk)bk.addEventListener('click',()=>{V.step--;steps()})}
 $('steps').addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b)return;V[S[V.step].k]=b.dataset.o;V.step++;steps()});steps();
@@ -456,11 +439,10 @@ function sim(){const Vv=+R[0].value,E=+R[1].value/100,N=+R[2].value*12,i=Math.po
  $('simWa').href=wa('Olá! Simulei um imóvel de '+brl(Vv)+' com entrada de '+brl(Vv*E)+' em '+R[2].value+' anos. Podem me ajudar com o financiamento?')}
 R.forEach(r=>r.addEventListener('input',sim));sim();
 /* header + menu */
-const hd=$('hd');const onS=()=>hd.classList.toggle('solid',scrollY>40);addEventListener('scroll',onS,{passive:true});onS();
-const bg=$('burger'),mn=$('menu');bg.addEventListener('click',()=>{const o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',String(o));hd.classList.add('solid')});
+const bg=$('burger'),mn=$('menu');bg.addEventListener('click',()=>{const o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',String(o))});
 mn.addEventListener('click',e=>{if(e.target.tagName==='A'){mn.classList.remove('open');bg.setAttribute('aria-expanded','false')}});
 $('fb').innerHTML=BA.map(([n,s])=>`<li><a href="https://www.jcmiec.com.br/bairro/rj-rio-de-janeiro-${s}" target="_blank" rel="noopener">${n}</a></li>`).join('');
-saveFav();render();
+render();
 setTimeout(()=>{const it=$('intro');if(it)it.remove()},2700);
 }
 </script>
