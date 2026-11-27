@@ -11,7 +11,7 @@
 <style>
 :root{
   --paper:#F1F2EC; --sheet:#FBFBF7; --ink:#172338; --ink2:#2B3850; --graphite:#5B6573;
-  --hl:#D4F55A; --teal:#1E6B7B; --play:#E2483D; --rule:rgba(23,35,56,.14);
+  --hl:#D4F55A; --teal:#1E6B7B; --play:#C9362B; --rule:rgba(23,35,56,.14);
   --serif:"Newsreader",Georgia,serif; --sans:"Instrument Sans",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -81,8 +81,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:22p
   box-shadow:0 50px 90px -40px rgba(23,35,56,.7)}
 .phone video{width:100%;height:100%;object-fit:cover;border-radius:31px;display:block;background:#0e1626}
 .phone .tc{position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);font:500 13px var(--sans);color:var(--graphite);white-space:nowrap}
-.phone .tc b{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--play);margin-right:8px;animation:rec 1.6s infinite}
-@keyframes rec{50%{opacity:.25}}
 svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 svg.wires path{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
 svg.wires circle{fill:var(--play)}
@@ -129,21 +127,21 @@ section{padding:110px 0 0}
 .vs-screen video{width:100%;height:100%;border-radius:15px;display:block;background:#0e1626;object-fit:contain}
 .vs-stage.h{grid-template-columns:1fr;gap:22px}
 .vs-stage.h .vs-screen{height:auto;width:100%;aspect-ratio:16/9}
-.vs-info .sty,.pick .sty{display:inline-block;font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--teal);border:1px solid currentColor;border-radius:99px;padding:4px 10px}
+.vs-info .sty,.pick .sty{display:inline-block;font:600 12.5px var(--sans);color:var(--teal);border:1px solid currentColor;border-radius:99px;padding:4px 10px}
 .vs-info h3{font:500 28px/1.2 var(--serif);margin-top:16px;max-width:16em}
 .vs-stage.h .vs-info h3{font-size:24px;max-width:none}
 .vs-info .ref{font-size:14px;color:var(--graphite);margin-top:10px}
 .vs-list{border-left:1px solid var(--rule);padding-left:28px;display:flex;flex-direction:column;justify-content:center}
 .picks{display:flex;flex-direction:column;gap:12px}
 .picks[hidden]{display:none}
-.pick{display:flex;gap:14px;align-items:center;text-align:left;width:100%;border:1px solid transparent;background:transparent;border-radius:16px;padding:10px;cursor:pointer;color:var(--ink);transition:background .2s,border-color .2s}
+.pick{line-height:1.4;display:flex;gap:14px;align-items:center;text-align:left;width:100%;border:1px solid transparent;background:transparent;border-radius:16px;padding:10px;cursor:pointer;color:var(--ink);transition:background .2s,border-color .2s}
 .pick:hover{background:var(--paper)}
 .pick[aria-pressed=true]{background:var(--paper);border-color:var(--ink)}
 .pick img{width:54px;height:96px;object-fit:cover;border-radius:9px;flex:none;background:var(--ink)}
 .pk{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
 .pn{font:700 12px var(--sans);color:var(--graphite);letter-spacing:.06em}
 .pick[aria-pressed=true] .pn{color:var(--ink)}
-.pt{font:500 17px/1.25 var(--serif)}
+.pt{font:500 17px/1.35 var(--serif)}
 .pd{font-size:13px;color:var(--graphite)}
 .hdr{display:flex;align-items:center;gap:12px}
 .hbtn{font:600 14px var(--sans);text-decoration:none;color:var(--sheet);background:var(--ink);border-radius:10px;padding:10px 14px;white-space:nowrap}
@@ -282,7 +280,7 @@ footer p+p{margin-top:6px}
       </article>
       <div class="phone" id="phone">
         <video src="../video-abstract-screens-sleep-vertical.mp4" poster="../poster-en.jpg" muted autoplay loop playsinline aria-label="Video abstract preview, muted"></video>
-        <div class="tc"><b></b><span data-t="tc">Playing muted, sound in the samples below</span></div>
+        <div class="tc"><span data-t="tc">Playing muted, sound in the samples below</span></div>
       </div>
       <svg class="wires" id="wires" aria-hidden="true"></svg>
       <div class="note" id="note" data-t="note">Each number on screen comes from a line of the paper.</div>
@@ -299,8 +297,8 @@ footer p+p{margin-top:6px}
       <div class="vs-stage">
         <div class="vs-screen"><video id="stV" controls playsinline preload="metadata" poster="../posters/screens-sleep-vertical.jpg" src="../video-abstract-screens-sleep-vertical.mp4"></video></div>
         <div class="vs-info">
-          <span class="sty" id="stSty" data-t="stMag">Science magazine</span>
           <h3 id="stTitle">Nighttime screen use and sleep in medical students</h3>
+          <span class="sty" id="stSty" data-t="stMag">Science magazine</span>
           <p class="ref" id="stRef">Liebig L et al. Front Psychiatry. 2026;17:1735186</p>
           <div class="seg" role="group" id="stSeg"><button data-o="vertical" aria-pressed="true">9:16</button><button data-o="horizontal" aria-pressed="false">16:9</button></div>
         </div>
